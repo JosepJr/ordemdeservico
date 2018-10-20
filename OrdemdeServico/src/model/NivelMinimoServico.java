@@ -61,7 +61,7 @@ public class NivelMinimoServico {
 
         
     public double getTotalReducao(){
-        return 0;
+        return this.getTotalReducaoNMSGeral() + this.getTotalReducaoNMSPDASS();
     }
     
     public double getPercentualRedutor(){
