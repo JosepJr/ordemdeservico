@@ -15,10 +15,7 @@ public class NivelServico {
         this.valorReducao = valorReducao;
     }
 
-    public double reducaoNMSPDASS() {
-        return 0;
-    }
-
+ 
     public String getIndicado() {
         return indicado;
     }

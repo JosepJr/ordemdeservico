@@ -12,25 +12,28 @@ import java.util.ArrayList;
  * @author Josep
  */
 public class OrdemServico {
+
     private String dataEmissao;
     private String nomeFiscalEmissor;
     private int numero;
     private ArrayList<HistoriaUsuario> historiasUsuarios;
     private ArrayList<Situacao> situacoes;
+    private NivelMinimoServico nivelMinimoServico;
 
-    public OrdemServico(String dataEmissao, String nomeFiscalEmissor, int numero, HistoriaUsuario historiaUsuario, Situacao situacao) {
+    public OrdemServico(String dataEmissao, String nomeFiscalEmissor, int numero, HistoriaUsuario historiaUsuario, Situacao situacao, NivelMinimoServico nivelMinimoServico) {
         this.dataEmissao = dataEmissao;
         this.nomeFiscalEmissor = nomeFiscalEmissor;
         this.numero = numero;
         this.addHistoriaUsuario(historiaUsuario);
         this.addSituacao(situacao);
+        this.nivelMinimoServico = nivelMinimoServico;
     }
-      
-    public void addHistoriaUsuario(HistoriaUsuario historiaUsuario){
+
+    public void addHistoriaUsuario(HistoriaUsuario historiaUsuario) {
         this.historiasUsuarios.add(historiaUsuario);
     }
-    
-    public void addSituacao(Situacao situacao){
+
+    public void addSituacao(Situacao situacao) {
         this.situacoes.add(situacao);
     }
 
@@ -49,8 +52,14 @@ public class OrdemServico {
     public String getDataEmissao() {
         return dataEmissao;
     }
-    
-    
+
+    public NivelMinimoServico getNivelMinimoServico() {
+        return nivelMinimoServico;
+    }
+
+    public void setNivelMinimoServico(NivelMinimoServico nivelMinimoServico) {
+        this.nivelMinimoServico = nivelMinimoServico;
+    }
 
     public String getNomeFiscalEmissor() {
         return nomeFiscalEmissor;
@@ -64,8 +73,8 @@ public class OrdemServico {
         return historiasUsuarios;
     }
 
-    public ArrayList<Situacao> getSituacao() {
+    public ArrayList<Situacao> getSituacoes() {
         return situacoes;
-    }  
-    
+    }
+
 }
