@@ -25,7 +25,7 @@ public class TelaPrincipalPresenter {
 
     private static TelaPrincipalPresenter instance;
     private TelaPrincipalView view;
-    private BuscarClientePresenter buscar;
+    private BuscarOrdemServicoPresenter buscar;
     private Usuario usuario;
     private IFactory factory;
     private ILog log;
@@ -73,7 +73,7 @@ public class TelaPrincipalPresenter {
         });
         
         this.view.getjMenuItemBuscar().addActionListener((ActionEvent e) -> { 
-            this.view.getjDesktopPanePrincipal().add(BuscarClientePresenter.getInstance().getView()).setVisible(true);
+            this.view.getjDesktopPanePrincipal().add(BuscarOrdemServicoPresenter.getInstance().getView()).setVisible(true);
         });
         
         this.view.getjMenuItemGraficoLinha().addActionListener((ActionEvent e) -> { 

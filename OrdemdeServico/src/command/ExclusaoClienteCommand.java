@@ -14,8 +14,8 @@ import memento.Zelador;
 import model.Cliente;
 import model.MementoCliente;
 import model.RegistroLog;
-import presenter.BuscarClientePresenter;
-import presenter.ManterClientePresenter;
+import presenter.BuscarOrdemServicoPresenter;
+import presenter.ManterOrdemServicoPresenter;
 import presenter.TelaPrincipalPresenter;
 
 /**
@@ -38,7 +38,7 @@ public class ExclusaoClienteCommand implements ICommand {
     }
 
     @Override
-    public void executar(ManterClientePresenter presenter, Cliente cliente) {
+    public void executar(ManterOrdemServicoPresenter presenter, Cliente cliente) {
         UIManager.put("OptionPane.yesButtonText", "Sim");
         UIManager.put("OptionPane.noButtonText", "Não");
         switch (JOptionPane.showConfirmDialog(null, "Deseja realmente exluir esse cliente?", "Confirmação de exclusão", JOptionPane.YES_NO_OPTION)) {
@@ -65,7 +65,7 @@ public class ExclusaoClienteCommand implements ICommand {
     }
 
     @Override
-    public void desfazer(BuscarClientePresenter presenter) {
+    public void desfazer(BuscarOrdemServicoPresenter presenter) {
     }
 
 

@@ -19,30 +19,30 @@ import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.table.DefaultTableModel;
 import model.Cliente;
-import view.BuscarClienteView;
+import view.BuscarOrdemServicoView;
 import observer.IObserver;
 
 /**
  *
  * @author Josep
  */
-public class BuscarClientePresenter implements IObserver{
+public class BuscarOrdemServicoPresenter implements IObserver{
 
     private ClienteDAOSQLite clienteDAOSQLite;
-    private static BuscarClientePresenter instance;
-    private final BuscarClienteView view;
+    private static BuscarOrdemServicoPresenter instance;
+    private final BuscarOrdemServicoView view;
     private DefaultTableModel tablemodel;
     private final ICommand command;
 
-    private BuscarClientePresenter() {
-        this.view = new BuscarClienteView();
+    private BuscarOrdemServicoPresenter() {
+        this.view = new BuscarOrdemServicoView();
         this.command = BuscarClienteCommand.getInstance();
         this.configurarView();
     }
 
-    public static BuscarClientePresenter getInstance() {
+    public static BuscarOrdemServicoPresenter getInstance() {
         if (instance == null) {
-            instance = new BuscarClientePresenter();
+            instance = new BuscarOrdemServicoPresenter();
         }
         return instance;
     }
@@ -61,7 +61,7 @@ public class BuscarClientePresenter implements IObserver{
         try {
             this.preencherTabela();
         } catch (Exception ex) {
-            Logger.getLogger(BuscarClientePresenter.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BuscarOrdemServicoPresenter.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.view.getjLabelObserverQTD().setText(Integer.toString(this.view.getjTableClientes().getRowCount()));
         this.view.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -70,7 +70,7 @@ public class BuscarClientePresenter implements IObserver{
             @Override
             public void internalFrameClosing(InternalFrameEvent ife) {
                 try {
-                    BuscarClientePresenter.getInstance().fecharView();
+                    BuscarOrdemServicoPresenter.getInstance().fecharView();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }
@@ -136,8 +136,8 @@ public class BuscarClientePresenter implements IObserver{
                     Cliente cliente = ClienteDAOSQLite.getInstance().selectNomeUnico(
                             this.view.getjTableClientes().getValueAt(
                                     this.view.getjTableClientes().getSelectedRow(), 0).toString());
-                    TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add(ManterClientePresenter.getInstance().getView());
-                    ManterClientePresenter.getInstance().visualizar(cliente);
+                    TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add(ManterOrdemServicoPresenter.getInstance().getView());
+                    ManterOrdemServicoPresenter.getInstance().visualizar();
 
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
@@ -150,23 +150,23 @@ public class BuscarClientePresenter implements IObserver{
         });
         
         this.view.getjButtonNovo().addActionListener((e1) -> {
-           TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add(ManterClientePresenter.getInstance().getView());
-           ManterClientePresenter.getInstance().incluir(); 
+           TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add(ManterOrdemServicoPresenter.getInstance().getView());
+           ManterOrdemServicoPresenter.getInstance().incluir(); 
         });
         
         this.view.getjButtonDesfazer().addActionListener((e) -> {
-            this.command.desfazer(BuscarClientePresenter.instance);
+            this.command.desfazer(BuscarOrdemServicoPresenter.instance);
         });
 
         this.view.setVisible(true);
     }
 
-    public BuscarClienteView getView() {
+    public BuscarOrdemServicoView getView() {
         return this.view;
     }
 
     private void fecharView() {
-        BuscarClientePresenter.instance = null;
+        BuscarOrdemServicoPresenter.instance = null;
         this.view.dispose();
     }
 

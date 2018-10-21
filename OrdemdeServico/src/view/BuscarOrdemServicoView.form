@@ -4,7 +4,7 @@
   <Properties>
     <Property name="closable" type="boolean" value="true"/>
     <Property name="defaultCloseOperation" type="int" value="1"/>
-    <Property name="title" type="java.lang.String" value="Buscar"/>
+    <Property name="title" type="java.lang.String" value="Buscar Ordem de Servi&#xe7;o"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -156,9 +156,9 @@
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="3">
-            <StringItem index="0" value="Todos"/>
-            <StringItem index="1" value="Nome"/>
-            <StringItem index="2" value="Documento"/>
+            <StringItem index="0" value="Data"/>
+            <StringItem index="1" value="Nome do Fiscal"/>
+            <StringItem index="2" value="N&#xfa;mero"/>
           </StringArray>
         </Property>
       </Properties>

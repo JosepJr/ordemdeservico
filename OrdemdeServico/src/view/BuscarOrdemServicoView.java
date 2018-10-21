@@ -17,12 +17,12 @@ import javax.swing.JTextField;
  *
  * @author Josep
  */
-public class BuscarClienteView extends javax.swing.JInternalFrame {
+public class BuscarOrdemServicoView extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form TelaBuscarClienteMDI
      */
-    public BuscarClienteView() {
+    public BuscarOrdemServicoView() {
         initComponents();
     }
 
@@ -94,7 +94,7 @@ public class BuscarClienteView extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        setTitle("Buscar");
+        setTitle("Buscar Ordem de Serviço");
 
         jLabel1.setText("Busca por");
 
@@ -125,7 +125,7 @@ public class BuscarClienteView extends javax.swing.JInternalFrame {
 
         jButtonDesfazer.setText("Desfazer");
 
-        jComboBoxTipoBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Nome", "Documento" }));
+        jComboBoxTipoBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Data", "Nome do Fiscal", "Número" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

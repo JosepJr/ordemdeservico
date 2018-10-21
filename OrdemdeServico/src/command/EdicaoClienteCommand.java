@@ -13,8 +13,8 @@ import memento.Zelador;
 import model.Cliente;
 import model.MementoCliente;
 import model.RegistroLog;
-import presenter.BuscarClientePresenter;
-import presenter.ManterClientePresenter;
+import presenter.BuscarOrdemServicoPresenter;
+import presenter.ManterOrdemServicoPresenter;
 import presenter.TelaPrincipalPresenter;
 
 /**
@@ -37,24 +37,24 @@ public class EdicaoClienteCommand implements ICommand{
     }
     
     @Override
-    public void executar(ManterClientePresenter presenter, Cliente cliente) {
+    public void executar(ManterOrdemServicoPresenter presenter, Cliente cliente) {
       
         presenter.getView().getjButtonFechar().addActionListener((e1) -> {
-            presenter.visualizar(cliente);
+            //presenter.visualizar(cliente);
         });       
         
         presenter.getView().getjButtonEditar().addActionListener((e1) -> {
             try {
-                String nome = presenter.getView().getJTextFieldNomeCliente().getText();
-                String documento = presenter.getView().getJTextFieldDocumentoCliente().getText();
-                String telefone = presenter.getView().getJTextFieldTelefoneCliente().getText();
+                String nome = presenter.getView().getJTextField1().getText();
+                String documento = presenter.getView().getJTextField2().getText();
+                String telefone = presenter.getView().getJTextField3().getText();
                 Cliente clienteAtualizado = new Cliente(nome, documento, telefone);                          
                 if(this.realizarUpdate(cliente, clienteAtualizado)){                    
                     JOptionPane.showMessageDialog(null, "Cliente ' " + clienteAtualizado.getNome() + " ' salvo com sucesso!!", "Sucesso", 1);
                     TelaPrincipalPresenter.getInstance().getLog().gravar(new RegistroLog(TelaPrincipalPresenter.getInstance().getUsuario(), "UPDATE", cliente, clienteAtualizado));
-                    presenter.visualizar(clienteAtualizado);                
+                    //presenter.visualizar(clienteAtualizado);                
                 }else{
-                    presenter.visualizar(cliente);
+                    //presenter.visualizar(cliente);
                 }           
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
@@ -83,7 +83,7 @@ public class EdicaoClienteCommand implements ICommand{
     }
 
     @Override
-    public void desfazer(BuscarClientePresenter presenter) {
+    public void desfazer(BuscarOrdemServicoPresenter presenter) {
     }
 
     

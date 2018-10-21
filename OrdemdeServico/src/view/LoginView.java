@@ -61,7 +61,7 @@ public class LoginView extends javax.swing.JFrame {
         jPasswordFieldSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(400, 350));
+        setTitle("Login");
         setResizable(false);
 
         jLabel1.setText("Login");

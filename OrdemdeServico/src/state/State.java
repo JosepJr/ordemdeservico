@@ -6,8 +6,7 @@
 package state;
 
 
-import model.Cliente;
-import presenter.ManterClientePresenter;
+import presenter.ManterOrdemServicoPresenter;
 
 /**
  *
@@ -15,21 +14,21 @@ import presenter.ManterClientePresenter;
  */
 public abstract class State {
 
-    protected ManterClientePresenter presenter;  
+    protected ManterOrdemServicoPresenter presenter;  
     
-    public State(ManterClientePresenter presenter) {
+    public State(ManterOrdemServicoPresenter presenter) {
         this.presenter = presenter;
     }
 
-    public void excluir(Cliente cliente) {
+    public void excluir() {
         throw new IllegalStateException();
     }
 
-    public void editar(Cliente cliente) {
+    public void editar() {
         throw new IllegalStateException();
     }
 
-    public void visualizar(Cliente cliente) { 
+    public void visualizar() { 
         throw new IllegalStateException();
     }
 
