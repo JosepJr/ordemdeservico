@@ -71,5 +71,10 @@ public class NivelMinimoServico {
     public double TotalOSComReducao(){
         return 0;
     }
+
+    @Override
+    public String toString() {
+        return "NivelMinimoServico{" + "criteriosGerais=" + criteriosGerais + ", niveisServicos=" + niveisServicos + '}';
+    }
     
 }

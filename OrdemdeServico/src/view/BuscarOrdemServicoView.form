@@ -142,7 +142,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelQtdRegistros">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Quantidade de Clientes Cadastrados:"/>
+        <Property name="text" type="java.lang.String" value="Quantidade de Ordem de Servi&#xe7;o Cadastrados:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonDesfazer">
@@ -155,10 +155,11 @@
     <Component class="javax.swing.JComboBox" name="jComboBoxTipoBusca">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="Data"/>
-            <StringItem index="1" value="Nome do Fiscal"/>
-            <StringItem index="2" value="N&#xfa;mero"/>
+          <StringArray count="4">
+            <StringItem index="0" value="Todos"/>
+            <StringItem index="1" value="Data"/>
+            <StringItem index="2" value="Nome do Fiscal"/>
+            <StringItem index="3" value="N&#xfa;mero"/>
           </StringArray>
         </Property>
       </Properties>

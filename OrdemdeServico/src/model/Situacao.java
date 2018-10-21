@@ -77,6 +77,11 @@ public class Situacao {
     public void setNumeroRevisao(int numeroRevisao) {
         this.numeroRevisao = numeroRevisao;
     }
+
+    @Override
+    public String toString() {
+        return "Situacao{" + "descricao=" + descricao + ", data=" + data + ", nomeResponsavel=" + nomeResponsavel + ", funcaoEquipe=" + funcaoEquipe + ", numeroRevisao=" + numeroRevisao + '}';
+    }
     
     
 }

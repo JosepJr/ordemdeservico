@@ -67,6 +67,11 @@ public class CriterioGeralNMS {
     public void setValorReducao(double valorReducao) {
         this.valorReducao = valorReducao;
     }
+
+    @Override
+    public String toString() {
+        return "CriterioGeralNMS{" + "criterio=" + criterio + ", redutor=" + redutor + ", aplicacao=" + aplicacao + ", quantidade=" + quantidade + ", observacao=" + observacao + ", valorReducao=" + valorReducao + '}';
+    }
     
     
 }

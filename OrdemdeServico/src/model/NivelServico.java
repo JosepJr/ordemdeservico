@@ -49,4 +49,11 @@ public class NivelServico {
         this.valorReducao = valorReducao;
     }
 
+    @Override
+    public String toString() {
+        return "NivelServico{" + "indicado=" + indicado + ", resultado=" + resultado + ", redutor=" + redutor + ", valorReducao=" + valorReducao + '}';
+    }
+
+    
+    
 }

@@ -6,6 +6,7 @@
 package state;
 
 
+import model.OrdemServico;
 import presenter.ManterOrdemServicoPresenter;
 
 /**
@@ -28,7 +29,7 @@ public abstract class State {
         throw new IllegalStateException();
     }
 
-    public void visualizar() { 
+    public void visualizar(OrdemServico ordemServico) { 
         throw new IllegalStateException();
     }
 

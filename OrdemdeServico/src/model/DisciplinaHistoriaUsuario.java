@@ -43,6 +43,11 @@ public class DisciplinaHistoriaUsuario {
     public void setUST(double UST) {
         this.UST = UST;
     }
+
+    @Override
+    public String toString() {
+        return "DisciplinaHistoriaUsuario{" + "descricao=" + descricao + ", tarefa=" + tarefa + ", UST=" + UST + '}';
+    }
     
     
     

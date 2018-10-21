@@ -14,6 +14,7 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 import model.Cliente;
+import model.OrdemServico;
 import state.RegistroNivelMinimoOrdemServicoState;
 import state.SituacaoOrdemServicoState;
 import state.State;
@@ -92,8 +93,9 @@ public class ManterOrdemServicoPresenter {
     public void excluir() {
     }
 
-    public void visualizar() {
-        
+    public void visualizar(OrdemServico ordemServico) {
+        this.setState(new InclusaoOrdemServicoState(this));
+        this.state.visualizar(ordemServico);
     }
 
     public void configurarBotoesVisibilidade(boolean excluir, boolean editar, boolean fechar) {
@@ -188,10 +190,36 @@ public class ManterOrdemServicoPresenter {
         this.view.getjLabelValorTotalOrdemServicoReducoes().setVisible(b10);
     }
 
+    public void habilitarTextField(boolean b1, boolean b2, boolean b3, boolean b4, boolean b5, boolean b6, boolean b7, boolean b8, boolean b9, boolean b10){
+        this.view.getJTextField1().setEnabled(b1);
+        this.view.getJTextField2().setEnabled(b2);
+        this.view.getJTextField3().setEnabled(b3);
+        this.view.getJTextField4().setEnabled(b4);
+        this.view.getJTextField5().setEnabled(b5);
+        this.view.getJTextField6().setEnabled(b6);
+        this.view.getJTextField7().setEnabled(b7);
+        this.view.getJTextField8().setEnabled(b8);
+        this.view.getJTextField9().setEnabled(b9);
+        this.view.getJTextField10().setEnabled(b10);
+    }
+    
+    public void preencherTextField(String s1, String s2, String s3, String s4, String s5, String s6, String s7, String s8, String s9, String s10){
+        this.view.getJTextField1().setText(s1);
+        this.view.getJTextField2().setText(s2);
+        this.view.getJTextField3().setText(s3);
+        this.view.getJTextField4().setText(s4);
+        this.view.getJTextField5().setText(s5);
+        this.view.getJTextField6().setText(s6);
+        this.view.getJTextField7().setText(s7);
+        this.view.getJTextField8().setText(s8);
+        this.view.getJTextField9().setText(s9);
+        this.view.getJTextField10().setText(s10);
+        
+        
+    }
     
     public void setTitulo(String t1, String t2){
         this.view.getjLabel0().setText(t1);
         this.view.getjLabel00().setText(t2);
-        
     }
 }

@@ -62,4 +62,11 @@ public class HistoriaUsuario {
             return this.getSubTotalUST()*163.88;
         }
     }
+
+    @Override
+    public String toString() {
+        return "HistoriaUsuario{" + "nome=" + nome + ", disciplinas=" + disciplinas + ", situacao=" + situacao + '}';
+    }
+    
+    
 }

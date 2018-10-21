@@ -16,8 +16,8 @@ public class OrdemServico {
     private String dataEmissao;
     private String nomeFiscalEmissor;
     private int numero;
-    private ArrayList<HistoriaUsuario> historiasUsuarios;
-    private ArrayList<Situacao> situacoes;
+    private ArrayList<HistoriaUsuario> historiasUsuarios = new ArrayList<>();
+    private ArrayList<Situacao> situacoes = new ArrayList<>();
     private NivelMinimoServico nivelMinimoServico;
 
     public OrdemServico(String dataEmissao, String nomeFiscalEmissor, int numero, HistoriaUsuario historiaUsuario, Situacao situacao, NivelMinimoServico nivelMinimoServico) {
@@ -76,5 +76,12 @@ public class OrdemServico {
     public ArrayList<Situacao> getSituacoes() {
         return situacoes;
     }
+
+    @Override
+    public String toString() {
+        return "OrdemServico{" + "dataEmissao=" + dataEmissao + ", nomeFiscalEmissor=" + nomeFiscalEmissor + ", numero=" + numero + ", historiasUsuarios=" + historiasUsuarios + ", situacoes=" + situacoes + ", nivelMinimoServico=" + nivelMinimoServico + '}';
+    }
+    
+    
 
 }

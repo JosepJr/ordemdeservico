@@ -9,8 +9,9 @@ import command.BuscarClienteCommand;
 import command.ICommand;
 import dao.ClienteDAOSQLite;
 import java.awt.Dimension;
-import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -19,6 +20,13 @@ import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.table.DefaultTableModel;
 import model.Cliente;
+import model.CriterioGeralNMS;
+import model.DisciplinaHistoriaUsuario;
+import model.HistoriaUsuario;
+import model.NivelMinimoServico;
+import model.NivelServico;
+import model.OrdemServico;
+import model.Situacao;
 import view.BuscarOrdemServicoView;
 import observer.IObserver;
 
@@ -88,19 +96,22 @@ public class BuscarOrdemServicoPresenter implements IObserver{
         });
         
         this.view.getjComboBoxTipoBusca().addActionListener((e1) -> {
-            if (this.view.getjComboBoxTipoBusca().getSelectedItem().equals("Nome")) {
+            if (this.view.getjComboBoxTipoBusca().getSelectedItem().equals("Data")) {
                 this.view.getjTextFieldBuscar().setEditable(true);
             }
-            if (this.view.getjComboBoxTipoBusca().getSelectedItem().equals("Documento")) {
+            if (this.view.getjComboBoxTipoBusca().getSelectedItem().equals("Nome do Fiscal")) {
                 this.view.getjTextFieldBuscar().setEditable(true);
             }
             if (this.view.getjComboBoxTipoBusca().getSelectedItem().equals("Todos")) {
                 this.view.getjTextFieldBuscar().setEditable(false);
+            }            
+            if (this.view.getjComboBoxTipoBusca().getSelectedItem().equals("Número")) {
+                this.view.getjTextFieldBuscar().setEditable(true);
             }
         });
 
         this.view.getjButtonBuscar().addActionListener((e1) -> {
-            if (this.view.getjComboBoxTipoBusca().getSelectedItem().equals("Nome")) {
+            if (this.view.getjComboBoxTipoBusca().getSelectedItem().equals("Data")) {
                 try {
                     this.preencherTabelaBuscar(ClienteDAOSQLite.getInstance().selectNome(this.view.getjTextFieldBuscar().getText()));
                 } catch (Exception ex) {
@@ -110,7 +121,7 @@ public class BuscarOrdemServicoPresenter implements IObserver{
         });
 
         this.view.getjButtonBuscar().addActionListener((e1) -> {
-            if (this.view.getjComboBoxTipoBusca().getSelectedItem().equals("Documento")) {
+            if (this.view.getjComboBoxTipoBusca().getSelectedItem().equals("Nome do Fiscal")) {
                 try {
                     this.preencherTabelaBuscar(ClienteDAOSQLite.getInstance().selectDocumento(this.view.getjTextFieldBuscar().getText()));
                 } catch (Exception ex) {
@@ -119,6 +130,18 @@ public class BuscarOrdemServicoPresenter implements IObserver{
             }
         });
 
+        this.view.getjButtonBuscar().addActionListener((e1) -> {
+            if (this.view.getjComboBoxTipoBusca().getSelectedItem().equals("Número")) {
+                try {
+                    this.view.getjTextFieldBuscar().setEditable(false);
+                    this.preencherTabela();
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
+            }
+        });
+        
+        
         this.view.getjButtonBuscar().addActionListener((e1) -> {
             if (this.view.getjComboBoxTipoBusca().getSelectedItem().equals("Todos")) {
                 try {
@@ -131,22 +154,41 @@ public class BuscarOrdemServicoPresenter implements IObserver{
         });
 
         this.view.getjButtonVisualizar().addActionListener((e1) -> {
-            if (this.view.getjTableClientes().getSelectedColumn() == 0) {
-                try {
-                    Cliente cliente = ClienteDAOSQLite.getInstance().selectNomeUnico(
+            //if (this.view.getjTableClientes().getSelectedColumn() == 0) {
+                //try {
+                    
+                    //Fazer o select no banco para pegar a ordem de servico selecionada na tabela                    
+                    //Pegando a linha e coluna selecionada e fazendo a busca no banco de dados a partir do nome selecionado
+                  /*  Cliente cliente = ClienteDAOSQLite.getInstance().selectNomeUnico(
                             this.view.getjTableClientes().getValueAt(
                                     this.view.getjTableClientes().getSelectedRow(), 0).toString());
-                    TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add(ManterOrdemServicoPresenter.getInstance().getView());
-                    ManterOrdemServicoPresenter.getInstance().visualizar();
+                    */TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add(ManterOrdemServicoPresenter.getInstance().getView());
+                    
+                    //Dar  um new ordem de servico passando os valores da tabela como construtor do novo objeto
+                    
+                    //String dataEmissao, String nomeFiscalEmissor, int numero, HistoriaUsuario historiaUsuario, Situacao situacao, NivelMinimoServico nivelMinimoServico
+                    DisciplinaHistoriaUsuario dc = new DisciplinaHistoriaUsuario("Historinha", "blablabla", 10.00);
+                    HistoriaUsuario historia = new HistoriaUsuario("Primeira historia", "Aberta", dc);
+                    Date data = Calendar.getInstance().getTime();
+                    Situacao situacao = new Situacao(data.toString(), "Jose", "Passar raiva");
+                    CriterioGeralNMS criterioGeralNMS = new CriterioGeralNMS("Funcionar", 10.05, "PSS", 20, "Vai funcionar", 10.07);
+                    NivelServico nivelServico = new NivelServico("Por Clayton", 20, 20.5, 24.08);
+                    NivelMinimoServico nms = new NivelMinimoServico(criterioGeralNMS, nivelServico);
+                    
+                    OrdemServico os = new OrdemServico(data.toString(), "DAVID PAPA", 1, historia, situacao, nms);
+                    
+                    System.out.println(os.toString());
+                    
+                   ManterOrdemServicoPresenter.getInstance().visualizar(os);
 
-                } catch (SQLException ex) {
+              /*  } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Favor selecionar somente o nome!");
-            }
+            }*/
         });
         
         this.view.getjButtonNovo().addActionListener((e1) -> {
@@ -176,7 +218,7 @@ public class BuscarOrdemServicoPresenter implements IObserver{
     }
 
     private DefaultTableModel montarTabela() {
-        this.tablemodel = new DefaultTableModel(new Object[][]{}, new String[]{"Nome", "Documento", "Telefone", "Tipo"}) {
+        this.tablemodel = new DefaultTableModel(new Object[][]{}, new String[]{"Número", "Data", "Nome do Fiscal"}) {
             @Override
             public boolean isCellEditable(int row, int col) {
                 return false;
@@ -194,8 +236,7 @@ public class BuscarOrdemServicoPresenter implements IObserver{
                 this.tablemodel.addRow(new Object[]{
                     clientes.getNome(),
                     clientes.getDocumento(true),
-                    clientes.getTelefone(),
-                    clientes.getTipoDocumento()
+                    clientes.getTelefone()
                 });
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());

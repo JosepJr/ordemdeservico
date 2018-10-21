@@ -121,11 +121,11 @@ public class BuscarOrdemServicoView extends javax.swing.JInternalFrame {
 
         jLabelObserverQTD.setText("0");
 
-        jLabelQtdRegistros.setText("Quantidade de Clientes Cadastrados:");
+        jLabelQtdRegistros.setText("Quantidade de Ordem de Serviço Cadastrados:");
 
         jButtonDesfazer.setText("Desfazer");
 
-        jComboBoxTipoBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Data", "Nome do Fiscal", "Número" }));
+        jComboBoxTipoBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Data", "Nome do Fiscal", "Número" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
