@@ -1,8 +1,8 @@
 package chain;
 
 import adapter.CNPJApoioDocumento;
-import model.Documento;
-import model.CNPJ;
+import modelCliente.Documento;
+import modelCliente.CNPJ;
 
 public class CNPJValidador extends ValidadorDocumento {
 

@@ -13,42 +13,42 @@ import presenterOrdemServico.ManterOrdemServicoPresenter;
  *
  * @author Josep
  */
-public class SituacaoOrdemServicoCommand implements ICommand {
+public class HistoriasUsuarioCommand implements ICommand{
 
-    private static SituacaoOrdemServicoCommand instance;
-
-    private SituacaoOrdemServicoCommand() {
-
+     private static HistoriasUsuarioCommand instance;
+    
+    private HistoriasUsuarioCommand(){    
+    
     }
-
-    public static SituacaoOrdemServicoCommand getInstance() {
-        if (instance == null) {
-            instance = new SituacaoOrdemServicoCommand();
+    
+    public static HistoriasUsuarioCommand getInstance(){
+        if(instance == null){
+            instance = new HistoriasUsuarioCommand();
         }
         return instance;
     }
-
+    
+    
     @Override
-    public void executar(ManterOrdemServicoPresenter presenter, Cliente c) {
-
+    public void executar(ManterOrdemServicoPresenter presenter, Cliente cliente) {
+        
         presenter.getView().getjButtonFechar().addActionListener((e1) -> {
             presenter.fecharView();
         });
 
-        presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
-            presenter.avancar(1);
+        presenter.getView().getjButtonAvancar().addActionListener((e1) -> {           
+            presenter.avancar(0);        
         });
         
         presenter.getView().getjButtonVoltar().addActionListener((e) -> {
-            presenter.voltar(1);
+            presenter.voltar(0);
         });
-
+        
     }
 
     @Override
     public void desfazer(BuscarOrdemServicoPresenter presenter) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
 }
-
-

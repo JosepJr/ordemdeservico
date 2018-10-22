@@ -5,9 +5,9 @@
  */
 package command;
 
-import model.Cliente;
-import presenter.BuscarOrdemServicoPresenter;
-import presenter.ManterOrdemServicoPresenter;
+import modelCliente.Cliente;
+import presenterOrdemServico.BuscarOrdemServicoPresenter;
+import presenterOrdemServico.ManterOrdemServicoPresenter;
 
 /**
  *

@@ -5,7 +5,7 @@
  */
 package adapter;
 
-import model.RegistroLog;
+import modelCliente.RegistroLog;
 
 /**
  *

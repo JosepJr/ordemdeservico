@@ -1,8 +1,8 @@
 package chain;
 
 import adapter.CPFApoioDocumento;
-import model.Documento;
-import model.CPF;
+import modelCliente.Documento;
+import modelCliente.CPF;
 
 public class CPFValidador extends ValidadorDocumento {
 

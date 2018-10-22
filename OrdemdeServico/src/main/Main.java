@@ -5,8 +5,8 @@
  */
 package main;
 
-import presenter.LoginPresenter;
-import presenter.TelaPrincipalPresenter;
+import javax.swing.JOptionPane;
+import presenterLogin.LoginPresenter;
 
 /**
  *
@@ -15,7 +15,12 @@ import presenter.TelaPrincipalPresenter;
 public class Main {
     
     public static void main(String[] args){
-        LoginPresenter.getInstance();
+        try {
+            LoginPresenter.getInstance();           
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    
     }
     
 }

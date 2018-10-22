@@ -5,9 +5,9 @@
  */
 package command;
 
-import model.Cliente;
-import presenter.BuscarOrdemServicoPresenter;
-import presenter.ManterOrdemServicoPresenter;
+import modelCliente.Cliente;
+import presenterOrdemServico.BuscarOrdemServicoPresenter;
+import presenterOrdemServico.ManterOrdemServicoPresenter;
 
 /**
  *
@@ -35,12 +35,12 @@ public class RegistroNivelMinimoOrdemServicoCommand implements ICommand {
             presenter.fecharView();
         });
 
-        presenter.getView().getjButtonEditar().addActionListener((e1) -> {
+        presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
             presenter.fecharView();
 
         });
 
-        presenter.getView().getjButtonExcluir().addActionListener((e) -> {
+        presenter.getView().getjButtonVoltar().addActionListener((e) -> {
             presenter.voltar(2);
         });
 

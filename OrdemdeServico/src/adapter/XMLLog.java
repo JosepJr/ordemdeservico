@@ -13,7 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.swing.JOptionPane;
-import model.RegistroLog;
+import modelCliente.RegistroLog;
 
 /**
  *

@@ -7,7 +7,7 @@ package state;
 
 import command.ICommand;
 import command.SituacaoOrdemServicoCommand;
-import presenter.ManterOrdemServicoPresenter;
+import presenterOrdemServico.ManterOrdemServicoPresenter;
 
 /**
  *
@@ -27,16 +27,17 @@ public class SituacaoOrdemServicoState extends State {
         this.presenter.configurarLabelValores(false, false, false, false, false, false, false, false, false, false);
         this.presenter.removeActionListeners();
         this.presenter.getView().moveToFront();
-        this.presenter.getView().setVisible(true);
-        this.presenter.configurarBotoesVisibilidade(true, true, true);
         this.presenter.setTitulo("Situação (Status) OS", "");
-        this.presenter.configurarBotoesNome("Voltar", "Avançar", "Cancelar");
+        this.presenter.configurarBotoesVisibilidade(false, true, true, true);       
+        this.presenter.configurarBotoesNome("Voltar", "Avancar", "Cancelar");
         this.presenter.getView().setTitle("Manter Situação (Inclusão / Edição)");
-        this.presenter.setTextLabels("Descrição", "Data", "Nome do Profissional Responsável", "Função na Equipe", "", "", "", "", "", "");
-        this.presenter.setVisibleLabels(true, true, true, true, false, false, false, false, false, false);
-        this.presenter.setVisibileTextFields(true, true, true, true, false, false, false, false, false, false);
-        this.presenter.getView().getjButtonExcluir().setEnabled(true);
-
+        this.presenter.setTextLabels("Data", "Nome do Profissional Responsável", "Função na Equipe", "", "", "", "", "", "","");
+        this.presenter.setVisibleLabels(true, true, true, false, false, false, false, false, false, false);
+        this.presenter.setVisibileTextFields(true, true, true, false, false, false, false, false, false, false);
+        this.presenter.getView().getjButtonVoltar().setEnabled(true);
+        this.presenter.configurarSituacao(true, true, false);
+        this.presenter.getView().getjComboBoxSituacao().setEnabled(false);
+        this.presenter.getView().setVisible(true);
         this.command.executar(this.presenter, null);
     }
 

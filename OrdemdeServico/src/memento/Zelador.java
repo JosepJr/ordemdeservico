@@ -6,7 +6,7 @@
 package memento;
 
 import java.util.ArrayList;
-import model.MementoCliente;
+import modelCliente.MementoCliente;
 
 /**
  *

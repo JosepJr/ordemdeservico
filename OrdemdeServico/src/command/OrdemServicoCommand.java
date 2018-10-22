@@ -13,21 +13,21 @@ import presenterOrdemServico.ManterOrdemServicoPresenter;
  *
  * @author Josep
  */
-public class SituacaoOrdemServicoCommand implements ICommand {
+public class OrdemServicoCommand implements ICommand{
 
-    private static SituacaoOrdemServicoCommand instance;
-
-    private SituacaoOrdemServicoCommand() {
-
+    private static OrdemServicoCommand instance;
+    
+    private OrdemServicoCommand(){    
+    
     }
-
-    public static SituacaoOrdemServicoCommand getInstance() {
-        if (instance == null) {
-            instance = new SituacaoOrdemServicoCommand();
+    
+    public static OrdemServicoCommand getInstance(){
+        if(instance == null){
+            instance = new OrdemServicoCommand();
         }
         return instance;
     }
-
+    
     @Override
     public void executar(ManterOrdemServicoPresenter presenter, Cliente c) {
 
@@ -36,19 +36,18 @@ public class SituacaoOrdemServicoCommand implements ICommand {
         });
 
         presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
-            presenter.avancar(1);
+           
+            presenter.avancar(0);        
         });
         
-        presenter.getView().getjButtonVoltar().addActionListener((e) -> {
-            presenter.voltar(1);
-        });
-
+        
+        
+        
     }
 
     @Override
     public void desfazer(BuscarOrdemServicoPresenter presenter) {
     }
 
+    
 }
-
-

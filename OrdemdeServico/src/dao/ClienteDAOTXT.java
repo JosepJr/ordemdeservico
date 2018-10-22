@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import model.Cliente;
+import modelCliente.Cliente;
 import adapter.Helper;
 import java.io.BufferedWriter;
 import java.util.ArrayList;

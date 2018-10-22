@@ -6,8 +6,8 @@
 package state;
 
 
-import model.OrdemServico;
-import presenter.ManterOrdemServicoPresenter;
+import modelOrdemServico.OrdemServico;
+import presenterOrdemServico.ManterOrdemServicoPresenter;
 
 /**
  *

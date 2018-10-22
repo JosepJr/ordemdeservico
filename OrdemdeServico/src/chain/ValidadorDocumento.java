@@ -5,7 +5,7 @@
  */
 package chain;
 
-import model.Documento;
+import modelCliente.Documento;
 
 /**
  *
