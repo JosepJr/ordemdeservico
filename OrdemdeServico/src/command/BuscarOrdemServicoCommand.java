@@ -13,32 +13,12 @@ import presenterOrdemServico.ManterOrdemServicoPresenter;
  *
  * @author Josep
  */
-public class OrdemServicoCommand implements ICommand{
+public class BuscarOrdemServicoCommand implements ICommand{
 
-    private static OrdemServicoCommand instance;
-    
-    private OrdemServicoCommand(){    
-    
-    }
-    
-    public static OrdemServicoCommand getInstance(){
-        if(instance == null){
-            instance = new OrdemServicoCommand();
-        }
-        return instance;
-    }
-    
     @Override
     public void executar(ManterOrdemServicoPresenter presenter) {
-
-        presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
-            presenter.fecharView();
-        });
-
-        presenter.getView().getjButtonAvancar().addActionListener((e1) -> {           
-            presenter.avancar(0);        
-        });     
-      
+        
+    
     }
 
     @Override
@@ -47,8 +27,23 @@ public class OrdemServicoCommand implements ICommand{
 
     @Override
     public void editar(ManterOrdemServicoPresenter presenter, OrdemServico os) {
+                
+        presenter.getView().getjButtonEditar().addActionListener((e1) -> {            
+            
+        });
+        
+        presenter.getView().getjButtonAvancar().addActionListener((e1) -> {           
+            
+        });
+                 
+        presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
+            
+        });
+
+        
+        
+        
 
     }
-
     
 }

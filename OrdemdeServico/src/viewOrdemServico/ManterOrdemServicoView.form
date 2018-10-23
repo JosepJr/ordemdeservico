@@ -54,7 +54,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButtonAvancar" min="-2" pref="120" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButtonFechar" min="-2" pref="120" max="-2" attributes="0"/>
+                  <Component id="jButtonCancelar" min="-2" pref="120" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -66,7 +66,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButtonAvancar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonVoltar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButtonFechar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonEditar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="43" max="32767" attributes="0"/>
@@ -80,9 +80,9 @@
             <Property name="text" type="java.lang.String" value="Avan&#xe7;ar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButtonFechar">
+        <Component class="javax.swing.JButton" name="jButtonCancelar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Fechar"/>
+            <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonVoltar">

@@ -5,7 +5,7 @@
  */
 package command;
 
-import modelCliente.Cliente;
+import modelOrdemServico.OrdemServico;
 import presenterOrdemServico.BuscarOrdemServicoPresenter;
 import presenterOrdemServico.ManterOrdemServicoPresenter;
 
@@ -30,25 +30,30 @@ public class HistoriasUsuarioCommand implements ICommand{
     
     
     @Override
-    public void executar(ManterOrdemServicoPresenter presenter, Cliente cliente) {
+    public void executar(ManterOrdemServicoPresenter presenter) {
         
-        presenter.getView().getjButtonFechar().addActionListener((e1) -> {
+        presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
             presenter.fecharView();
         });
 
         presenter.getView().getjButtonAvancar().addActionListener((e1) -> {           
-            presenter.avancar(0);        
+            presenter.avancar(2);        
         });
         
         presenter.getView().getjButtonVoltar().addActionListener((e) -> {
-            presenter.voltar(0);
+            presenter.voltar(2);
         });
         
     }
 
     @Override
     public void desfazer(BuscarOrdemServicoPresenter presenter) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+    }
+
+    @Override
+    public void editar(ManterOrdemServicoPresenter presenter, OrdemServico os) {
+
     }
     
 }

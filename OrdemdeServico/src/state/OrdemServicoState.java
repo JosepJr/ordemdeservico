@@ -25,38 +25,29 @@ public class OrdemServicoState extends State {
 
     @Override
     public void incluir() {
-        this.presenter.configurarLabelValores(false, false, false, false, false, false, false, false, false, false);
-        this.presenter.removeActionListeners();
-        this.presenter.getView().moveToFront();
+        this.configurarViewState();
+        this.command.executar(this.presenter);   
+    }
+    
+    @Override
+    public void visualizar(OrdemServico os){
+        this.configurarViewState();
+        this.presenter.preencherTextField(Integer.toString(os.getNumero()), os.getDataEmissao(), os.getNomeFiscalEmissor(), "","","","","","","");
+        this.presenter.habilitarTextField(false, false, false, true, true, true, true, true, true, true);
+        this.command.editar(this.presenter, os);
+    }
+    
+    private void configurarViewState(){        
+        this.presenter.removeActionListeners();        
         this.presenter.setTitulo("Ordem de Serviço (OS)", "");
-        this.presenter.configurarBotoesVisibilidade(false, true, true, true);       
-        this.presenter.configurarBotoesNome("Voltar", "Avancar", "Cancelar");
         this.presenter.getView().setTitle("Manter Ordem de Serviço (Inclusão / Edição)");        
         this.presenter.setTextLabels("Número da Ordem de Serviço", "Data da Emissão", "Nome do Fiscal Emissor", "", "", "", "", "", "", "");
+        this.presenter.configurarLabelValores(false, false, false, false, false, false, false, false, false, false);  
         this.presenter.setVisibleLabels(true, true, true, false, false, false, false, false, false, false);
         this.presenter.setVisibileTextFields(true, true, true, false, false, false, false, false, false, false);
         this.presenter.getView().getjButtonVoltar().setEnabled(false);
         this.presenter.configurarSituacao(false, false, false);
         this.presenter.getView().setVisible(true);
-        this.command.executar(this.presenter, null);   
-    }
-    
-    @Override
-    public void visualizar(OrdemServico os){
-        this.presenter.configurarLabelValores(false, false, false, false, false, false, false, false, false, false);
-        this.presenter.removeActionListeners();
         this.presenter.getView().moveToFront();
-        this.presenter.getView().setVisible(true);
-        this.presenter.configurarBotoesVisibilidade(true, true, true, true);
-        this.presenter.setTitulo("Ordem de Serviço (OS)", "");
-        this.presenter.configurarBotoesNome("Avançar", "Cancelar", "Voltar");
-        this.presenter.getView().setTitle("Manter Ordem de Serviço (Inclusão / Edição)");        
-        this.presenter.setTextLabels("Número da Ordem de Serviço", "Data da Emissão", "Nome do Fiscal Emissor", "", "", "", "", "", "", "");
-        this.presenter.setVisibleLabels(true, true, true, false, false, false, false, false, false, false);
-        this.presenter.setVisibileTextFields(true, true, true, false, false, false, false, false, false, false);
-        this.presenter.preencherTextField(Integer.toString(os.getNumero()), os.getDataEmissao(), os.getNomeFiscalEmissor(), "", "", "", "", "", "", "");
-        this.presenter.habilitarTextField(false, false, false, false, false, false, false, false, false, false);
-        this.presenter.getView().getjButtonVoltar().setEnabled(false);
-        
     }
 }

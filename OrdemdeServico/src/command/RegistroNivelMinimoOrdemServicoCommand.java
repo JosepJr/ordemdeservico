@@ -5,7 +5,7 @@
  */
 package command;
 
-import modelCliente.Cliente;
+import modelOrdemServico.OrdemServico;
 import presenterOrdemServico.BuscarOrdemServicoPresenter;
 import presenterOrdemServico.ManterOrdemServicoPresenter;
 
@@ -29,24 +29,30 @@ public class RegistroNivelMinimoOrdemServicoCommand implements ICommand {
     }
 
     @Override
-    public void executar(ManterOrdemServicoPresenter presenter, Cliente c) {
+    public void executar(ManterOrdemServicoPresenter presenter) {
 
-        presenter.getView().getjButtonFechar().addActionListener((e1) -> {
+        presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
             presenter.fecharView();
         });
 
         presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
+            
+            //salvar OS
             presenter.fecharView();
-
         });
 
         presenter.getView().getjButtonVoltar().addActionListener((e) -> {
-            presenter.voltar(2);
+            presenter.voltar(3);
         });
 
     }
 
     @Override
     public void desfazer(BuscarOrdemServicoPresenter presenter) {
+    }
+
+    @Override
+    public void editar(ManterOrdemServicoPresenter presenter, OrdemServico os) {
+
     }
 }

@@ -5,7 +5,7 @@
  */
 package command;
 
-import modelCliente.Cliente;
+import modelOrdemServico.OrdemServico;
 import presenterOrdemServico.BuscarOrdemServicoPresenter;
 import presenterOrdemServico.ManterOrdemServicoPresenter;
 
@@ -29,9 +29,9 @@ public class SituacaoOrdemServicoCommand implements ICommand {
     }
 
     @Override
-    public void executar(ManterOrdemServicoPresenter presenter, Cliente c) {
+    public void executar(ManterOrdemServicoPresenter presenter) {
 
-        presenter.getView().getjButtonFechar().addActionListener((e1) -> {
+        presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
             presenter.fecharView();
         });
 
@@ -47,6 +47,11 @@ public class SituacaoOrdemServicoCommand implements ICommand {
 
     @Override
     public void desfazer(BuscarOrdemServicoPresenter presenter) {
+    }
+
+    @Override
+    public void editar(ManterOrdemServicoPresenter presenter, OrdemServico os) {
+
     }
 
 }

@@ -7,6 +7,7 @@ package state;
 
 import command.ICommand;
 import command.SituacaoOrdemServicoCommand;
+import modelOrdemServico.OrdemServico;
 import presenterOrdemServico.ManterOrdemServicoPresenter;
 
 /**
@@ -24,21 +25,31 @@ public class SituacaoOrdemServicoState extends State {
 
     @Override
     public void incluir() {
+        this.configurarStateView();
         this.presenter.configurarLabelValores(false, false, false, false, false, false, false, false, false, false);
-        this.presenter.removeActionListeners();
-        this.presenter.getView().moveToFront();
+        this.presenter.configurarSituacao(true, true, false);
+        this.presenter.getView().getjComboBoxSituacao().setEnabled(false);
+        this.command.executar(this.presenter);
+    }
+    
+    @Override
+    public void visualizar(OrdemServico os){
+        this.configurarStateView();
+        this.presenter.configurarLabelValores(false, false, false, false, false, false, false, false, false, false);
+        this.presenter.configurarSituacao(true, true, true);
+        this.presenter.getView().getjComboBoxSituacao().setEnabled(true);
+    }
+
+    
+    private void configurarStateView(){        
+        this.presenter.removeActionListeners();        
         this.presenter.setTitulo("Situação (Status) OS", "");
-        this.presenter.configurarBotoesVisibilidade(false, true, true, true);       
-        this.presenter.configurarBotoesNome("Voltar", "Avancar", "Cancelar");
         this.presenter.getView().setTitle("Manter Situação (Inclusão / Edição)");
         this.presenter.setTextLabels("Data", "Nome do Profissional Responsável", "Função na Equipe", "", "", "", "", "", "","");
         this.presenter.setVisibleLabels(true, true, true, false, false, false, false, false, false, false);
         this.presenter.setVisibileTextFields(true, true, true, false, false, false, false, false, false, false);
-        this.presenter.getView().getjButtonVoltar().setEnabled(true);
-        this.presenter.configurarSituacao(true, true, false);
-        this.presenter.getView().getjComboBoxSituacao().setEnabled(false);
-        this.presenter.getView().setVisible(true);
-        this.command.executar(this.presenter, null);
+        this.presenter.getView().getjButtonVoltar().setEnabled(true);        
+        this.presenter.getView().moveToFront();
+        this.presenter.getView().setVisible(true);    
     }
-
 }

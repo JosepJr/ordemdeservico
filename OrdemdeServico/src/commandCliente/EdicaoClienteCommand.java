@@ -13,10 +13,9 @@ import javax.swing.JOptionPane;
 import memento.Zelador;
 import modelCliente.Cliente;
 import modelCliente.MementoCliente;
-import modelCliente.RegistroLog;
+import modelOrdemServico.OrdemServico;
 import presenterOrdemServico.BuscarOrdemServicoPresenter;
 import presenterOrdemServico.ManterOrdemServicoPresenter;
-import presenterTelaPrincipal.TelaPrincipalPresenter;
 
 /**
  *
@@ -38,14 +37,14 @@ public class EdicaoClienteCommand implements ICommand{
     }
     
     @Override
-    public void executar(ManterOrdemServicoPresenter presenter, Cliente cliente) {
+    public void executar(ManterOrdemServicoPresenter presenter) {
       
-        presenter.getView().getjButtonFechar().addActionListener((e1) -> {
+        presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
             //presenter.visualizar(cliente);
         });       
         
         presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
-            try {
+            /*try {
                 String nome = presenter.getView().getJTextField1().getText();
                 String documento = presenter.getView().getJTextField2().getText();
                 String telefone = presenter.getView().getJTextField3().getText();
@@ -61,7 +60,7 @@ public class EdicaoClienteCommand implements ICommand{
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
-            }
+            }*/
         });            
     }
     
@@ -85,6 +84,11 @@ public class EdicaoClienteCommand implements ICommand{
 
     @Override
     public void desfazer(BuscarOrdemServicoPresenter presenter) {
+    }
+
+    @Override
+    public void editar(ManterOrdemServicoPresenter presenter, OrdemServico os) {
+
     }
 
     

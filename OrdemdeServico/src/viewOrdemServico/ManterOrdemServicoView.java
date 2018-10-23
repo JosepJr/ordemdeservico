@@ -97,8 +97,8 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
         return jButtonVoltar;
     }
 
-    public JButton getjButtonFechar() {
-        return jButtonFechar;
+    public JButton getjButtonCancelar() {
+        return jButtonCancelar;
     }
 
     public JLabel getjLabel1() {
@@ -194,7 +194,7 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButtonAvancar = new javax.swing.JButton();
-        jButtonFechar = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
         jButtonVoltar = new javax.swing.JButton();
         jButtonEditar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -241,7 +241,7 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
 
         jButtonAvancar.setText("Avançar");
 
-        jButtonFechar.setText("Fechar");
+        jButtonCancelar.setText("Cancelar");
 
         jButtonVoltar.setText("Voltar");
 
@@ -259,7 +259,7 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jButtonAvancar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
         jPanel1Layout.setVerticalGroup(
@@ -269,7 +269,7 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAvancar)
                     .addComponent(jButtonVoltar)
-                    .addComponent(jButtonFechar)
+                    .addComponent(jButtonCancelar)
                     .addComponent(jButtonEditar))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
@@ -536,8 +536,8 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField JTextField8;
     private javax.swing.JTextField JTextField9;
     private javax.swing.JButton jButtonAvancar;
+    private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonEditar;
-    private javax.swing.JButton jButtonFechar;
     private javax.swing.JButton jButtonVoltar;
     private javax.swing.JComboBox<String> jComboBoxSituacao;
     private javax.swing.JLabel jLabel0;

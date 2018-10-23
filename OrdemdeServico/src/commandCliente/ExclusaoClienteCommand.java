@@ -6,18 +6,9 @@
 package commandCliente;
 
 import command.ICommand;
-import dao.ClienteDAOSQLite;
-import dao.ClienteDAOTXT;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import memento.Zelador;
-import modelCliente.Cliente;
-import modelCliente.MementoCliente;
-import modelCliente.RegistroLog;
+import modelOrdemServico.OrdemServico;
 import presenterOrdemServico.BuscarOrdemServicoPresenter;
 import presenterOrdemServico.ManterOrdemServicoPresenter;
-import presenterTelaPrincipal.TelaPrincipalPresenter;
 
 /**
  *
@@ -39,8 +30,8 @@ public class ExclusaoClienteCommand implements ICommand {
     }
 
     @Override
-    public void executar(ManterOrdemServicoPresenter presenter, Cliente cliente) {
-        UIManager.put("OptionPane.yesButtonText", "Sim");
+    public void executar(ManterOrdemServicoPresenter presenter) {
+        /*UIManager.put("OptionPane.yesButtonText", "Sim");
         UIManager.put("OptionPane.noButtonText", "Não");
         switch (JOptionPane.showConfirmDialog(null, "Deseja realmente exluir esse cliente?", "Confirmação de exclusão", JOptionPane.YES_NO_OPTION)) {
             case 0:
@@ -62,11 +53,17 @@ public class ExclusaoClienteCommand implements ICommand {
                 break;
             case 1:
                 break;
-        }
+        }*/
     }
 
     @Override
     public void desfazer(BuscarOrdemServicoPresenter presenter) {
+    }
+
+    @Override
+    public void editar(ManterOrdemServicoPresenter presenter, OrdemServico os) {
+
+
     }
 
 

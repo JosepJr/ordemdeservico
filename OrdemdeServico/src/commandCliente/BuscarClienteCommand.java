@@ -13,6 +13,7 @@ import javax.swing.UIManager;
 import memento.Zelador;
 import modelCliente.Cliente;
 import modelCliente.RegistroLog;
+import modelOrdemServico.OrdemServico;
 import presenterOrdemServico.BuscarOrdemServicoPresenter;
 import presenterOrdemServico.ManterOrdemServicoPresenter;
 import presenterTelaPrincipal.TelaPrincipalPresenter;
@@ -37,7 +38,7 @@ public class BuscarClienteCommand implements ICommand {
     }
 
     @Override
-    public void executar(ManterOrdemServicoPresenter presenter, Cliente cliente) {
+    public void executar(ManterOrdemServicoPresenter presenter) {
     }
 
     @Override
@@ -86,6 +87,11 @@ public class BuscarClienteCommand implements ICommand {
         } else {
             JOptionPane.showMessageDialog(null, "Não ha estados para serem restaurados!");
         }
+    }
+
+    @Override
+    public void editar(ManterOrdemServicoPresenter presenter, OrdemServico os) {
+
     }
 
 }

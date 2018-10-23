@@ -5,14 +5,13 @@
  */
 package presenterOrdemServico;
 
+import command.BuscarOrdemServicoCommand;
 import presenterTelaPrincipal.TelaPrincipalPresenter;
-import commandCliente.BuscarClienteCommand;
 import command.ICommand;
 import dao.ClienteDAOSQLite;
 import java.awt.Dimension;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -35,7 +34,7 @@ import observer.IObserver;
  *
  * @author Josep
  */
-public class BuscarOrdemServicoPresenter implements IObserver{
+public class BuscarOrdemServicoPresenter implements IObserver {
 
     private ClienteDAOSQLite clienteDAOSQLite;
     private static BuscarOrdemServicoPresenter instance;
@@ -45,7 +44,7 @@ public class BuscarOrdemServicoPresenter implements IObserver{
 
     private BuscarOrdemServicoPresenter() {
         this.view = new BuscarOrdemServicoView();
-        this.command = BuscarClienteCommand.getInstance();
+        this.command = new BuscarOrdemServicoCommand();
         this.configurarView();
     }
 
@@ -57,22 +56,23 @@ public class BuscarOrdemServicoPresenter implements IObserver{
     }
 
     private void configurarView() {
- 
+
         this.setPosicao();
-        
-        try{
+
+        try {
             clienteDAOSQLite = ClienteDAOSQLite.getInstance();
-        }catch(Exception ex){
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        this.clienteDAOSQLite.addObserver(this);        
-        
+        this.clienteDAOSQLite.addObserver(this);
+
         try {
             this.preencherTabela();
         } catch (Exception ex) {
             Logger.getLogger(BuscarOrdemServicoPresenter.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }        
         this.view.getjLabelObserverQTD().setText(Integer.toString(this.view.getjTableClientes().getRowCount()));
+        
         this.view.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.view.getjTextFieldBuscar().setEditable(false);
         this.view.addInternalFrameListener(new InternalFrameAdapter() {
@@ -91,11 +91,11 @@ public class BuscarOrdemServicoPresenter implements IObserver{
         } else {
             this.view.getjButtonVisualizar().setEnabled(true);
         }
-     
+
         this.view.getjButtonFechar().addActionListener((e1) -> {
             this.fecharView();
         });
-        
+
         this.view.getjComboBoxTipoBusca().addActionListener((e1) -> {
             if (this.view.getjComboBoxTipoBusca().getSelectedItem().equals("Data")) {
                 this.view.getjTextFieldBuscar().setEditable(true);
@@ -105,106 +105,81 @@ public class BuscarOrdemServicoPresenter implements IObserver{
             }
             if (this.view.getjComboBoxTipoBusca().getSelectedItem().equals("Todos")) {
                 this.view.getjTextFieldBuscar().setEditable(false);
-            }            
+            }
             if (this.view.getjComboBoxTipoBusca().getSelectedItem().equals("Número")) {
                 this.view.getjTextFieldBuscar().setEditable(true);
             }
         });
 
         this.view.getjButtonBuscar().addActionListener((e1) -> {
-            if (this.view.getjComboBoxTipoBusca().getSelectedItem().equals("Data")) {
+            /*if (this.view.getjComboBoxTipoBusca().getSelectedItem().equals("Data")) {
                 try {
                     this.preencherTabelaBuscar(ClienteDAOSQLite.getInstance().selectNome(this.view.getjTextFieldBuscar().getText()));
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }
-            }
+            }*/
         });
 
         this.view.getjButtonBuscar().addActionListener((e1) -> {
-            if (this.view.getjComboBoxTipoBusca().getSelectedItem().equals("Nome do Fiscal")) {
+            /*if (this.view.getjComboBoxTipoBusca().getSelectedItem().equals("Nome do Fiscal")) {
                 try {
                     this.preencherTabelaBuscar(ClienteDAOSQLite.getInstance().selectDocumento(this.view.getjTextFieldBuscar().getText()));
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }
-            }
+            }*/
         });
 
         this.view.getjButtonBuscar().addActionListener((e1) -> {
-            if (this.view.getjComboBoxTipoBusca().getSelectedItem().equals("Número")) {
+            /*if (this.view.getjComboBoxTipoBusca().getSelectedItem().equals("Número")) {
                 try {
                     this.view.getjTextFieldBuscar().setEditable(false);
                     this.preencherTabela();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }
-            }
+            }*/
         });
-        
-        
+
         this.view.getjButtonBuscar().addActionListener((e1) -> {
-            if (this.view.getjComboBoxTipoBusca().getSelectedItem().equals("Todos")) {
+            /*if (this.view.getjComboBoxTipoBusca().getSelectedItem().equals("Todos")) {
                 try {
                     this.view.getjTextFieldBuscar().setEditable(false);
                     this.preencherTabela();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }
-            }
+            }*/
         });
 
         this.view.getjButtonVisualizar().addActionListener((e1) -> {
-            //if (this.view.getjTableClientes().getSelectedColumn() == 0) {
-                //try {
-                    
-                    //Fazer o select no banco para pegar a ordem de servico selecionada na tabela                    
-                    //Pegando a linha e coluna selecionada e fazendo a busca no banco de dados a partir do nome selecionado
-                  /*  Cliente cliente = ClienteDAOSQLite.getInstance().selectNomeUnico(
-                            this.view.getjTableClientes().getValueAt(
-                                    this.view.getjTableClientes().getSelectedRow(), 0).toString());
-                    */TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add(ManterOrdemServicoPresenter.getInstance().getView());
-                    
-                    //Dar  um new ordem de servico passando os valores da tabela como construtor do novo objeto
-                    
-                    //String dataEmissao, String nomeFiscalEmissor, int numero, HistoriaUsuario historiaUsuario, Situacao situacao, NivelMinimoServico nivelMinimoServico
-                    
-                    try {
-                    DisciplinaHistoriaUsuario dc = new DisciplinaHistoriaUsuario("Historinha", "blablabla", 10.00);
-                    HistoriaUsuario historia = new HistoriaUsuario("Primeira historia", "Aberta", dc);
-                    Situacao situacao = new Situacao("10/10/2010", "Jose", "Passar raiva");
-                    CriterioGeralNMS criterioGeralNMS = new CriterioGeralNMS("Funcionar", 10.05, "PSS", 20, "Vai funcionar", 10.07);
-                    NivelServico nivelServico = new NivelServico("Por Clayton", 20, 20.5, 24.08);
-                    NivelMinimoServico nms = new NivelMinimoServico(criterioGeralNMS, nivelServico);
-
-             
-                    
-                        OrdemServico os = new OrdemServico("10/10/2010", "DAVID PAPA", 1, historia, situacao, nms);
-                        System.out.println(os.toString());                    
-                           ManterOrdemServicoPresenter.getInstance().visualizar(os);
-                    } catch (Exception ex) {
-                        Logger.getLogger(BuscarOrdemServicoPresenter.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    
-                    
-
-              /*  } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage());
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage());
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Favor selecionar somente o nome!");
-            }*/
+            //Dar  um new ordem de servico passando os valores da tabela como construtor do novo objeto                    
+            //String dataEmissao, String nomeFiscalEmissor, int numero, HistoriaUsuario historiaUsuario, Situacao situacao, NivelMinimoServico nivelMinimoServico
+            TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add(ManterOrdemServicoPresenter.getInstance().getView());
+            try {
+                DisciplinaHistoriaUsuario dc = new DisciplinaHistoriaUsuario("Historinha", "blablabla", 10.00);
+                HistoriaUsuario historia = new HistoriaUsuario("Primeira historia", "Aberta", dc);
+                Situacao situacao = new Situacao("10/10/2010", "Jose", "Passar raiva");
+                CriterioGeralNMS criterioGeralNMS = new CriterioGeralNMS("Funcionar", 10.05, "PSS", 20, "Vai funcionar", 10.07);
+                NivelServico nivelServico = new NivelServico("Por Clayton", 20, 20.5, 24.08);
+                NivelMinimoServico nms = new NivelMinimoServico(criterioGeralNMS, nivelServico);
+                OrdemServico os = new OrdemServico("10/10/2010", "DAVID PAPA", 1, historia, situacao, nms);
+                ManterOrdemServicoPresenter.getInstance().visualizar(os);           
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
         });
-        
+
         this.view.getjButtonNovo().addActionListener((e1) -> {
-           TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add(ManterOrdemServicoPresenter.getInstance().getView());
-           ManterOrdemServicoPresenter.getInstance().incluir(); 
+            TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add(ManterOrdemServicoPresenter.getInstance().getView());
+            ManterOrdemServicoPresenter.getInstance().incluir();
         });
-        
+
         this.view.getjButtonDesfazer().addActionListener((e) -> {
-            this.command.desfazer(BuscarOrdemServicoPresenter.instance);
+            //this.command.desfazer(BuscarOrdemServicoPresenter.instance);
         });
 
         this.view.setVisible(true);
@@ -227,7 +202,7 @@ public class BuscarOrdemServicoPresenter implements IObserver{
     private DefaultTableModel montarTabela() {
         this.tablemodel = new DefaultTableModel(new Object[][]{}, new String[]{"Número", "Data", "Nome do Fiscal"}) {
             @Override
-            public boolean isCellEditable(int row, int col) {
+        public boolean isCellEditable(int row, int col) {
                 return false;
             }
         };
@@ -269,15 +244,15 @@ public class BuscarOrdemServicoPresenter implements IObserver{
         }
         this.view.getjTableClientes().setModel(tablemodel);
     }
- 
+
     @Override
-    public void update(ClienteDAOSQLite clienteDAOSQLite) {
+        public void update(ClienteDAOSQLite clienteDAOSQLite) {
         try {
             this.preencherTabela();
             this.view.getjLabelObserverQTD().setText(Integer.toString(this.view.getjTableClientes().getRowCount()));
-            if(this.view.getjTableClientes().getRowCount() > 0){
+            if (this.view.getjTableClientes().getRowCount() > 0) {
                 this.view.getjButtonVisualizar().setEnabled(true);
-            }else{
+            } else {
                 this.view.getjButtonVisualizar().setEnabled(false);
             }
         } catch (Exception ex) {

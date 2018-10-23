@@ -15,6 +15,7 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 import modelOrdemServico.OrdemServico;
+import state.HistoriasUsuarioState;
 import state.RegistroNivelMinimoOrdemServicoState;
 import state.SituacaoOrdemServicoState;
 import state.State;
@@ -65,7 +66,12 @@ public class ManterOrdemServicoPresenter {
         if (indice == 0) {
             this.setState(new SituacaoOrdemServicoState(this));
             this.state.incluir();
-        } else {
+        }
+        if(indice == 1){
+            this.setState(new HistoriasUsuarioState(this));
+            this.state.incluir();
+        }        
+        if(indice == 2){
             this.setState(new RegistroNivelMinimoOrdemServicoState(this));
             this.state.incluir();
         }
@@ -75,8 +81,13 @@ public class ManterOrdemServicoPresenter {
         if (indice == 1) {
             this.setState(new OrdemServicoState(this));
             this.state.incluir();
-        } else {
+        }        
+        if(indice == 2){
             this.setState(new SituacaoOrdemServicoState(this));
+            this.state.incluir();
+        }
+        if(indice == 3){
+            this.setState(new HistoriasUsuarioState(this));
             this.state.incluir();
         }
     }
@@ -98,20 +109,6 @@ public class ManterOrdemServicoPresenter {
         this.state.visualizar(ordemServico);
     }
 
-    public void configurarBotoesVisibilidade(boolean b1, boolean b2, boolean b3, boolean b4) {
-        this.view.getjButtonEditar().setVisible(b1);
-        this.view.getjButtonVoltar().setVisible(b2);
-        this.view.getjButtonAvancar().setVisible(b3);
-        this.view.getjButtonFechar().setVisible(b4);
-
-    }
-
-    public void configurarBotoesNome(String nome1, String nome2, String nome3) {
-        this.view.getjButtonVoltar().setText(nome1);
-        this.view.getjButtonAvancar().setText(nome2);
-        this.view.getjButtonFechar().setText(nome3);   
-    }
-
     public void fecharView() {
         ManterOrdemServicoPresenter.instance = null;
         this.view.dispose();
@@ -127,8 +124,8 @@ public class ManterOrdemServicoPresenter {
     }
 
     public void removeActionListeners() {
-        for (ActionListener act : this.view.getjButtonFechar().getActionListeners()) {
-            this.view.getjButtonFechar().removeActionListener(act);
+        for (ActionListener act : this.view.getjButtonCancelar().getActionListeners()) {
+            this.view.getjButtonCancelar().removeActionListener(act);
         }
 
         for (ActionListener act : this.view.getjButtonAvancar().getActionListeners()) {
