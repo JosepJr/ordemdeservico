@@ -65,6 +65,11 @@ public class SituacaoOrdemServicoCommand implements ICommand {
                 presenter.getView().getjButtonVoltar().setEnabled(false);
                 presenter.getView().getjComboBoxSituacao().setEnabled(true);                              
                 presenter.removeActionListeners();
+                
+                presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
+                    presenter.fecharView();
+                });
+                
                 presenter.getView().getjButtonEditar().addActionListener((e1) -> {
                     //Atualizar A OS                    
                     JOptionPane.showMessageDialog(null, "OS Atualizada com sucesso!");

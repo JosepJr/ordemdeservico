@@ -33,39 +33,39 @@ public class SituacaoOrdemServicoState extends State {
         this.presenter.getView().getjComboBoxSituacao().setEnabled(false);
         this.command.executar(this.presenter, os);
     }
-    
+
     @Override
-    public void visualizar(OrdemServico os){
+    public void visualizar(OrdemServico os) {
         this.configurarStateView();
-        ArrayList <Situacao> situacoes = os.getSituacoes();
-        Situacao situacao = situacoes.get(situacoes.size()-1);
+        ArrayList<Situacao> situacoes = os.getSituacoes();
+        Situacao situacao = situacoes.get(situacoes.size() - 1);
         this.presenter.getView().getjComboBoxSituacao().setEnabled(false);
         this.presenter.habilitarTextField(false, false, false, true, true, true, true, true, true, true);
-        this.presenter.preencherTextField(situacao.getData(), situacao.getNomeResponsavel(), situacao.getFuncaoEquipe(), "","","","","","","");
-        if(situacao.getNumeroRevisao() == 0){
+        this.presenter.preencherTextField(situacao.getData(), situacao.getNomeResponsavel(), situacao.getFuncaoEquipe(), "", "", "", "", "", "", "");
+        if (situacao.getNumeroRevisao() == 0) {
             this.presenter.configurarSituacao(true, true, false);
             this.presenter.getView().getjComboBoxSituacao().setSelectedItem(situacao.getDescricao());
-            this.command.executar(this.presenter, os);                    
-        }else{
+            this.command.executar(this.presenter, os);
+        } else {
             this.presenter.configurarSituacao(true, true, true);
             this.presenter.getView().getjLabelNumeroRevisao().setText(Integer.toString(situacao.getNumeroRevisao()));
-            this.command.executar(this.presenter, os); 
+            this.command.executar(this.presenter, os);
         }
-        
+
     }
 
-    
-    private void configurarStateView(){        
-        this.presenter.removeActionListeners();        
+    private void configurarStateView() {
+        this.presenter.removeActionListeners();
+        this.presenter.getView().getjButtonAvancar().setEnabled(true);
         this.presenter.setTitulo("Situação (Status) OS", "");
         this.presenter.getView().setTitle("Manter Situação (Inclusão / Edição)");
-        this.presenter.setTextLabels("Data", "Nome do Profissional Responsável", "Função na Equipe", "", "", "", "", "", "","");      
+        this.presenter.setTextLabels("Data", "Nome do Profissional Responsável", "Função na Equipe", "", "", "", "", "", "", "");
         this.presenter.configurarLabelValores(false, false, false, false, false, false, false, false, false, false);
         this.presenter.setVisibleLabels(true, true, true, false, false, false, false, false, false, false);
         this.presenter.setVisibileTextFields(true, true, true, false, false, false, false, false, false, false);
         this.presenter.getView().getjButtonVoltar().setEnabled(true);
         this.presenter.getView().getjButtonVoltar().setText("Voltar");
         this.presenter.getView().moveToFront();
-        this.presenter.getView().setVisible(true);    
+        this.presenter.getView().setVisible(true);
     }
 }

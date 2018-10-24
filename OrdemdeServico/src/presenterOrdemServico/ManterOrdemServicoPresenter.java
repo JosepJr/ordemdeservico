@@ -128,7 +128,7 @@ public class ManterOrdemServicoPresenter {
             this.setState(new HistoriasUsuarioState(this));
             this.state.visualizar(os);
         }
-        if(indice == 4){
+        if(indice == 3){
             this.setState(new RegistroNivelMinimoOrdemServicoState(this));
             this.state.visualizar(os);
         }
@@ -207,15 +207,16 @@ public class ManterOrdemServicoPresenter {
 
     public void configurarLabelValores(boolean b1, boolean b2, boolean b3, boolean b4, boolean b5, boolean b6, boolean b7, boolean b8, boolean b9, boolean b10) {
         this.view.getjLabelTotalReducaoNMSGeral().setVisible(b1);
-        this.view.getjLabelTotalReducaoMNSPDASS().setVisible(b2);
-        this.view.getjLabelTotalReducoes().setVisible(b3);
-        this.view.getjLabelPercentualTotalReducoes().setVisible(b4);
-        this.view.getjLabelTotalOrdemServidoReducoes().setVisible(b5);
-        this.view.getjLabelValorTotalReducaoNMSGeral().setVisible(b6);
-        this.view.getjLabelValorTotalReducaoNMSPDASS().setVisible(b7);
-        this.view.getjLabelValorTotalReducoes().setVisible(b8);
-        this.view.getjLabelValorPercentualTotalReducoes().setVisible(b9);
+        this.view.getjLabelValorTotalReducaoNMSGeral().setVisible(b2);        
+        this.view.getjLabelTotalReducaoMNSPDASS().setVisible(b3);
+        this.view.getjLabelValorTotalReducaoNMSPDASS().setVisible(b4);        
+        this.view.getjLabelTotalReducoes().setVisible(b5);
+        this.view.getjLabelValorTotalReducoes().setVisible(b6);        
+        this.view.getjLabelPercentualTotalReducoes().setVisible(b7);
+        this.view.getjLabelValorPercentualTotalReducoes().setVisible(b8);            
+        this.view.getjLabelTotalOrdemServidoReducoes().setVisible(b9);
         this.view.getjLabelValorTotalOrdemServicoReducoes().setVisible(b10);
+     
     }
 
     public void habilitarTextField(boolean b1, boolean b2, boolean b3, boolean b4, boolean b5, boolean b6, boolean b7, boolean b8, boolean b9, boolean b10){

@@ -62,6 +62,11 @@ public class OrdemServicoCommand implements ICommand{
                 presenter.getView().getjButtonAvancar().setEnabled(false);
                 presenter.getView().getjButtonVoltar().setEnabled(false);
                 presenter.removeActionListeners();
+                
+                presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
+                    presenter.fecharView();
+                });
+                
                 presenter.getView().getjButtonEditar().addActionListener((e1) -> {
                     
                     //Atualizar a os

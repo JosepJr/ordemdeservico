@@ -5,6 +5,7 @@
  */
 package command;
 
+import javax.swing.JOptionPane;
 import modelOrdemServico.OrdemServico;
 import presenterOrdemServico.BuscarOrdemServicoPresenter;
 import presenterOrdemServico.ManterOrdemServicoPresenter;
@@ -30,21 +31,52 @@ public class RegistroNivelMinimoOrdemServicoCommand implements ICommand {
 
     @Override
     public void executar(ManterOrdemServicoPresenter presenter, OrdemServico os) {
-
         presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
             presenter.fecharView();
         });
+        if (os == null) {
+            presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
+            });
 
-        presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
-            
-            //salvar OS
-            presenter.fecharView();
-        });
+            presenter.getView().getjButtonVoltar().addActionListener((e) -> {
+                presenter.voltar(3, null);
+            });
 
-        presenter.getView().getjButtonVoltar().addActionListener((e) -> {
-            presenter.voltar(3, null);
-        });
+        } else {
+            presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
 
+            });
+
+            presenter.getView().getjButtonVoltar().addActionListener((e) -> {
+                presenter.visualizar(2, os);
+            });
+            presenter.getView().getjButtonEditar().addActionListener((e) -> {
+                presenter.getView().getjButtonEditar().setText("Salvar");
+                presenter.habilitarTextField(true, true, true, true, true, true, true, true, true, true);
+                presenter.getView().getjButtonAvancar().setEnabled(false);
+                presenter.getView().getjButtonVoltar().setEnabled(false);
+                presenter.removeActionListeners();
+                presenter.configurarLabelValores(false, false, false, false, false, false, false, false, false, false);
+
+                presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
+                    presenter.fecharView();
+                });
+
+                presenter.getView().getjButtonEditar().addActionListener((e1) -> {
+                    //Atualizar A OS   
+
+                    //salvar no banco
+                    JOptionPane.showMessageDialog(null, "OS Atualizada com sucesso!");
+
+                    presenter.getView().getjButtonAvancar().setEnabled(true);
+                    presenter.getView().getjButtonVoltar().setEnabled(true);
+                    presenter.getView().getjButtonEditar().setText("Editar");
+                    //Passar a nova OS atualizada
+                    presenter.visualizar(3, os);
+                });
+            });
+
+        }
     }
 
     @Override
