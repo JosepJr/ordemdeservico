@@ -24,10 +24,10 @@ public class RegistroNivelMinimoOrdemServicoState extends State {
     }
 
     @Override
-    public void incluir() {
+    public void incluir(OrdemServico os) {
         this.configurarViewState();
         this.presenter.configurarLabelValores(false, false, false, false, false, false, false, false, false, false);        
-        this.command.executar(this.presenter);
+        this.command.executar(this.presenter, os);
     }
     
     @Override

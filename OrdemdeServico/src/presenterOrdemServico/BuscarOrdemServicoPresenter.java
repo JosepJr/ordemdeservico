@@ -5,9 +5,7 @@
  */
 package presenterOrdemServico;
 
-import command.BuscarOrdemServicoCommand;
 import presenterTelaPrincipal.TelaPrincipalPresenter;
-import command.ICommand;
 import dao.ClienteDAOSQLite;
 import java.awt.Dimension;
 import java.sql.SQLException;
@@ -40,11 +38,9 @@ public class BuscarOrdemServicoPresenter implements IObserver {
     private static BuscarOrdemServicoPresenter instance;
     private final BuscarOrdemServicoView view;
     private DefaultTableModel tablemodel;
-    private final ICommand command;
 
     private BuscarOrdemServicoPresenter() {
         this.view = new BuscarOrdemServicoView();
-        this.command = new BuscarOrdemServicoCommand();
         this.configurarView();
     }
 
@@ -165,7 +161,7 @@ public class BuscarOrdemServicoPresenter implements IObserver {
                 NivelServico nivelServico = new NivelServico("Por Clayton", 20, 20.5, 24.08);
                 NivelMinimoServico nms = new NivelMinimoServico(criterioGeralNMS, nivelServico);
                 OrdemServico os = new OrdemServico("10/10/2010", "DAVID PAPA", 1, historia, situacao, nms);
-                ManterOrdemServicoPresenter.getInstance().visualizar(os);           
+                ManterOrdemServicoPresenter.getInstance().visualizar(0 , os);           
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             } catch (Exception ex) {
@@ -175,7 +171,7 @@ public class BuscarOrdemServicoPresenter implements IObserver {
 
         this.view.getjButtonNovo().addActionListener((e1) -> {
             TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add(ManterOrdemServicoPresenter.getInstance().getView());
-            ManterOrdemServicoPresenter.getInstance().incluir();
+            ManterOrdemServicoPresenter.getInstance().incluir(null);
         });
 
         this.view.getjButtonDesfazer().addActionListener((e) -> {

@@ -30,18 +30,18 @@ public class HistoriasUsuarioCommand implements ICommand{
     
     
     @Override
-    public void executar(ManterOrdemServicoPresenter presenter) {
+    public void executar(ManterOrdemServicoPresenter presenter, OrdemServico os) {
         
         presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
             presenter.fecharView();
         });
 
         presenter.getView().getjButtonAvancar().addActionListener((e1) -> {           
-            presenter.avancar(2);        
+            presenter.avancar(2, null);        
         });
         
         presenter.getView().getjButtonVoltar().addActionListener((e) -> {
-            presenter.voltar(2);
+            presenter.voltar(2, null);
         });
         
     }
@@ -51,9 +51,4 @@ public class HistoriasUsuarioCommand implements ICommand{
 
     }
 
-    @Override
-    public void editar(ManterOrdemServicoPresenter presenter, OrdemServico os) {
-
-    }
-    
 }

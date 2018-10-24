@@ -15,9 +15,7 @@ import presenterOrdemServico.ManterOrdemServicoPresenter;
  */
 public interface ICommand {
   
-    public void executar(ManterOrdemServicoPresenter presenter);
-    
-    public void editar(ManterOrdemServicoPresenter presenter, OrdemServico os);
+    public void executar(ManterOrdemServicoPresenter presenter, OrdemServico os);
     
     public void desfazer(BuscarOrdemServicoPresenter presenter);
     

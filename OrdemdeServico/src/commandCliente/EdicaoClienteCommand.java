@@ -37,7 +37,7 @@ public class EdicaoClienteCommand implements ICommand{
     }
     
     @Override
-    public void executar(ManterOrdemServicoPresenter presenter) {
+    public void executar(ManterOrdemServicoPresenter presenter, OrdemServico os) {
       
         presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
             //presenter.visualizar(cliente);
@@ -85,11 +85,5 @@ public class EdicaoClienteCommand implements ICommand{
     @Override
     public void desfazer(BuscarOrdemServicoPresenter presenter) {
     }
-
-    @Override
-    public void editar(ManterOrdemServicoPresenter presenter, OrdemServico os) {
-
-    }
-
     
 }

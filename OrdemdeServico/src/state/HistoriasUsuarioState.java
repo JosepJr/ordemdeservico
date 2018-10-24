@@ -7,7 +7,9 @@ package state;
 
 import command.HistoriasUsuarioCommand;
 import command.ICommand;
+import java.util.ArrayList;
 import modelOrdemServico.OrdemServico;
+import modelOrdemServico.Situacao;
 import presenterOrdemServico.ManterOrdemServicoPresenter;
 
 /**
@@ -24,10 +26,11 @@ public class HistoriasUsuarioState extends State{
     }
     
     @Override
-    public void incluir(){
+    public void incluir(OrdemServico os){
         this.configurarViewState();
-        this.presenter.configurarLabelValores(false, false, false, false, false, false, false, false, false, false);
-        this.command.executar(this.presenter);
+        
+        this.presenter.configurarLabelValores(false, false, false, false, false, false, false, false, false, false); 
+        this.command.executar(this.presenter, os);
     
     }
     
@@ -35,20 +38,22 @@ public class HistoriasUsuarioState extends State{
     public void visualizar(OrdemServico os){
         this.configurarViewState();
         this.presenter.configurarLabelValores(false, false, false, false, false, false, false, false, false, false); 
+        
+        
     
     }
     
     
     
     private void configurarViewState(){       
-        this.presenter.removeActionListeners();        
+        this.presenter.removeActionListeners();
+        this.presenter.configurarSituacao(false, false, false);        
         this.presenter.setTitulo("Histórias de Usuário", "");             
         this.presenter.getView().setTitle("Histórias de Usuários (Inclusão / Edição)");        
         this.presenter.setTextLabels("Nome da história do usuário", "Disciplina", "Tarefa", "UST", "Situação da História de Usuário", "", "", "", "", "");
         this.presenter.setVisibleLabels(true, true, true, true, true, false, false, false, false, false);
         this.presenter.setVisibileTextFields(true, true, true, true, true, false, false, false, false, false);
         this.presenter.getView().getjButtonVoltar().setEnabled(true);
-        this.presenter.configurarSituacao(false, false, false);
         this.presenter.getView().setVisible(true);
         this.presenter.getView().moveToFront();     
     }

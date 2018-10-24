@@ -38,7 +38,7 @@ public class BuscarClienteCommand implements ICommand {
     }
 
     @Override
-    public void executar(ManterOrdemServicoPresenter presenter) {
+    public void executar(ManterOrdemServicoPresenter presenter, OrdemServico os) {
     }
 
     @Override
@@ -89,9 +89,5 @@ public class BuscarClienteCommand implements ICommand {
         }
     }
 
-    @Override
-    public void editar(ManterOrdemServicoPresenter presenter, OrdemServico os) {
-
-    }
 
 }

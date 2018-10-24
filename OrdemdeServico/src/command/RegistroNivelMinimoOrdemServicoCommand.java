@@ -29,7 +29,7 @@ public class RegistroNivelMinimoOrdemServicoCommand implements ICommand {
     }
 
     @Override
-    public void executar(ManterOrdemServicoPresenter presenter) {
+    public void executar(ManterOrdemServicoPresenter presenter, OrdemServico os) {
 
         presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
             presenter.fecharView();
@@ -42,17 +42,12 @@ public class RegistroNivelMinimoOrdemServicoCommand implements ICommand {
         });
 
         presenter.getView().getjButtonVoltar().addActionListener((e) -> {
-            presenter.voltar(3);
+            presenter.voltar(3, null);
         });
 
     }
 
     @Override
     public void desfazer(BuscarOrdemServicoPresenter presenter) {
-    }
-
-    @Override
-    public void editar(ManterOrdemServicoPresenter presenter, OrdemServico os) {
-
     }
 }

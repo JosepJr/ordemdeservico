@@ -30,7 +30,7 @@ public class ExclusaoClienteCommand implements ICommand {
     }
 
     @Override
-    public void executar(ManterOrdemServicoPresenter presenter) {
+    public void executar(ManterOrdemServicoPresenter presenter, OrdemServico os) {
         /*UIManager.put("OptionPane.yesButtonText", "Sim");
         UIManager.put("OptionPane.noButtonText", "Não");
         switch (JOptionPane.showConfirmDialog(null, "Deseja realmente exluir esse cliente?", "Confirmação de exclusão", JOptionPane.YES_NO_OPTION)) {
@@ -59,13 +59,5 @@ public class ExclusaoClienteCommand implements ICommand {
     @Override
     public void desfazer(BuscarOrdemServicoPresenter presenter) {
     }
-
-    @Override
-    public void editar(ManterOrdemServicoPresenter presenter, OrdemServico os) {
-
-
-    }
-
-
 
 }

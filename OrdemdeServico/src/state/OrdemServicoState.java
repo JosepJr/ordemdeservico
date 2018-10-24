@@ -24,17 +24,25 @@ public class OrdemServicoState extends State {
     }
 
     @Override
-    public void incluir() {
+    public void incluir(OrdemServico os) {
         this.configurarViewState();
-        this.command.executar(this.presenter);   
+        if(os == null){            
+            this.presenter.getView().getjButtonVoltar().setEnabled(false);
+            this.command.executar(this.presenter, null);
+        }else{
+            this.presenter.habilitarTextField(true, true, true, true, true, true, true, true, true, true);
+            this.presenter.getView().getjButtonVoltar().setText("Excluir");
+            this.command.executar(this.presenter, os);
+        }
     }
     
     @Override
     public void visualizar(OrdemServico os){
         this.configurarViewState();
+        this.presenter.getView().getjButtonVoltar().setText("Excluir");
         this.presenter.preencherTextField(Integer.toString(os.getNumero()), os.getDataEmissao(), os.getNomeFiscalEmissor(), "","","","","","","");
         this.presenter.habilitarTextField(false, false, false, true, true, true, true, true, true, true);
-        this.command.editar(this.presenter, os);
+        this.command.executar(this.presenter, os);
     }
     
     private void configurarViewState(){        
@@ -45,7 +53,6 @@ public class OrdemServicoState extends State {
         this.presenter.configurarLabelValores(false, false, false, false, false, false, false, false, false, false);  
         this.presenter.setVisibleLabels(true, true, true, false, false, false, false, false, false, false);
         this.presenter.setVisibileTextFields(true, true, true, false, false, false, false, false, false, false);
-        this.presenter.getView().getjButtonVoltar().setEnabled(false);
         this.presenter.configurarSituacao(false, false, false);
         this.presenter.getView().setVisible(true);
         this.presenter.getView().moveToFront();

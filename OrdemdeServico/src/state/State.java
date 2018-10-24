@@ -33,7 +33,7 @@ public abstract class State {
         throw new IllegalStateException();
     }
 
-    public void incluir() {
+    public void incluir(OrdemServico os) {
         throw new IllegalStateException();
     }
 
