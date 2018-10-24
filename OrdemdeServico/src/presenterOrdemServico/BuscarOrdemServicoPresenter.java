@@ -7,6 +7,7 @@ package presenterOrdemServico;
 
 import presenterTelaPrincipal.TelaPrincipalPresenter;
 import dao.ClienteDAOSQLite;
+import dao.OrdemServicoDAOSQLite;
 import java.awt.Dimension;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -83,7 +84,7 @@ public class BuscarOrdemServicoPresenter implements IObserver {
         });
 
         if (this.view.getjTableClientes().getRowCount() == 0) {
-            this.view.getjButtonVisualizar().setEnabled(false);
+            this.view.getjButtonVisualizar().setEnabled(true);
         } else {
             this.view.getjButtonVisualizar().setEnabled(true);
         }
@@ -161,6 +162,9 @@ public class BuscarOrdemServicoPresenter implements IObserver {
                 NivelServico nivelServico = new NivelServico("Por Clayton", 20, 20.5, 24.08);
                 NivelMinimoServico nms = new NivelMinimoServico(criterioGeralNMS, nivelServico);
                 OrdemServico os = new OrdemServico("10/10/2010", "DAVID PAPA", 1, historia, situacao, nms);
+                
+                OrdemServicoDAOSQLite.getInstance().insert(os);
+                
                 ManterOrdemServicoPresenter.getInstance().visualizar(0 , os);           
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());

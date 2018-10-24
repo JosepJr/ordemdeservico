@@ -5,6 +5,7 @@
  */
 package main;
 
+import dao.ConexaoSQLite;
 import javax.swing.JOptionPane;
 import presenterLogin.LoginPresenter;
 
@@ -16,7 +17,9 @@ public class Main {
     
     public static void main(String[] args){
         try {
-            LoginPresenter.getInstance();           
+            ConexaoSQLite.getInstance();
+            LoginPresenter.getInstance();
+            
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
