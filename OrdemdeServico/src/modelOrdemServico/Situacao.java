@@ -42,8 +42,8 @@ public class Situacao {
 
      public void setData(String data) throws Exception {
         try{
-            if(data.isEmpty()){
-                throw new Exception("Informe uma data no formato DD/MM/AAAA");
+            if(data.isEmpty() || data.equals("")){
+                throw new Exception("Favor preencher o campo data válida no formato DD/MM/AAAA");
             }
             if(!this.isData(data)){
                 throw new Exception("Informe uma data válida no formato DD/MM/AAAA");
@@ -62,16 +62,31 @@ public class Situacao {
         return nomeResponsavel;
     }
 
-    public void setNomeResponsavel(String nomeResponsavel) {
-        this.nomeResponsavel = nomeResponsavel;
+    public void setNomeResponsavel(String nomeResponsavel) throws Exception {
+        try{
+            if(nomeResponsavel.isEmpty() || nomeResponsavel.equals("")){
+                throw new Exception("Favor preencher o campo responsável!");
+            }            
+            this.nomeResponsavel = nomeResponsavel;
+        }catch(Exception ex){
+            throw new Exception("Favor informar um responsável válido!");      
+        }
+        
     }
 
     public String getFuncaoEquipe() {
         return funcaoEquipe;
     }
 
-    public void setFuncaoEquipe(String funcaoEquipe) {
-        this.funcaoEquipe = funcaoEquipe;
+    public void setFuncaoEquipe(String funcaoEquipe) throws Exception {
+        try{
+            if(funcaoEquipe.isEmpty() || funcaoEquipe.equals("")){
+                throw new Exception("Favor preencher o campo função!");
+            }            
+            this.funcaoEquipe = funcaoEquipe;
+        }catch(Exception ex){
+            throw new Exception("Favor informar uma função válida!");      
+        }  
     }
 
     public int getNumeroRevisao() {

@@ -45,8 +45,8 @@ public class OrdemServico {
 
     public void setDataEmissao(String dataEmissao) throws Exception {
         try{
-            if(dataEmissao.isEmpty()){
-                throw new Exception("Informe uma data no formato DD/MM/AAAA");
+            if(dataEmissao.isEmpty() || dataEmissao.equals("")){
+                throw new Exception("Favor preencher o campo data no formato DD/MM/AAAA");
             }
             if(!this.isData(dataEmissao)){
                 throw new Exception("Informe uma data válida no formato DD/MM/AAAA");
@@ -63,17 +63,17 @@ public class OrdemServico {
 
     public void setNomeFiscalEmissor(String nomeFiscalEmissor) throws Exception {
         try{
-            if(nomeFiscalEmissor.isEmpty()){
-                throw new Exception("Favor informar um nome válido!");
+            if(nomeFiscalEmissor.isEmpty() || nomeFiscalEmissor.equals("")){
+                throw new Exception("Favor preencher o nome do fiscal!");
             }         
             this.nomeFiscalEmissor = nomeFiscalEmissor;
         }catch(Exception ex){
-            throw ex;
+            throw new Exception("Favor informar um nome de fiscal válido!");
         }
     }
 
     public void setNumero(int numero) throws Exception {
-        try{
+        try{            
             this.numero = numero;
         }catch(Exception ex){
             throw new Exception("Favor informar um número válido para Ordem de Serviço!");

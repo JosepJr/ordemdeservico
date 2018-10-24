@@ -43,7 +43,7 @@ public class RegistroNivelMinimoOrdemServicoState extends State {
                 Integer.toString(os.getNivelMinimoServico().getCriteriosGerais().get(0).getQuantidade()),
                 os.getNivelMinimoServico().getCriteriosGerais().get(0).getObservacao(),
                 Double.toString(os.getNivelMinimoServico().getCriteriosGerais().get(0).getValorReducao()),
-                os.getNivelMinimoServico().getNiveisServicos().get(0).getIndicado(),
+                os.getNivelMinimoServico().getNiveisServicos().get(0).getIndicador(),
                 Double.toString(os.getNivelMinimoServico().getNiveisServicos().get(0).getResultado()),
                 Double.toString(os.getNivelMinimoServico().getNiveisServicos().get(0).getRedutor()),
                 Double.toString(os.getNivelMinimoServico().getNiveisServicos().get(0).getValorReducao())
