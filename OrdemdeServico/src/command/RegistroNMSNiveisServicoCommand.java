@@ -14,79 +14,80 @@ import presenterOrdemServico.ManterOrdemServicoPresenter;
  *
  * @author Josep
  */
-public class OrdemServicoCommand implements ICommand{
+public class RegistroNMSNiveisServicoCommand implements ICommand{
 
-    private static OrdemServicoCommand instance;
-    
-    private OrdemServicoCommand(){    
-    
+private static RegistroNMSNiveisServicoCommand instance;
+
+    private RegistroNMSNiveisServicoCommand() {
+
     }
-    
-    public static OrdemServicoCommand getInstance(){
-        if(instance == null){
-            instance = new OrdemServicoCommand();
+
+    public static RegistroNMSNiveisServicoCommand getInstance() {
+        if (instance == null) {
+            instance = new RegistroNMSNiveisServicoCommand();
         }
         return instance;
     }
-    
+
     @Override
     public void executar(ManterOrdemServicoPresenter presenter, OrdemServico os) {
-        //Incluir OS
-        if(os == null){            
-            //Inclusão da ordem de serviço
+        if (os == null) {
             presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
-                if(presenter.setJanelaConfirmacao("Deseja realmente cancelar o processo? \n A janela será fechada e a inclusão da ordem de serviço cancelada.")==0){
+                if (presenter.setJanelaConfirmacao("Deseja realmente cancelar o processo? \n A janela será fechada e a inclusão da ordem de serviço cancelada.") == 0) {
                     presenter.fecharView();
-                }                                             
-            });
-            
-            presenter.getView().getjButtonAvancar().addActionListener((e1) -> {                       
-                //Criar uma OS com os dados captados da tela!                
-                presenter.avancar(1, null);        
-            });
-               
-        }else{            
-           /* //Atualização da ordem de serviço          
-            presenter.getView().getjButtonVoltar().addActionListener((e) -> {
-                //aqui eu vou excluir a OS completa          
-            });
-            
-            presenter.getView().getjButtonAvancar().addActionListener((e1) -> {           
-                presenter.visualizar(1, os);
+                }
             });
 
+            presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
+                //Salvar os dados da OS
+                if (presenter.setJanelaConfirmacao("Deseja inserir mais Niveis de Serviço nesse mesmo Registro Minimo de Serviço?") == 0) {
+                    presenter.avancar(5, null);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Ordem de Serviço cadatrada com Sucesso!");
+                    presenter.fecharView();
+                }
+                
+                
+            });
+
+        } else {
+            /*presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
+
+            });
+
+            presenter.getView().getjButtonVoltar().addActionListener((e) -> {
+                presenter.visualizar(2, os);
+            });
             presenter.getView().getjButtonEditar().addActionListener((e) -> {
                 presenter.getView().getjButtonEditar().setText("Salvar");
                 presenter.habilitarTextField(true, true, true, true, true, true, true, true, true, true);
                 presenter.getView().getjButtonAvancar().setEnabled(false);
                 presenter.getView().getjButtonVoltar().setEnabled(false);
-                presenter.removeActionListeners();
-                
+                presenter.resetarBotoesTextFielLabels();
+                presenter.configurarLabelValores(false, false, false, false, false, false, false, false, false, false);
+
                 presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
                     presenter.fecharView();
                 });
-                
+
                 presenter.getView().getjButtonEditar().addActionListener((e1) -> {
-                    
-                    //Atualizar a os
+                    //Atualizar A OS   
+
+                    //salvar no banco
                     JOptionPane.showMessageDialog(null, "OS Atualizada com sucesso!");
+
                     presenter.getView().getjButtonAvancar().setEnabled(true);
                     presenter.getView().getjButtonVoltar().setEnabled(true);
                     presenter.getView().getjButtonEditar().setText("Editar");
-                    
-                    
                     //Passar a nova OS atualizada
-                    presenter.visualizar(0, os);
-                    
+                    presenter.visualizar(3, os);
                 });
-                
-            });*/
+            });
+            */
         }
     }
 
     @Override
     public void desfazer(BuscarOrdemServicoPresenter presenter) {
     }
-
-    
 }

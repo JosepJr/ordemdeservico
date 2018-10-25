@@ -6,7 +6,7 @@
 package state;
 
 import command.ICommand;
-import command.RegistroNivelMinimoOrdemServicoCommand;
+import command.RegistroNMSCriteriosGeraisCommand;
 import modelOrdemServico.OrdemServico;
 import presenterOrdemServico.ManterOrdemServicoPresenter;
 
@@ -14,26 +14,24 @@ import presenterOrdemServico.ManterOrdemServicoPresenter;
  *
  * @author Josep
  */
-public class RegistroNivelMinimoOrdemServicoState extends State {
+public class RegistroNMSCriteriosGeraisState extends State {
 
     private final ICommand command;
 
-    public RegistroNivelMinimoOrdemServicoState(ManterOrdemServicoPresenter presenter) {
+    public RegistroNMSCriteriosGeraisState(ManterOrdemServicoPresenter presenter) {
         super(presenter);
-        this.command = RegistroNivelMinimoOrdemServicoCommand.getInstance();
+        this.command = RegistroNMSCriteriosGeraisCommand.getInstance();
     }
 
     @Override
     public void incluir(OrdemServico os) {
-        this.configurarViewState();
-        this.presenter.configurarLabelValores(false, false, false, false, false, false, false, false, false, false);
-        this.presenter.getView().getjButtonAvancar().setText("Salvar");
-        this.command.executar(this.presenter, os);
+        this.configurarViewState();  
+        this.command.executar(this.presenter, null);
     }
 
     @Override
     public void visualizar(OrdemServico os) {
-        this.configurarViewState();
+        /*this.configurarViewState();
         this.presenter.configurarLabelValores(true, true, true, true, true, true, true, true, true, true);
         this.presenter.habilitarTextField(false, false, false, false, false, false, false, false, false, false);
         this.presenter.preencherTextField(
@@ -55,21 +53,17 @@ public class RegistroNivelMinimoOrdemServicoState extends State {
         this.presenter.getView().getjLabelValorPercentualTotalReducoes().setText(Double.toString(os.getNivelMinimoServico().getPercentualRedutor()));
         this.presenter.getView().getjLabelValorTotalOrdemServicoReducoes().setText(Double.toString(os.getNivelMinimoServico().TotalOSComReducao()));
 
-        this.command.executar(this.presenter, os);
+        this.command.executar(this.presenter, os);*/
 
     }
 
     private void configurarViewState() {
-
-        this.presenter.removeActionListeners();
-        this.presenter.getView().getjButtonAvancar().setEnabled(false);
-        this.presenter.setTitulo("Critérios Gerais de NMS", "Níveis de Serviço");
-        this.presenter.getView().setTitle("Manter Registro Nível Mínimo (Inclusão / Edição)");
-        this.presenter.setTextLabels("Critério", "Redutor (%)", "Aplicação", "Quantidade", "Observações (explicações, motivos)", "Valor da Redução (R$)", "Indicador", "Resultado", "Redutor", "Valor da Resução (R$)");
-        this.presenter.setVisibleLabels(true, true, true, true, true, true, true, true, true, true);
-        this.presenter.setVisibileTextFields(true, true, true, true, true, true, true, true, true, true);
-        this.presenter.getView().getjButtonVoltar().setEnabled(true);
-        this.presenter.configurarSituacao(false, false, false);
+        this.presenter.resetar();
+        this.presenter.setLabelTitulo("Critérios Gerais de NMS", true);
+        this.presenter.getView().setTitle("Manter Registro Nível Mínimo Serviço (Inclusão / Edição)");
+        this.presenter.setTextLabels("Critério:", "Redutor (%):", "Aplicação:", "Quantidade:", "Observações (explicações, motivos):", "Valor da Redução (R$):");
+        this.presenter.setVisibleLabels(true, true, true, true, true, true);
+        this.presenter.setVisibileTextFields(true, true, true, true, true, true);
         this.presenter.getView().moveToFront();
         this.presenter.getView().setVisible(true);
     }

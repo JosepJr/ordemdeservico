@@ -55,6 +55,7 @@ public class BuscarOrdemServicoPresenter implements IObserver {
     private void configurarView() {
 
         this.setPosicao();
+        this.view.getjButtonDesfazer().setVisible(false);
 
         try {
             clienteDAOSQLite = ClienteDAOSQLite.getInstance();

@@ -23,42 +23,13 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
     public ManterOrdemServicoView() {
         initComponents();
     }
-       
-    public JButton getjButtonEditar() {
-        return jButtonEditar;
-    }
 
-    public JComboBox<String> getjComboBoxSituacao() {
-        return jComboBoxSituacao;
-    }
-
-    public JLabel getjLabelNumeroRevisao() {
-        return jLabelNumeroRevisao;
-    }
-
-    public JLabel getjLabelSituacao() {
-        return jLabelSituacao;
-    }
-
-    
     public JTextField getJTextField1() {
         return JTextField1;
     }
 
-    public JTextField getJTextField10() {
-        return JTextField10;
-    }
-
     public JTextField getJTextField2() {
         return JTextField2;
-    }
-
-    public JLabel getjLabel0() {
-        return jLabel0;
-    }
-
-    public JLabel getjLabel00() {
-        return jLabel00;
     }
 
     public JTextField getJTextField3() {
@@ -77,36 +48,24 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
         return JTextField6;
     }
 
-    public JTextField getJTextField7() {
-        return JTextField7;
-    }
-
-    public JTextField getJTextField8() {
-        return JTextField8;
-    }
-
-    public JTextField getJTextField9() {
-        return JTextField9;
-    }
-
     public JButton getjButtonAvancar() {
         return jButtonAvancar;
-    }
-
-    public JButton getjButtonVoltar() {
-        return jButtonVoltar;
     }
 
     public JButton getjButtonCancelar() {
         return jButtonCancelar;
     }
 
-    public JLabel getjLabel1() {
-        return jLabel1;
+    public JButton getjButtonEditar() {
+        return jButtonEditar;
     }
 
-    public JLabel getjLabel10() {
-        return jLabel10;
+    public JComboBox<String> getjComboBoxSituacao() {
+        return jComboBoxSituacao;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
     }
 
     public JLabel getjLabel2() {
@@ -129,20 +88,20 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
         return jLabel6;
     }
 
-    public JLabel getjLabel7() {
-        return jLabel7;
-    }
-
-    public JLabel getjLabel8() {
-        return jLabel8;
-    }
-
-    public JLabel getjLabel9() {
-        return jLabel9;
+    public JLabel getjLabelNumeroRevisao() {
+        return jLabelNumeroRevisao;
     }
 
     public JLabel getjLabelPercentualTotalReducoes() {
         return jLabelPercentualTotalReducoes;
+    }
+
+    public JLabel getjLabelSituacao() {
+        return jLabelSituacao;
+    }
+
+    public JLabel getjLabelTitulo() {
+        return jLabelTitulo;
     }
 
     public JLabel getjLabelTotalOrdemServidoReducoes() {
@@ -180,7 +139,8 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
     public JLabel getjLabelValorTotalReducoes() {
         return jLabelValorTotalReducoes;
     }
-
+       
+    
     
 
     /**
@@ -195,7 +155,6 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jButtonAvancar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
-        jButtonVoltar = new javax.swing.JButton();
         jButtonEditar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
@@ -209,18 +168,10 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabelTotalReducaoNMSGeral = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         JTextField4 = new javax.swing.JTextField();
         JTextField5 = new javax.swing.JTextField();
         JTextField6 = new javax.swing.JTextField();
         jLabelValorTotalReducaoNMSGeral = new javax.swing.JLabel();
-        JTextField7 = new javax.swing.JTextField();
-        JTextField8 = new javax.swing.JTextField();
-        JTextField9 = new javax.swing.JTextField();
-        JTextField10 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
         jLabelTotalReducaoMNSPDASS = new javax.swing.JLabel();
         jLabelValorTotalReducaoNMSPDASS = new javax.swing.JLabel();
         jLabelTotalReducoes = new javax.swing.JLabel();
@@ -229,8 +180,7 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
         jLabelValorPercentualTotalReducoes = new javax.swing.JLabel();
         jLabelTotalOrdemServidoReducoes = new javax.swing.JLabel();
         jLabelValorTotalOrdemServicoReducoes = new javax.swing.JLabel();
-        jLabel0 = new javax.swing.JLabel();
-        jLabel00 = new javax.swing.JLabel();
+        jLabelTitulo = new javax.swing.JLabel();
         jLabelSituacao = new javax.swing.JLabel();
         jComboBoxSituacao = new javax.swing.JComboBox<>();
         jLabelNumeroRevisao = new javax.swing.JLabel();
@@ -243,8 +193,6 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
 
         jButtonCancelar.setText("Cancelar");
 
-        jButtonVoltar.setText("Voltar");
-
         jButtonEditar.setText("Editar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -254,8 +202,6 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonAvancar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -268,7 +214,6 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAvancar)
-                    .addComponent(jButtonVoltar)
                     .addComponent(jButtonCancelar)
                     .addComponent(jButtonEditar))
                 .addContainerGap(43, Short.MAX_VALUE))
@@ -295,20 +240,8 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
         jLabelTotalReducaoNMSGeral.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabelTotalReducaoNMSGeral.setText("Valor Total da Redução do NMS Geral (R$):");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel7.setText("JLabel7");
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("JLabel8");
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel10.setText("JLabel10");
-
         jLabelValorTotalReducaoNMSGeral.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabelValorTotalReducaoNMSGeral.setText("VALOR");
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel9.setText("JLabel9");
 
         jLabelTotalReducaoMNSPDASS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabelTotalReducaoMNSPDASS.setText("Valor Total Redução do NMS PDASS (R$):");
@@ -334,11 +267,8 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
         jLabelValorTotalOrdemServicoReducoes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabelValorTotalOrdemServicoReducoes.setText("VALOR");
 
-        jLabel0.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel0.setText("JLabel0");
-
-        jLabel00.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel00.setText("JLabel00");
+        jLabelTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabelTitulo.setText("JLabel");
 
         jLabelSituacao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelSituacao.setText("Situação");
@@ -346,7 +276,7 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
         jComboBoxSituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aberta", "Em execução", "Fechada", "Revisão", "Paga" }));
 
         jLabelNumeroRevisao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelNumeroRevisao.setText("JLabel1");
+        jLabelNumeroRevisao.setText("JLabelSituacao");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -364,35 +294,17 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(JTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(JTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(JTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(JTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel0)
+                            .addComponent(jLabelTitulo)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(JTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(JTextField3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(JTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel00)
-                            .addComponent(JTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -400,8 +312,18 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabelTotalReducaoNMSGeral)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabelValorTotalReducaoNMSGeral))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabelSituacao)
+                                .addGap(237, 237, 237)
+                                .addComponent(jComboBoxSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabelNumeroRevisao))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabelTotalReducaoMNSPDASS)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(18, 18, 18)
                                 .addComponent(jLabelValorTotalReducaoNMSPDASS))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabelTotalReducoes)
@@ -412,27 +334,17 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabelValorPercentualTotalReducoes))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabelTotalReducaoNMSGeral)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabelValorTotalReducaoNMSGeral))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabelTotalOrdemServidoReducoes)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelValorTotalOrdemServicoReducoes))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabelSituacao)
-                                .addGap(237, 237, 237)
-                                .addComponent(jComboBoxSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabelNumeroRevisao)))
-                        .addGap(0, 134, Short.MAX_VALUE)))
+                                .addComponent(jLabelValorTotalOrdemServicoReducoes)))
+                        .addGap(0, 136, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jLabel0, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -467,28 +379,10 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
                     .addComponent(jLabelTotalReducaoNMSGeral)
                     .addComponent(jLabelValorTotalReducaoNMSGeral))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel00, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(JTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(JTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(JTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(JTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTotalReducaoMNSPDASS)
                     .addComponent(jLabelValorTotalReducaoNMSPDASS))
-                .addGap(42, 42, 42)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTotalReducoes)
                     .addComponent(jLabelValorTotalReducoes))
@@ -500,7 +394,7 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTotalOrdemServidoReducoes)
                     .addComponent(jLabelValorTotalOrdemServicoReducoes))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(304, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel2);
@@ -509,13 +403,13 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 757, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -526,35 +420,25 @@ public class ManterOrdemServicoView extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JTextField1;
-    private javax.swing.JTextField JTextField10;
     private javax.swing.JTextField JTextField2;
     private javax.swing.JTextField JTextField3;
     private javax.swing.JTextField JTextField4;
     private javax.swing.JTextField JTextField5;
     private javax.swing.JTextField JTextField6;
-    private javax.swing.JTextField JTextField7;
-    private javax.swing.JTextField JTextField8;
-    private javax.swing.JTextField JTextField9;
     private javax.swing.JButton jButtonAvancar;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonEditar;
-    private javax.swing.JButton jButtonVoltar;
     private javax.swing.JComboBox<String> jComboBoxSituacao;
-    private javax.swing.JLabel jLabel0;
-    private javax.swing.JLabel jLabel00;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelNumeroRevisao;
     private javax.swing.JLabel jLabelPercentualTotalReducoes;
     private javax.swing.JLabel jLabelSituacao;
+    private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JLabel jLabelTotalOrdemServidoReducoes;
     private javax.swing.JLabel jLabelTotalReducaoMNSPDASS;
     private javax.swing.JLabel jLabelTotalReducaoNMSGeral;

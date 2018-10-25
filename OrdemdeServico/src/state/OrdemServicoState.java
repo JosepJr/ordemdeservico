@@ -25,36 +25,26 @@ public class OrdemServicoState extends State {
 
     @Override
     public void incluir(OrdemServico os) {
-        this.configurarViewState();
-        if (os == null) {
-            this.presenter.getView().getjButtonVoltar().setEnabled(false);
-            this.command.executar(this.presenter, null);
-        } else {
-            this.presenter.habilitarTextField(true, true, true, true, true, true, true, true, true, true);
-            this.presenter.getView().getjButtonVoltar().setText("Excluir");
-            this.command.executar(this.presenter, os);
-        }
+        this.configurarViewState(); 
+        this.command.executar(this.presenter, null);
     }
 
     @Override
     public void visualizar(OrdemServico os) {
-        this.configurarViewState();
-        this.presenter.getView().getjButtonVoltar().setText("Excluir");
-        this.presenter.preencherTextField(Integer.toString(os.getNumero()), os.getDataEmissao(), os.getNomeFiscalEmissor(), "", "", "", "", "", "", "");
-        this.presenter.habilitarTextField(false, false, false, true, true, true, true, true, true, true);
-        this.command.executar(this.presenter, os);
+       /* this.configurarViewState();
+        this.presenter.getView().getjButtonEditar().setVisible(true);
+        this.presenter.preencherTextField(Integer.toString(os.getNumero()), os.getDataEmissao(), os.getNomeFiscalEmissor(), "", "","");
+        this.presenter.habilitarTextField(false, false, false, true, true, true);
+        this.command.executar(this.presenter, os);*/
     }
 
     private void configurarViewState() {
-        this.presenter.removeActionListeners();
-        this.presenter.getView().getjButtonAvancar().setEnabled(true);
-        this.presenter.setTitulo("Ordem de Serviço (OS)", "");
+        this.presenter.resetar();
+        this.presenter.setLabelTitulo("Ordem de Serviço", true);
         this.presenter.getView().setTitle("Manter Ordem de Serviço (Inclusão / Edição)");
-        this.presenter.setTextLabels("Número da Ordem de Serviço", "Data da Emissão", "Nome do Fiscal Emissor", "", "", "", "", "", "", "");
-        this.presenter.configurarLabelValores(false, false, false, false, false, false, false, false, false, false);
-        this.presenter.setVisibleLabels(true, true, true, false, false, false, false, false, false, false);
-        this.presenter.setVisibileTextFields(true, true, true, false, false, false, false, false, false, false);
-        this.presenter.configurarSituacao(false, false, false);
+        this.presenter.setTextLabels("Número da Ordem de Serviço (OS):", "Data da Emissão:", "Nome do Fiscal Técnico Emissor:", "", "","");
+        this.presenter.setVisibleLabels(true, true, true, false, false, false);
+        this.presenter.setVisibileTextFields(true, true, true, false, false, false);
         this.presenter.getView().setVisible(true);
         this.presenter.getView().moveToFront();
     }

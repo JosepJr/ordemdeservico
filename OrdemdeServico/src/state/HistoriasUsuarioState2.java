@@ -5,7 +5,7 @@
  */
 package state;
 
-import command.HistoriasUsuarioCommand;
+import command.HistoriasUsuario2Command;
 import command.ICommand;
 import modelOrdemServico.OrdemServico;
 import presenterOrdemServico.ManterOrdemServicoPresenter;
@@ -14,19 +14,20 @@ import presenterOrdemServico.ManterOrdemServicoPresenter;
  *
  * @author Josep
  */
-public class HistoriasUsuarioState extends State {
-
+public class HistoriasUsuarioState2 extends State{
+    
     private final ICommand command;
     
-    public HistoriasUsuarioState(ManterOrdemServicoPresenter presenter) {
+    public HistoriasUsuarioState2(ManterOrdemServicoPresenter presenter) {
         super(presenter);
-        this.command = HistoriasUsuarioCommand.getInstance();
+        this.command = HistoriasUsuario2Command.getInstance();     
     }
-
+    
     @Override
     public void incluir(OrdemServico os) {
         this.configurarViewState();
         this.command.executar(this.presenter, null);
+
     }
 
     @Override
@@ -50,12 +51,13 @@ public class HistoriasUsuarioState extends State {
 
     private void configurarViewState() {
         this.presenter.resetar();
-        this.presenter.setLabelTitulo("História de Usuário", true);
-        this.presenter.setTextLabels("Nome da história do Usuário:", "Disciplina:", "Tarefa:", "UST:", "Situação da História de Usuário:", "");
-        this.presenter.setVisibleLabels(true, true, true, true, true, false);
-        this.presenter.setVisibileTextFields(true, true, true, true, true, false);
+        this.presenter.setLabelTitulo("Nova disciplina de história de Usuário", true);
         this.presenter.getView().setTitle("Histórias de Usuários (Inclusão / Edição)");
+        this.presenter.setTextLabels("Disciplina:", "Tarefa:", "UST:", "Situação da História de Usuário:","", "");
+        this.presenter.setVisibleLabels(true, true, true, true, false, false);
+        this.presenter.setVisibileTextFields(true, true, true, true, false, false);
         this.presenter.getView().setVisible(true);
         this.presenter.getView().moveToFront();
     }
 }
+

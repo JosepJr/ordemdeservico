@@ -5,7 +5,6 @@
  */
 package command;
 
-import javax.swing.JOptionPane;
 import modelOrdemServico.OrdemServico;
 import presenterOrdemServico.BuscarOrdemServicoPresenter;
 import presenterOrdemServico.ManterOrdemServicoPresenter;
@@ -31,22 +30,20 @@ public class SituacaoOrdemServicoCommand implements ICommand {
 
     @Override
     public void executar(ManterOrdemServicoPresenter presenter, OrdemServico os) {
-
         if (os == null) {
-            presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
-                presenter.fecharView();
+           presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
+                if(presenter.setJanelaConfirmacao("Deseja realmente cancelar o processo? \n A janela será fechada e a inclusão da ordem de serviço cancelada.")==0){
+                    presenter.fecharView();
+                }                                             
             });
 
             presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
-                presenter.avancar(1, null);
-            });
-
-            presenter.getView().getjButtonVoltar().addActionListener((e) -> {
-                presenter.voltar(1, null);
+                //Fazer a criacao dos dados da OS
+                presenter.avancar(2, null);
             });
 
         } else {
-            presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
+            /*presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
                 presenter.fecharView();
             });
 
@@ -79,7 +76,7 @@ public class SituacaoOrdemServicoCommand implements ICommand {
                     //Passar a nova OS atualizada
                     presenter.visualizar(1, os);
                 });
-            });
+            });*/
         }
 
     }
