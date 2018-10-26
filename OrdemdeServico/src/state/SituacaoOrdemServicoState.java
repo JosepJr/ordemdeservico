@@ -7,7 +7,9 @@ package state;
 
 import command.ICommand;
 import command.SituacaoOrdemServicoCommand;
+import java.util.ArrayList;
 import modelOrdemServico.OrdemServico;
+import modelOrdemServico.Situacao;
 import presenterOrdemServico.ManterOrdemServicoPresenter;
 
 /**
@@ -33,12 +35,13 @@ public class SituacaoOrdemServicoState extends State {
 
     @Override
     public void visualizar(OrdemServico os) {
-        /*this.configurarStateView();
+        this.configurarStateView();
         ArrayList<Situacao> situacoes = os.getSituacoes();
         Situacao situacao = situacoes.get(situacoes.size() - 1);
+        this.presenter.getView().getjButtonEditar().setVisible(true);
         this.presenter.getView().getjComboBoxSituacao().setEnabled(false);
-        this.presenter.habilitarTextField(false, false, false, true, true, true);
-        this.presenter.preencherTextField(situacao.getData(), situacao.getNomeResponsavel(), situacao.getFuncaoEquipe(), "", "", "");
+        this.presenter.habilitarTextField(false, false, false, true, true, true, true, true);
+        this.presenter.preencherTextField(situacao.getData(), situacao.getNomeResponsavel(), situacao.getFuncaoEquipe(), "", "", "", "", "");
         if (situacao.getNumeroRevisao() == 0) {
             this.presenter.configurarVisibleSituacao(true, true, false);
             this.presenter.getView().getjComboBoxSituacao().setSelectedItem(situacao.getDescricao());
@@ -47,7 +50,7 @@ public class SituacaoOrdemServicoState extends State {
             this.presenter.configurarVisibleSituacao(true, true, true);
             this.presenter.getView().getjLabelNumeroRevisao().setText(Integer.toString(situacao.getNumeroRevisao()));
             this.command.executar(this.presenter, os);
-        }*/
+        }
 
     }
 
@@ -55,9 +58,9 @@ public class SituacaoOrdemServicoState extends State {
         this.presenter.resetar();
         this.presenter.setLabelTitulo("Situação (Status) da Ordem de Serviço", true);
         this.presenter.getView().setTitle("Manter Situação da Ordem de Serviço (Inclusão / Edição)");
-        this.presenter.setTextLabels("Data:", "Nome do Profissional Responsável:", "Função na Equipe:", "", "", "");        
-        this.presenter.setVisibleLabels(true, true, true, false, false, false);
-        this.presenter.setVisibileTextFields(true, true, true, false, false, false);
+        this.presenter.setTextLabels("Data:", "Nome do Profissional Responsável:", "Função na Equipe:", "", "", "", "", "");        
+        this.presenter.setVisibleLabels(true, true, true, false, false, false, false, false);
+        this.presenter.setVisibileTextFields(true, true, true, false, false, false, false, false);
         this.presenter.getView().moveToFront();
         this.presenter.getView().setVisible(true);
     }

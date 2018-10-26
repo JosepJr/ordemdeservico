@@ -61,9 +61,9 @@ public class RegistroNMSCriteriosGeraisState extends State {
         this.presenter.resetar();
         this.presenter.setLabelTitulo("Critérios Gerais de NMS", true);
         this.presenter.getView().setTitle("Manter Registro Nível Mínimo Serviço (Inclusão / Edição)");
-        this.presenter.setTextLabels("Critério:", "Redutor (%):", "Aplicação:", "Quantidade:", "Observações (explicações, motivos):", "Valor da Redução (R$):");
-        this.presenter.setVisibleLabels(true, true, true, true, true, true);
-        this.presenter.setVisibileTextFields(true, true, true, true, true, true);
+        this.presenter.setTextLabels("Critério:", "Redutor (%):", "Aplicação:", "Quantidade:", "Observações (explicações, motivos):", "Valor da Redução (R$):","","");
+        this.presenter.setVisibleLabels(true, true, true, true, true, true, false, false);
+        this.presenter.setVisibileTextFields(true, true, true, true, true, true, false, false);
         this.presenter.getView().moveToFront();
         this.presenter.getView().setVisible(true);
     }

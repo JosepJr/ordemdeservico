@@ -65,7 +65,7 @@ public class BuscarOrdemServicoPresenter implements IObserver {
         this.clienteDAOSQLite.addObserver(this);
 
         try {
-            this.preencherTabela();
+            //this.preencherTabela();
         } catch (Exception ex) {
             Logger.getLogger(BuscarOrdemServicoPresenter.class.getName()).log(Level.SEVERE, null, ex);
         }        

@@ -77,6 +77,10 @@ public class HistoriaUsuario {
             return this.getSubTotalUST() * 163.88;
         }
     }
+    
+    public double getSubTotalPF(){
+        return 0;
+    }
 
     @Override
     public String toString() {

@@ -50,7 +50,7 @@ public class ClienteDAOSQLite {
             } catch (Exception e) {
                 throw new Exception(e.getMessage());
             }
-        }else{
+        } else {
             this.insert(clienteAtualizado);
             this.delete(clienteDesatualizado);
         }
@@ -163,7 +163,6 @@ public class ClienteDAOSQLite {
         }
     }
 
-
     public ArrayList<Cliente> selectALL() throws SQLException, Exception {
         ArrayList<Cliente> listadeclientes = new ArrayList<>();
         Cliente cliente;
@@ -217,8 +216,8 @@ public class ClienteDAOSQLite {
             throw new Exception(e.getMessage());
         }
     }
-    
-     public Cliente selectClienteId(int id) throws SQLException, Exception {
+
+    public Cliente selectClienteId(int id) throws SQLException, Exception {
         String sqlSelect = "SELECT "
                 + "id,"
                 + "nome,"
@@ -236,7 +235,6 @@ public class ClienteDAOSQLite {
             throw new SQLException(e.getMessage());
         }
     }
-    
 
     private String documentoUnico(String documento) throws SQLException, Exception {
         String sqlSelect = "SELECT "

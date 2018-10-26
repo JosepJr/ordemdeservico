@@ -39,9 +39,9 @@ public class RegistroNMSNiveisServicoState extends State{
         this.presenter.resetar();
         this.presenter.setLabelTitulo("Níveis de Serviço", true);
         this.presenter.getView().setTitle("Manter Registro Nível Mínimo Serviço (Inclusão / Edição)");
-        this.presenter.setTextLabels("Indicador:", "Resultado:", "Redutor:", "Valor da Redução:", "", "");
-        this.presenter.setVisibleLabels(true, true, true, true, false, false);
-        this.presenter.setVisibileTextFields(true, true, true, true, false, false);
+        this.presenter.setTextLabels("Indicador:", "Resultado:", "Redutor:", "Valor da Redução:", "", "","","");
+        this.presenter.setVisibleLabels(true, true, true, true, false, false, false, false);
+        this.presenter.setVisibileTextFields(true, true, true, true, false, false, false, false);
         this.presenter.getView().moveToFront();
         this.presenter.getView().setVisible(true);
     }

@@ -26,14 +26,15 @@ public class HistoriasUsuarioState2 extends State{
     @Override
     public void incluir(OrdemServico os) {
         this.configurarViewState();
+        this.presenter.setLabelTitulo("Nova disciplina de história de Usuário", true);       
         this.command.executar(this.presenter, null);
-
     }
 
     @Override
     public void visualizar(OrdemServico os) {
         /*this.configurarViewState();
         ArrayList<HistoriaUsuario> historias = os.getHistoriasUsuarios();
+        this.presenter.setLabelTitulo("Nova disciplina de história de Usuário", true); 
 
         this.presenter.preencherTextField(historias.get(0).getNome(),
                 historias.get(0).getDisciplinas().get(0).getDescricao(),
@@ -51,11 +52,10 @@ public class HistoriasUsuarioState2 extends State{
 
     private void configurarViewState() {
         this.presenter.resetar();
-        this.presenter.setLabelTitulo("Nova disciplina de história de Usuário", true);
         this.presenter.getView().setTitle("Histórias de Usuários (Inclusão / Edição)");
-        this.presenter.setTextLabels("Disciplina:", "Tarefa:", "UST:", "Situação da História de Usuário:","", "");
-        this.presenter.setVisibleLabels(true, true, true, true, false, false);
-        this.presenter.setVisibileTextFields(true, true, true, true, false, false);
+        this.presenter.setTextLabels("Disciplina:", "Tarefa:", "UST:", "Situação da História de Usuário:","", "", "","");
+        this.presenter.setVisibleLabels(true, true, true, true, false, false, false, false);
+        this.presenter.setVisibileTextFields(true, true, true, true, false, false, false, false);
         this.presenter.getView().setVisible(true);
         this.presenter.getView().moveToFront();
     }

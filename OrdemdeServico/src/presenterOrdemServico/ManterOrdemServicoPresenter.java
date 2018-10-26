@@ -87,21 +87,6 @@ public class ManterOrdemServicoPresenter {
                 this.setState(new RegistroNMSNiveisServicoState(this));
                 this.state.incluir(null);
             }
-            
-            /*
-        } else {
-            if (indice == 0) {
-                this.setState(new SituacaoOrdemServicoState(this));
-                this.state.visualizar(os);
-            }
-            if (indice == 1) {
-                this.setState(new HistoriasUsuarioState(this));
-                this.state.visualizar(os);
-            }
-            if (indice == 2) {
-                this.setState(new RegistroNivelMinimoOrdemServicoState(this));
-                this.state.visualizar(os);
-            }*/
         }
     }
 
@@ -146,7 +131,7 @@ public class ManterOrdemServicoPresenter {
         this.view.setLocation((d.width - this.view.getSize().width) / 2, (d.height - this.view.getSize().height) / 2);
     }
 
-    private void resetActionListeners(){
+    public void resetActionListeners(){
     for (ActionListener act : this.view.getjButtonCancelar().getActionListeners()) {
             this.view.getjButtonCancelar().removeActionListener(act);
         }
@@ -170,40 +155,46 @@ public class ManterOrdemServicoPresenter {
     public void resetar() {
        this.resetActionListeners();
        this.resertTextBotoes();
-       this.habilitarTextField(true, true, true, true, true, true);
+       this.habilitarTextField(true, true, true, true, true, true, true, true);
        this.configurarLabelValores(false, false, false, false, false, false, false, false, false, false);
        this.configurarVisibleSituacao(false, false, false);
        this.getView().getjButtonEditar().setVisible(false);
        this.getView().getjComboBoxSituacao().setEnabled(true);
        this.getView().getjButtonAvancar().setEnabled(true);
-       this.preencherTextField("", "", "", "", "", "");
+       this.preencherTextField("", "", "", "", "", "","","");
     }
 
-    public void setTextLabels(String l1, String l2, String l3, String l4, String l5, String l6) {
+    public void setTextLabels(String l1, String l2, String l3, String l4, String l5, String l6, String l7, String l8) {
         this.view.getjLabel1().setText(l1);
         this.view.getjLabel2().setText(l2);
         this.view.getjLabel3().setText(l3);
         this.view.getjLabel4().setText(l4);
         this.view.getjLabel5().setText(l5);
         this.view.getjLabel6().setText(l6);
+        this.view.getjLabel7().setText(l7);
+        this.view.getjLabel8().setText(l8);
     }
 
-    public void setVisibleLabels(boolean b1, boolean b2, boolean b3, boolean b4, boolean b5, boolean b6) {
+    public void setVisibleLabels(boolean b1, boolean b2, boolean b3, boolean b4, boolean b5, boolean b6, boolean b7, boolean b8) {
         this.view.getjLabel1().setVisible(b1);
         this.view.getjLabel2().setVisible(b2);
         this.view.getjLabel3().setVisible(b3);
         this.view.getjLabel4().setVisible(b4);
         this.view.getjLabel5().setVisible(b5);
         this.view.getjLabel6().setVisible(b6);
+        this.view.getjLabel7().setVisible(b7);
+        this.view.getjLabel8().setVisible(b8);
     }
 
-    public void setVisibileTextFields(boolean b1, boolean b2, boolean b3, boolean b4, boolean b5, boolean b6) {
+    public void setVisibileTextFields(boolean b1, boolean b2, boolean b3, boolean b4, boolean b5, boolean b6, boolean b7, boolean b8) {
         this.view.getJTextField1().setVisible(b1);
         this.view.getJTextField2().setVisible(b2);
         this.view.getJTextField3().setVisible(b3);
         this.view.getJTextField4().setVisible(b4);
         this.view.getJTextField5().setVisible(b5);
         this.view.getJTextField6().setVisible(b6);
+        this.view.getJTextField7().setVisible(b7);
+        this.view.getJTextField8().setVisible(b8);
     }
 
     public void configurarLabelValores(boolean b1, boolean b2, boolean b3, boolean b4, boolean b5, boolean b6, boolean b7, boolean b8, boolean b9, boolean b10) {
@@ -220,23 +211,27 @@ public class ManterOrdemServicoPresenter {
 
     }
 
-    public void habilitarTextField(boolean b1, boolean b2, boolean b3, boolean b4, boolean b5, boolean b6) {
+    public void habilitarTextField(boolean b1, boolean b2, boolean b3, boolean b4, boolean b5, boolean b6, boolean b7, boolean b8) {
         this.view.getJTextField1().setEnabled(b1);
         this.view.getJTextField2().setEnabled(b2);
         this.view.getJTextField3().setEnabled(b3);
         this.view.getJTextField4().setEnabled(b4);
         this.view.getJTextField5().setEnabled(b5);
-        this.view.getJTextField6().setEnabled(b6);
+        this.view.getJTextField6().setEnabled(b6);        
+        this.view.getJTextField7().setEnabled(b7);
+        this.view.getJTextField8().setEnabled(b8);
     }
 
-    public void preencherTextField(String s1, String s2, String s3, String s4, String s5, String s6) {
+    public void preencherTextField(String s1, String s2, String s3, String s4, String s5, String s6, String s7, String s8) {
         this.view.getJTextField1().setText(s1);
         this.view.getJTextField2().setText(s2);
         this.view.getJTextField3().setText(s3);
         this.view.getJTextField4().setText(s4);
         this.view.getJTextField5().setText(s5);
         this.view.getJTextField6().setText(s6);
-
+        this.view.getJTextField7().setText(s7);
+        this.view.getJTextField8().setText(s8);
+        
     }
 
     public void configurarVisibleSituacao(boolean b1, boolean b2, boolean b3) {

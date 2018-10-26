@@ -46,10 +46,12 @@ public class OrdemServicoCommand implements ICommand{
             });
                
         }else{            
-           /* //Atualização da ordem de serviço          
-            presenter.getView().getjButtonVoltar().addActionListener((e) -> {
-                //aqui eu vou excluir a OS completa          
-            });
+            //Atualização da ordem de serviço 
+            presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
+            if(presenter.setJanelaConfirmacao("Deseja realmente cancelar a edição da Ordem de Serviço (OS)? \n A janela será fechada e o restante da edição não será realizada.")==0){
+                    presenter.fecharView();
+                }                                             
+            });            
             
             presenter.getView().getjButtonAvancar().addActionListener((e1) -> {           
                 presenter.visualizar(1, os);
@@ -57,30 +59,27 @@ public class OrdemServicoCommand implements ICommand{
 
             presenter.getView().getjButtonEditar().addActionListener((e) -> {
                 presenter.getView().getjButtonEditar().setText("Salvar");
-                presenter.habilitarTextField(true, true, true, true, true, true, true, true, true, true);
+                presenter.habilitarTextField(true, true, true, true, true, true, true, true);
                 presenter.getView().getjButtonAvancar().setEnabled(false);
-                presenter.getView().getjButtonVoltar().setEnabled(false);
-                presenter.removeActionListeners();
+                presenter.resetActionListeners();
+                
+                //Editar a os
                 
                 presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
-                    presenter.fecharView();
+                    if(presenter.setJanelaConfirmacao("Deseja realmente cancelar esta edição?")==0){
+                        presenter.visualizar(0, os);
+                    }                                             
                 });
                 
-                presenter.getView().getjButtonEditar().addActionListener((e1) -> {
-                    
+                presenter.getView().getjButtonEditar().addActionListener((e1) -> {              
                     //Atualizar a os
-                    JOptionPane.showMessageDialog(null, "OS Atualizada com sucesso!");
-                    presenter.getView().getjButtonAvancar().setEnabled(true);
-                    presenter.getView().getjButtonVoltar().setEnabled(true);
-                    presenter.getView().getjButtonEditar().setText("Editar");
-                    
-                    
+                    JOptionPane.showMessageDialog(null, "OS Atualizada com sucesso!");                                             
                     //Passar a nova OS atualizada
                     presenter.visualizar(0, os);
                     
                 });
                 
-            });*/
+            });
         }
     }
 
