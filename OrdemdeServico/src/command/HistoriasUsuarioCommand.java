@@ -6,9 +6,9 @@
 package command;
 
 import javax.swing.JOptionPane;
-import modelOrdemServico.OrdemServico;
-import presenterOrdemServico.BuscarOrdemServicoPresenter;
-import presenterOrdemServico.ManterOrdemServicoPresenter;
+import model.OrdemServico;
+import presenter.BuscarOrdemServicoPresenter;
+import presenter.ManterOrdemServicoPresenter;
 
 /**
  *
@@ -59,19 +59,26 @@ public class HistoriasUsuarioCommand implements ICommand {
             });    
             
             presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
-                //presenter.visualizar(3, os);
+                if(os.getHistoriasUsuarios().get(0).getDisciplinas().size()==1){
+                    presenter.editar(4, os);
+                }else{
+                    presenter.editar(3, os);
+                }
+                
             });
 
             presenter.getView().getjButtonEditar().addActionListener((e) -> {
                 presenter.getView().getjButtonEditar().setText("Salvar");
-                presenter.habilitarTextField(true, true, true, true, true, true, true, true);
+                presenter.setVisibileTextFields(true, true, true, true, false, false, false, true);
+                presenter.setVisibleLabels(true, true, true, true, false, false, false, true);
+                presenter.habilitarTextField(true, true, true, true, false, false, false, true);
                 presenter.getView().getjButtonAvancar().setEnabled(false);
                 presenter.resetActionListeners();
 
                 presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
                     //Voltando na tela da primeira história                  
                     if(presenter.setJanelaConfirmacao("Deseja realmente cancelar esta edição?")==0){
-                        presenter.visualizar(2, os);
+                        presenter.editar(2, os);
                     }                                          
                 });
 
@@ -80,7 +87,7 @@ public class HistoriasUsuarioCommand implements ICommand {
                     //salvar no banco a OS
                     JOptionPane.showMessageDialog(null, "OS Atualizada com sucesso!");
                     //Passar a nova OS atualizada
-                    presenter.visualizar(2, os);
+                    presenter.editar(2, os);
                 });
             });
         }

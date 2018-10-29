@@ -6,9 +6,9 @@
 package command;
 
 import javax.swing.JOptionPane;
-import modelOrdemServico.OrdemServico;
-import presenterOrdemServico.BuscarOrdemServicoPresenter;
-import presenterOrdemServico.ManterOrdemServicoPresenter;
+import model.OrdemServico;
+import presenter.BuscarOrdemServicoPresenter;
+import presenter.ManterOrdemServicoPresenter;
 
 /**
  *

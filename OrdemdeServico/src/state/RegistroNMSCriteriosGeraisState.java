@@ -7,8 +7,10 @@ package state;
 
 import command.ICommand;
 import command.RegistroNMSCriteriosGeraisCommand;
-import modelOrdemServico.OrdemServico;
-import presenterOrdemServico.ManterOrdemServicoPresenter;
+import java.util.ArrayList;
+import model.CriterioGeralNMS;
+import model.OrdemServico;
+import presenter.ManterOrdemServicoPresenter;
 
 /**
  *
@@ -30,30 +32,27 @@ public class RegistroNMSCriteriosGeraisState extends State {
     }
 
     @Override
-    public void visualizar(OrdemServico os) {
-        /*this.configurarViewState();
-        this.presenter.configurarLabelValores(true, true, true, true, true, true, true, true, true, true);
-        this.presenter.habilitarTextField(false, false, false, false, false, false, false, false, false, false);
+    public void editar(OrdemServico os) {
+        this.configurarViewState();
+        ArrayList<CriterioGeralNMS> criterios = os.getNivelMinimoServico().getCriteriosGerais();
+        this.presenter.getView().getjButtonEditar().setVisible(true);
+        this.presenter.configurarLabelValores(true, true, false, false, true, true, true, true, true, true);
+        this.presenter.habilitarTextField(false, false, false, false, false, false, false, false);
         this.presenter.preencherTextField(
-                os.getNivelMinimoServico().getCriteriosGerais().get(0).getCriterio(),
-                Double.toString(os.getNivelMinimoServico().getCriteriosGerais().get(0).getRedutor()),
-                os.getNivelMinimoServico().getCriteriosGerais().get(0).getAplicacao(),
-                Integer.toString(os.getNivelMinimoServico().getCriteriosGerais().get(0).getQuantidade()),
-                os.getNivelMinimoServico().getCriteriosGerais().get(0).getObservacao(),
-                Double.toString(os.getNivelMinimoServico().getCriteriosGerais().get(0).getValorReducao()),
-                os.getNivelMinimoServico().getNiveisServicos().get(0).getIndicador(),
-                Double.toString(os.getNivelMinimoServico().getNiveisServicos().get(0).getResultado()),
-                Double.toString(os.getNivelMinimoServico().getNiveisServicos().get(0).getRedutor()),
-                Double.toString(os.getNivelMinimoServico().getNiveisServicos().get(0).getValorReducao())
-        );
-
-        this.presenter.getView().getjLabelValorTotalReducaoNMSGeral().setText(Double.toString(os.getNivelMinimoServico().getTotalReducaoNMSGeral()));
-        this.presenter.getView().getjLabelValorTotalReducaoNMSPDASS().setText(Double.toString(os.getNivelMinimoServico().getTotalReducaoNMSPDASS()));
+                criterios.get(0).getCriterio(), 
+                Double.toString(criterios.get(0).getRedutor()),
+                criterios.get(0).getAplicacao(),
+                Double.toString(criterios.get(0).getQuantidade()), 
+                criterios.get(0).getObservacao(), 
+                Double.toString(criterios.get(0).getValorReducao()),
+                "",
+                "");
+        
+        this.presenter.getView().getjLabelValorTotalReducaoNMSGeral().setText(Double.toString(os.getNivelMinimoServico().getTotalReducaoNMSGeral()));       
         this.presenter.getView().getjLabelValorTotalReducoes().setText(Double.toString(os.getNivelMinimoServico().getTotalReducao()));
         this.presenter.getView().getjLabelValorPercentualTotalReducoes().setText(Double.toString(os.getNivelMinimoServico().getPercentualRedutor()));
         this.presenter.getView().getjLabelValorTotalOrdemServicoReducoes().setText(Double.toString(os.getNivelMinimoServico().TotalOSComReducao()));
-
-        this.command.executar(this.presenter, os);*/
+        this.command.executar(this.presenter, os);
 
     }
 

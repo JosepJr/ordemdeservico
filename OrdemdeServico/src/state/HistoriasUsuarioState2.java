@@ -7,8 +7,10 @@ package state;
 
 import command.HistoriasUsuario2Command;
 import command.ICommand;
-import modelOrdemServico.OrdemServico;
-import presenterOrdemServico.ManterOrdemServicoPresenter;
+import java.util.ArrayList;
+import model.HistoriaUsuario;
+import model.OrdemServico;
+import presenter.ManterOrdemServicoPresenter;
 
 /**
  *
@@ -31,23 +33,8 @@ public class HistoriasUsuarioState2 extends State{
     }
 
     @Override
-    public void visualizar(OrdemServico os) {
-        /*this.configurarViewState();
-        ArrayList<HistoriaUsuario> historias = os.getHistoriasUsuarios();
-        this.presenter.setLabelTitulo("Nova disciplina de história de Usuário", true); 
-
-        this.presenter.preencherTextField(historias.get(0).getNome(),
-                historias.get(0).getDisciplinas().get(0).getDescricao(),
-                historias.get(0).getDisciplinas().get(0).getTarefa(),
-                Double.toString(historias.get(0).getDisciplinas().get(0).getUST()),
-                Double.toString(historias.get(0).getSubTotalUST()),
-                Double.toString(historias.get(0).getSubTotalReais()), "Subtotal de PF: sem valor", historias.get(0).getSituacao(), "", "");
-        this.presenter.setVisibleLabels(true, true, true, true, true, true, true, true, false, false);
-        this.presenter.habilitarTextField(false, false, false, false, false, false, false, false, true, true);
-        this.presenter.setVisibileTextFields(true, true, true, true, true, true, true, true, false, false);
-        this.presenter.setTextLabels("Nome da história do usuário", "Disciplina", "Tarefa", "UST", "Subtotal de USTs", "Subtotal (R$)", "SubTotal de PF", "Situação da História de Usuário", "", "");
-        this.command.executar(this.presenter, os);*/
-
+    public void editar(OrdemServico os) {
+       this.configurarViewState();
     }
 
     private void configurarViewState() {
@@ -59,5 +46,25 @@ public class HistoriasUsuarioState2 extends State{
         this.presenter.getView().setVisible(true);
         this.presenter.getView().moveToFront();
     }
+
+    public void percorrerHistorias(OrdemServico os, int index){
+        int i = os.getHistoriasUsuarios().size();        
+        this.presenter.setLabelTitulo("História de Usuário: "+ os.getHistoriasUsuarios().get(index).getNome(), true);
+        ArrayList<HistoriaUsuario> historias = os.getHistoriasUsuarios();
+        this.presenter.getView().getjButtonEditar().setVisible(true);
+        this.presenter.setVisibleLabels(true, true, true, true, true, true, true, true);
+        this.presenter.habilitarTextField(false, false, false, false, false, false, false, false);
+        this.presenter.setVisibileTextFields(true, true, true, true, true, true, true, true);
+        this.presenter.setTextLabels("Nome da história do usuário:", "Disciplina:", "Tarefa:", "UST:", "Subtotal de USTs:", "Subtotal (R$):", "SubTotal de PF:", "Situação da História de Usuário:");
+            this.presenter.preencherTextField(historias.get(index).getNome(),
+                    historias.get(index).getDisciplinas().get(index).getDescricao(),
+                    historias.get(index).getDisciplinas().get(index).getTarefa(),
+                    Double.toString(historias.get(index).getDisciplinas().get(0).getUST()),
+                    Double.toString(historias.get(index).getSubTotalUST()),
+                    Double.toString(historias.get(index).getSubTotalReais()), Double.toString(historias.get(0).getSubTotalPF()), historias.get(0).getSituacao());       
+            this.command.executar(this.presenter, os);
+    
+    }
+
 }
 

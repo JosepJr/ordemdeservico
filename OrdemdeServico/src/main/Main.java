@@ -7,7 +7,7 @@ package main;
 
 import dao.ConexaoSQLite;
 import javax.swing.JOptionPane;
-import presenterLogin.LoginPresenter;
+import presenter.LoginPresenter;
 
 /**
  *

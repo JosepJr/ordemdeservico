@@ -7,8 +7,8 @@ package state;
 
 import command.ICommand;
 import command.RegistroNMSNiveisServicoCommand;
-import modelOrdemServico.OrdemServico;
-import presenterOrdemServico.ManterOrdemServicoPresenter;
+import model.OrdemServico;
+import presenter.ManterOrdemServicoPresenter;
 
 /**
  *
@@ -30,7 +30,7 @@ public class RegistroNMSNiveisServicoState extends State{
     }
 
     @Override
-    public void visualizar(OrdemServico os) {
+    public void editar(OrdemServico os) {
         
 
     }

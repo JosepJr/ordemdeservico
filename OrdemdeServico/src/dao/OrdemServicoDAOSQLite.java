@@ -8,13 +8,12 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import modelCliente.Cliente;
-import modelOrdemServico.CriterioGeralNMS;
-import modelOrdemServico.DisciplinaHistoriaUsuario;
-import modelOrdemServico.HistoriaUsuario;
-import modelOrdemServico.NivelServico;
-import modelOrdemServico.OrdemServico;
-import modelOrdemServico.Situacao;
+import model.CriterioGeralNMS;
+import model.DisciplinaHistoriaUsuario;
+import model.HistoriaUsuario;
+import model.NivelServico;
+import model.OrdemServico;
+import model.Situacao;
 
 /**
  *
@@ -110,27 +109,7 @@ public class OrdemServicoDAOSQLite {
             pstmt.setString(2, disciplinaHistoriaUsuario.get(disciplinaHistoriaUsuario.size()-1).getTarefa());
             pstmt.setDouble(3, disciplinaHistoriaUsuario.get(disciplinaHistoriaUsuario.size()-1).getUST());
             pstmt.executeUpdate();
-            
-            
-            /*aeaeaweaweaweaweawe;
 
-            
-            sqlInsert = "INSERT INTO nivelminimoservico("
-                    + "descricao,"
-                    + "tarefa,"
-                    + "ust"
-                    + ") VALUES(?,?,?)"
-                    + ";";          
-                        
-            pstmt = conexaoSQLite.getConexao().prepareStatement(sqlInsert);
-            pstmt.setString(1, disciplinaHistoriaUsuario.get(disciplinaHistoriaUsuario.size()-1).getDescricao());
-            pstmt.setString(2, disciplinaHistoriaUsuario.get(disciplinaHistoriaUsuario.size()-1).getTarefa());
-            pstmt.setDouble(3, disciplinaHistoriaUsuario.get(disciplinaHistoriaUsuario.size()-1).getUST());
-            pstmt.executeUpdate();
-            */
-
-            
-            //this.notificar();
         } catch (SQLException e) {
             throw new SQLException("Não foi possível inserir no banco de dados...");
         }

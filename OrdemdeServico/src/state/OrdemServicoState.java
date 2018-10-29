@@ -7,8 +7,8 @@ package state;
 
 import command.ICommand;
 import command.OrdemServicoCommand;
-import modelOrdemServico.OrdemServico;
-import presenterOrdemServico.ManterOrdemServicoPresenter;
+import model.OrdemServico;
+import presenter.ManterOrdemServicoPresenter;
 
 /**
  *
@@ -30,7 +30,7 @@ public class OrdemServicoState extends State {
     }
 
     @Override
-    public void visualizar(OrdemServico os) {
+    public void editar(OrdemServico os) {
         this.configurarViewState();
         this.presenter.getView().getjButtonEditar().setVisible(true);
         this.presenter.preencherTextField(Integer.toString(os.getNumero()), os.getDataEmissao(), os.getNomeFiscalEmissor(), "", "","","","");

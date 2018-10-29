@@ -5,9 +5,10 @@
  */
 package command;
 
-import modelOrdemServico.OrdemServico;
-import presenterOrdemServico.BuscarOrdemServicoPresenter;
-import presenterOrdemServico.ManterOrdemServicoPresenter;
+import javax.swing.JOptionPane;
+import model.OrdemServico;
+import presenter.BuscarOrdemServicoPresenter;
+import presenter.ManterOrdemServicoPresenter;
 
 /**
  *
@@ -47,39 +48,40 @@ public class RegistroNMSCriteriosGeraisCommand implements ICommand {
             });
 
         } else {
-            /*presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
-
+            
+            presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
+            if(presenter.setJanelaConfirmacao("Deseja realmente cancelar a edição da Ordem de Serviço (OS)? \n A janela será fechada e o restante da edição não será realizada.")==0){
+                    presenter.fecharView();
+                }                                             
+            });  
+            
+            presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
+                presenter.avancar(4, os);
             });
 
-            presenter.getView().getjButtonVoltar().addActionListener((e) -> {
-                presenter.visualizar(2, os);
-            });
             presenter.getView().getjButtonEditar().addActionListener((e) -> {
                 presenter.getView().getjButtonEditar().setText("Salvar");
-                presenter.habilitarTextField(true, true, true, true, true, true, true, true, true, true);
+                presenter.habilitarTextField(true, true, true, true, true, true, true, true);
                 presenter.getView().getjButtonAvancar().setEnabled(false);
-                presenter.getView().getjButtonVoltar().setEnabled(false);
-                presenter.resetarBotoesTextFielLabels();
                 presenter.configurarLabelValores(false, false, false, false, false, false, false, false, false, false);
-
+                presenter.resetActionListeners();
+                
                 presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
-                    presenter.fecharView();
+                    if(presenter.setJanelaConfirmacao("Deseja realmente cancelar esta edição?")==0){
+                        presenter.editar(3, os);
+                    }                                             
                 });
-
+                
+                
                 presenter.getView().getjButtonEditar().addActionListener((e1) -> {
                     //Atualizar A OS   
 
                     //salvar no banco
                     JOptionPane.showMessageDialog(null, "OS Atualizada com sucesso!");
-
-                    presenter.getView().getjButtonAvancar().setEnabled(true);
-                    presenter.getView().getjButtonVoltar().setEnabled(true);
-                    presenter.getView().getjButtonEditar().setText("Editar");
                     //Passar a nova OS atualizada
-                    presenter.visualizar(3, os);
+                    presenter.editar(3, os);
                 });
             });
-            */
         }
     }
 

@@ -8,9 +8,9 @@ package state;
 import command.ICommand;
 import command.SituacaoOrdemServicoCommand;
 import java.util.ArrayList;
-import modelOrdemServico.OrdemServico;
-import modelOrdemServico.Situacao;
-import presenterOrdemServico.ManterOrdemServicoPresenter;
+import model.OrdemServico;
+import model.Situacao;
+import presenter.ManterOrdemServicoPresenter;
 
 /**
  *
@@ -34,7 +34,7 @@ public class SituacaoOrdemServicoState extends State {
     }
 
     @Override
-    public void visualizar(OrdemServico os) {
+    public void editar(OrdemServico os) {
         this.configurarStateView();
         ArrayList<Situacao> situacoes = os.getSituacoes();
         Situacao situacao = situacoes.get(situacoes.size() - 1);

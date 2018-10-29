@@ -6,9 +6,9 @@
 package command;
 
 import javax.swing.JOptionPane;
-import modelOrdemServico.OrdemServico;
-import presenterOrdemServico.BuscarOrdemServicoPresenter;
-import presenterOrdemServico.ManterOrdemServicoPresenter;
+import model.OrdemServico;
+import presenter.BuscarOrdemServicoPresenter;
+import presenter.ManterOrdemServicoPresenter;
 
 /**
  *
@@ -50,7 +50,7 @@ public class SituacaoOrdemServicoCommand implements ICommand {
                 }
             });
             presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
-                presenter.visualizar(2, os);
+                presenter.editar(2, os);
             });
 
             presenter.getView().getjButtonEditar().addActionListener((e) -> {
@@ -64,7 +64,7 @@ public class SituacaoOrdemServicoCommand implements ICommand {
 
                 presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
                     if (presenter.setJanelaConfirmacao("Deseja realmente cancelar?") == 0) {
-                        presenter.visualizar(1, os);
+                        presenter.editar(1, os);
                     }
                 });
 
@@ -73,7 +73,7 @@ public class SituacaoOrdemServicoCommand implements ICommand {
                     JOptionPane.showMessageDialog(null, "OS Atualizada com sucesso!");
                     
                     //Passar a nova OS atualizada
-                    presenter.visualizar(1, os);
+                    presenter.editar(1, os);
                 });
             });
         }
