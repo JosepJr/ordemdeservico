@@ -42,73 +42,62 @@ public class DadosTeste {
     private void dados() throws Exception {
         try {
 
-            //---------------------------------------------------------------------------------------------
-            DisciplinaHistoriaUsuario dc = new DisciplinaHistoriaUsuario("Historia 1", "blablabla", 10.00);
-            HistoriaUsuario historia = new HistoriaUsuario("Primeira historia", "Aberta", dc);
-            Situacao situacao = new Situacao("10/10/2010", "Jose", "Passar raiva");
-            CriterioGeralNMS criterioGeralNMS = new CriterioGeralNMS("Funcionar", 10.05, "PSS", 20, "Vai funcionar", 10.07);
-            NivelServico nivelServico = new NivelServico("Por Clayton", 20, 20.5, 24.08);
-            NivelMinimoServico nms = new NivelMinimoServico(criterioGeralNMS, nivelServico);                      
-            this.ordensServico.add(new OrdemServico("10/10/2000", "DAVID PAPA", 1, historia, situacao, nms));
+            //---------------------------------HISTORIA USUARIO 1-----------------------------------------------------
+            DisciplinaHistoriaUsuario dc0 = new DisciplinaHistoriaUsuario("Descrição 1", "aaaaaaaaaaaaaa", 100.00);
+            DisciplinaHistoriaUsuario dc1 = new DisciplinaHistoriaUsuario("Descriçã 2", "bbbbbbbbbbbbbbb", 151.00);
+            DisciplinaHistoriaUsuario dc2 = new DisciplinaHistoriaUsuario("Descriçã 3", "cccccccccccccc", 154.00);
+            HistoriaUsuario h1 = new HistoriaUsuario("Historia Usuario 1", "Semi Aberta", dc0);
+            h1.addDisciplina(dc1);
+            h1.addDisciplina(dc2);
+            //-------------------------------------HISTORIA USUARIO 2--------------------------------------------------                    
+            DisciplinaHistoriaUsuario dc3 = new DisciplinaHistoriaUsuario("Descriçã 4", "ddddddddddddddd", 158.00);
+            DisciplinaHistoriaUsuario dc4 = new DisciplinaHistoriaUsuario("Descriçã 5", "eeeeeeeeeeeeeee", 150.00);
+            DisciplinaHistoriaUsuario dc5 = new DisciplinaHistoriaUsuario("Descriçã 6", "fffffffffffffffff", 50.00);
+            HistoriaUsuario h2 = new HistoriaUsuario("Historia Usuario 2", "Semi Fechada", dc3);
+            h2.addDisciplina(dc4);
+            h2.addDisciplina(dc5);
+            
+            
+            
+            //------------------------------------------------SITUAÇÃO-------------------------------------------------
+            Situacao s1 = new Situacao("10/10/2010", "Jose", "Passar raiva");
+            
+            
+            
+            //------------------------------------REGISTRO DE NÍVEIS MINIMOS DE SERVICO--------------------------------
+            
+            //------------------------------------CRITERIO GERAL DE NMS------------------------------------------------
+            CriterioGeralNMS c1= new CriterioGeralNMS("Funcionar", 10.05, "Qualquer uma", 20, "Vai funcionar", 10.07);
+            CriterioGeralNMS c2= new CriterioGeralNMS("Parar de funcionar", 10.05, "Não sei o que colocar", 500, "Não vai funcionar", 1844.2);
+            CriterioGeralNMS c3= new CriterioGeralNMS("Jogar Fora", 10.05, "Projeto de Software", 257, "Funcionou", 55.8);
+          
+            
+            //---------------------------------------NIVEIS DE SERVICO--------------------------------------------------
+            NivelServico n1 = new NivelServico("Otimo", 5, 548.9, 1548.88);
+            NivelServico n2 = new NivelServico("Mediano", 55, 48.9, 58.88);
+            NivelServico n3 = new NivelServico("Ruim", 125, 8.9, 18.88);
+            
+            //-------------------------------------NIVEL MINIMO DE SERVICO----------------------------------------------
+            
+            NivelMinimoServico nms1 = new NivelMinimoServico(c1,n1);
+            
+            nms1.addCriteriosGerais(c2);
+            nms1.addCriteriosGerais(c3);
+            
+            nms1.addNiveisServicos(n2);
+            nms1.addNiveisServicos(n3);
+            
+            //----------------------------------ORDEM DE SERVICO COMPLETA-----------------------------------------------
+            
+            OrdemServico os = new OrdemServico("30/10/2018", "José Paulo de Amorim Júnior",100, h1, s1, nms1);
+            os.addHistoriaUsuario(h2);
+            
+            OrdemServico os2 = new OrdemServico("20/10/2010", "David Papa", 200, h2, s1, nms1);
+            os.addHistoriaUsuario(h2);
 
-            //---------------------------------------------------------------------------------------------
-            DisciplinaHistoriaUsuario dc1 = new DisciplinaHistoriaUsuario("Historia 2", "aaaaaaaaaa", 13340.00);
-            HistoriaUsuario historia1 = new HistoriaUsuario("Primeira historia", "Aberta", dc1);            
-            historia1.addDisciplina(new DisciplinaHistoriaUsuario("Historia 45", "aaaaaaaaaa", 13340.00));
-            historia1.addDisciplina(new DisciplinaHistoriaUsuario("Historia 43", "aaaaaaaaaa", 13340.00));            
-            Situacao situacao1 = new Situacao("10/10/2010", "Jose", "Passar raiva");
-            CriterioGeralNMS criterioGeralNMS1 = new CriterioGeralNMS("Funcionar", 10.05, "PSS", 20, "Vai funcionar", 10.07);
-            NivelServico nivelServico1 = new NivelServico("Por Clayton", 20, 20.5, 24.08);
-            NivelMinimoServico nms1 = new NivelMinimoServico(criterioGeralNMS, nivelServico);          
+            this.ordensServico.add(os);
+            this.ordensServico.add(os2);
             
-            this.ordensServico.add(new OrdemServico("10/10/2050", "DAVID PAPA", 2, historia1, situacao1, nms1));
-            
-            //---------------------------------------------------------------------------------------------
-            DisciplinaHistoriaUsuario dc2 = new DisciplinaHistoriaUsuario("Historia 3", "bbbbbbbbbbb", 1320.00);
-            HistoriaUsuario historia2 = new HistoriaUsuario("Primeira historia", "Aberta", dc2);
-            Situacao situacao2 = new Situacao("10/10/2010", "Jose", "Passar raiva");
-            CriterioGeralNMS criterioGeralNMS2 = new CriterioGeralNMS("Funcionar", 10.05, "PSS", 20, "Vai funcionar", 10.07);
-            NivelServico nivelServico2 = new NivelServico("Por Clayton", 20, 20.5, 24.08);
-            NivelMinimoServico nms2 = new NivelMinimoServico(criterioGeralNMS, nivelServico);
-            nms2.addCriteriosGerais(criterioGeralNMS);
-            nms2.addCriteriosGerais(criterioGeralNMS);
-            nms2.addCriteriosGerais(criterioGeralNMS);
-            
-            this.ordensServico.add(new OrdemServico("10/10/2020", "DAVID PAPA", 3, historia2, situacao2, nms2));
-            
-            //---------------------------------------------------------------------------------------------
-            DisciplinaHistoriaUsuario dc3 = new DisciplinaHistoriaUsuario("Historia 4", "vvvvvvvvvvv", 110.00);
-            HistoriaUsuario historia3 = new HistoriaUsuario("Primeira historia", "Aberta", dc);
-            Situacao situacao3 = new Situacao("10/10/2010", "Jose", "Passar raiva");
-            CriterioGeralNMS criterioGeralNMS3 = new CriterioGeralNMS("Funcionar", 10.05, "PSS", 20, "Vai funcionar", 10.07);
-            NivelServico nivelServico3 = new NivelServico("Por Clayton", 20, 20.5, 24.08);
-            NivelMinimoServico nms3 = new NivelMinimoServico(criterioGeralNMS, nivelServico);
-            nms3.addNiveisServicos(nivelServico);
-            nms3.addNiveisServicos(nivelServico);
-            nms3.addNiveisServicos(nivelServico);           
-            this.ordensServico.add(new OrdemServico("10/10/2011", "DAVID PAPA", 4, historia3, situacao3, nms3));
-            
-            //---------------------------------------------------------------------------------------------
-            DisciplinaHistoriaUsuario dc4 = new DisciplinaHistoriaUsuario("Historia 4", "vvvvvvvvvvv", 110.00);
-            HistoriaUsuario historia4 = new HistoriaUsuario("Primeira historia", "Aberta", dc);
-            Situacao situacao4 = new Situacao("10/10/2010", "Jose", "Passar raiva");
-            CriterioGeralNMS criterioGeralNMS4 = new CriterioGeralNMS("Funcionar", 10.05, "PSS", 20, "Vai funcionar", 10.07);
-            NivelServico nivelServico4 = new NivelServico("Por Clayton", 20, 20.5, 24.08);
-            NivelMinimoServico nms4 = new NivelMinimoServico(criterioGeralNMS, nivelServico);
-            
-            nms4.addNiveisServicos(nivelServico);
-            nms4.addNiveisServicos(nivelServico);
-            nms4.addNiveisServicos(nivelServico);
-            
-            nms4.addCriteriosGerais(criterioGeralNMS);
-            nms4.addCriteriosGerais(criterioGeralNMS);
-            nms4.addCriteriosGerais(criterioGeralNMS);
-            
-            historia4.addDisciplina(new DisciplinaHistoriaUsuario("Historia 45", "aaaaaaaaaa", 13340.00));
-            historia4.addDisciplina(new DisciplinaHistoriaUsuario("Historia 43", "aaaaaaaaaa", 13340.00));
-            historia4.addDisciplina(new DisciplinaHistoriaUsuario("Historia 43", "aaaaaaaaaa", 13340.00));
-            
-            this.ordensServico.add(new OrdemServico("10/10/2011", "DAVID PAPA", 8, historia4, situacao4, nms4));           
 
         } catch (Exception ex) {
             throw new Exception(ex.getMessage());

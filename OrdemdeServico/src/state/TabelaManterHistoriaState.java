@@ -5,14 +5,14 @@
  */
 package state;
 
+import command.ICommandManterOS;
+import command.ICommandTabela;
+import command.TabelaManterHistoriaCommand;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.HistoriaUsuario;
 import model.OrdemServico;
-import presenter.ManterOrdemServicoPresenter;
 import presenter.TabelaManterOSPresenter;
-import presenter.TelaPrincipalPresenter;
-import test.DadosTeste;
 
 /**
  *
@@ -20,10 +20,11 @@ import test.DadosTeste;
  */
 public class TabelaManterHistoriaState extends StateTabelaManterOrdemServico{
     
-    
+    private final ICommandTabela command;
     
     public TabelaManterHistoriaState(TabelaManterOSPresenter presenter) {
         super(presenter);
+        this.command = TabelaManterHistoriaCommand.getInstance();
     }
     
     @Override
@@ -42,7 +43,7 @@ public class TabelaManterHistoriaState extends StateTabelaManterOrdemServico{
                 try {
                     for(HistoriaUsuario historia : os.getHistoriasUsuarios()){
                        if(this.presenter.getView().getjTable().getValueAt(this.presenter.getView().getjTable().getSelectedRow(), 0).toString().equals(historia.getNome())){
-                                                    
+                           this.command.executar(this.presenter, historia);
                        } 
                     }
                 } catch (Exception ex) {
@@ -60,8 +61,8 @@ public class TabelaManterHistoriaState extends StateTabelaManterOrdemServico{
     }
     
     
-    private DefaultTableModel montarTabela() {
-        this.presenter.setTablemodel(new DefaultTableModel(new Object[][]{}, new String[]{"Nome da História de Usuário", "Situação da História de Usuário"}) {
+     private DefaultTableModel montarTabela() {
+        this.presenter.setTablemodel(new DefaultTableModel(new Object[][]{}, new String[]{"Nome da História de Usuário", "Situacao da História de Usuário"}) {
             @Override
             public boolean isCellEditable(int row, int col) {
                 return false;
@@ -70,12 +71,8 @@ public class TabelaManterHistoriaState extends StateTabelaManterOrdemServico{
         return this.presenter.getTablemodel();
     }
 
-    
-    \\\\\\\\\\\\\\\\\
     public void preencherTabela(OrdemServico os) throws Exception {
-
         this.presenter.setTablemodel(this.montarTabela());
-
         for (HistoriaUsuario historias : os.getHistoriasUsuarios()) {
             try {
                 this.presenter.getTablemodel().addRow(new Object[]{
@@ -88,5 +85,4 @@ public class TabelaManterHistoriaState extends StateTabelaManterOrdemServico{
         }
         this.presenter.getView().getjTable().setModel(this.presenter.getTablemodel());
     }
-    
 }

@@ -14,7 +14,7 @@ import presenter.ManterOrdemServicoPresenter;
  *
  * @author Josep
  */
-public class RegistroNMSCriteriosGeraisCommand implements ICommand {
+public class RegistroNMSCriteriosGeraisCommand implements ICommandManterOS {
 
     private static RegistroNMSCriteriosGeraisCommand instance;
 
@@ -68,7 +68,7 @@ public class RegistroNMSCriteriosGeraisCommand implements ICommand {
                 
                 presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
                     if(presenter.setJanelaConfirmacao("Deseja realmente cancelar esta edição?")==0){
-                        presenter.editar(3, os);
+                        presenter.editar(3, os, null);
                     }                                             
                 });
                 
@@ -79,7 +79,7 @@ public class RegistroNMSCriteriosGeraisCommand implements ICommand {
                     //salvar no banco
                     JOptionPane.showMessageDialog(null, "OS Atualizada com sucesso!");
                     //Passar a nova OS atualizada
-                    presenter.editar(3, os);
+                    presenter.editar(3, os, null);
                 });
             });
         }

@@ -97,30 +97,30 @@ public class ManterOrdemServicoPresenter {
     public void excluir() {
     }
 
-    public void editar(int indice, OrdemServico os) {
+    public void editar(int indice, OrdemServico os, Object o) {
         if (indice == 0) {
             this.setState(new OrdemServicoState(this));
-            this.state.editar(os);
+            this.state.editar(os, null);
         }
         if (indice == 1) {
             this.setState(new SituacaoOrdemServicoState(this));
-            this.state.editar(os);
+            this.state.editar(os, null);
         }
         if (indice == 2) {
             this.setState(new HistoriasUsuarioState(this));
-            this.state.editar(os);
+            this.state.editar(os, o);
         }
         if (indice == 3) {
             this.setState(new HistoriasUsuarioState2(this));
-            this.state.editar(os);
+            this.state.editar(os, null);
         }        
         if (indice == 4) {
             this.setState(new RegistroNMSCriteriosGeraisState(this));
-            this.state.editar(os);
+            this.state.editar(os, null);
         }
         if(indice == 5){
             this.setState(new RegistroNMSNiveisServicoState(this));
-            this.state.editar(os);
+            this.state.editar(os, null);
         }
     }
 

@@ -5,12 +5,12 @@
  */
 package state;
 
-import command.ICommand;
 import command.RegistroNMSCriteriosGeraisCommand;
 import java.util.ArrayList;
 import model.CriterioGeralNMS;
 import model.OrdemServico;
 import presenter.ManterOrdemServicoPresenter;
+import command.ICommandManterOS;
 
 /**
  *
@@ -18,7 +18,7 @@ import presenter.ManterOrdemServicoPresenter;
  */
 public class RegistroNMSCriteriosGeraisState extends StateManterOrdemServico {
 
-    private final ICommand command;
+    private final ICommandManterOS command;
 
     public RegistroNMSCriteriosGeraisState(ManterOrdemServicoPresenter presenter) {
         super(presenter);
@@ -32,7 +32,7 @@ public class RegistroNMSCriteriosGeraisState extends StateManterOrdemServico {
     }
 
     @Override
-    public void editar(OrdemServico os) {
+    public void editar(OrdemServico os, Object o) {
         this.configurarViewState();
         ArrayList<CriterioGeralNMS> criterios = os.getNivelMinimoServico().getCriteriosGerais();
         this.presenter.getView().getjButtonEditar().setVisible(true);

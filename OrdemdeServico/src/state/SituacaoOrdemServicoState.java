@@ -5,12 +5,12 @@
  */
 package state;
 
-import command.ICommand;
 import command.SituacaoOrdemServicoCommand;
 import java.util.ArrayList;
 import model.OrdemServico;
 import model.Situacao;
 import presenter.ManterOrdemServicoPresenter;
+import command.ICommandManterOS;
 
 /**
  *
@@ -18,7 +18,7 @@ import presenter.ManterOrdemServicoPresenter;
  */
 public class SituacaoOrdemServicoState extends StateManterOrdemServico {
 
-    private final ICommand command;
+    private final ICommandManterOS command;
 
     public SituacaoOrdemServicoState(ManterOrdemServicoPresenter presenter) {
         super(presenter);
@@ -34,7 +34,7 @@ public class SituacaoOrdemServicoState extends StateManterOrdemServico {
     }
 
     @Override
-    public void editar(OrdemServico os) {
+    public void editar(OrdemServico os, Object o) {
         this.configurarStateView();
         ArrayList<Situacao> situacoes = os.getSituacoes();
         Situacao situacao = situacoes.get(situacoes.size() - 1);

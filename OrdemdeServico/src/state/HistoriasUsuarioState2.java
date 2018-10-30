@@ -6,11 +6,11 @@
 package state;
 
 import command.HistoriasUsuario2Command;
-import command.ICommand;
 import java.util.ArrayList;
 import model.HistoriaUsuario;
 import model.OrdemServico;
 import presenter.ManterOrdemServicoPresenter;
+import command.ICommandManterOS;
 
 /**
  *
@@ -18,7 +18,7 @@ import presenter.ManterOrdemServicoPresenter;
  */
 public class HistoriasUsuarioState2 extends StateManterOrdemServico{
     
-    private final ICommand command;
+    private final ICommandManterOS command;
     
     public HistoriasUsuarioState2(ManterOrdemServicoPresenter presenter) {
         super(presenter);
@@ -33,7 +33,7 @@ public class HistoriasUsuarioState2 extends StateManterOrdemServico{
     }
 
     @Override
-    public void editar(OrdemServico os) {
+    public void editar(OrdemServico os, Object o) {
        this.configurarViewState();
     }
 

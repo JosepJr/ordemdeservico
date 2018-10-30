@@ -25,7 +25,7 @@ public abstract class StateManterOrdemServico {
         throw new IllegalStateException();
     }
 
-    public void editar(OrdemServico ordemServico) { 
+    public void editar(OrdemServico ordemServico, Object o) { 
         throw new IllegalStateException();
     }
 

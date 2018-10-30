@@ -14,7 +14,7 @@ import presenter.ManterOrdemServicoPresenter;
  *
  * @author Josep
  */
-public class HistoriasUsuarioCommand implements ICommand {
+public class HistoriasUsuarioCommand implements ICommandManterOS {
 
     private static HistoriasUsuarioCommand instance;
 
@@ -60,9 +60,9 @@ public class HistoriasUsuarioCommand implements ICommand {
             
             presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
                 if(os.getHistoriasUsuarios().get(0).getDisciplinas().size()==1){
-                    presenter.editar(4, os);
+                    presenter.editar(4, os, null);
                 }else{
-                    presenter.editar(3, os);
+                    presenter.editar(3, os, null);
                 }
                 
             });
@@ -78,7 +78,7 @@ public class HistoriasUsuarioCommand implements ICommand {
                 presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
                     //Voltando na tela da primeira história                  
                     if(presenter.setJanelaConfirmacao("Deseja realmente cancelar esta edição?")==0){
-                        presenter.editar(2, os);
+                        presenter.editar(2, os, null);
                     }                                          
                 });
 
@@ -87,7 +87,7 @@ public class HistoriasUsuarioCommand implements ICommand {
                     //salvar no banco a OS
                     JOptionPane.showMessageDialog(null, "OS Atualizada com sucesso!");
                     //Passar a nova OS atualizada
-                    presenter.editar(2, os);
+                    presenter.editar(2, os, null);
                 });
             });
         }

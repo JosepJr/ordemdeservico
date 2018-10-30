@@ -13,7 +13,7 @@ import presenter.ManterOrdemServicoPresenter;
  *
  * @author Josep
  */
-public class HistoriasUsuario2Command implements ICommand{
+public class HistoriasUsuario2Command implements ICommandManterOS{
 
     private static HistoriasUsuario2Command instance;
 

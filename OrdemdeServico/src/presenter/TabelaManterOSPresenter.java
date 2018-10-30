@@ -53,7 +53,8 @@ public class TabelaManterOSPresenter {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }
             }
-        });                    
+        });
+        this.visibilidadeCampos(false, false, false, false);
      }
    
     public void visualizar(OrdemServico os){
@@ -96,9 +97,7 @@ public class TabelaManterOSPresenter {
     public void setTablemodel(DefaultTableModel tablemodel) {
         this.tablemodel = tablemodel;
     }
-    
-    
-    
+   
     public int setJanelaConfirmacao(String mensagem) {
         UIManager.put("OptionPane.yesButtonText", "Sim");
         UIManager.put("OptionPane.noButtonText", "Não");
@@ -109,6 +108,25 @@ public class TabelaManterOSPresenter {
                 return 1;
         }
         return -1;
+    }
+    
+    public void visibilidadeCampos(boolean b1, boolean b2, boolean b3, boolean b4){
+        this.view.getjLabel1().setVisible(b1);
+        this.view.getjTextField1().setVisible(b2);
+        this.view.getjLabel2().setVisible(b3);
+        this.view.getjTextField2().setVisible(b4);    
+    }
+    
+    public void preencherCampos(String s1, String s2, String s3, String s4){
+        this.view.getjLabel1().setText(s1);
+        this.view.getjTextField1().setText(s2);
+        this.view.getjLabel2().setText(s3);
+        this.view.getjTextField2().setText(s4);    
+    }
+    
+    public void bloquearTextFields(boolean b1, boolean b2){
+        this.view.getjTextField1().setEnabled(b1);
+        this.view.getjTextField2().setEnabled(b2);    
     }
   
 }

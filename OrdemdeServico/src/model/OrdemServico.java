@@ -20,12 +20,7 @@ public class OrdemServico {
     private final ArrayList<Situacao> situacoes = new ArrayList<>();
     private NivelMinimoServico nivelMinimoServico;
 
-    public OrdemServico(String data) throws Exception{
-        this.setDataEmissao(data);
-        System.out.println(this.dataEmissao);
-    }
-    
-    
+   
     public OrdemServico(String dataEmissao, String nomeFiscalEmissor, int numero, HistoriaUsuario historiaUsuario, Situacao situacao, NivelMinimoServico nivelMinimoServico) throws Exception {
         this.setDataEmissao(dataEmissao);
         this.setNomeFiscalEmissor(nomeFiscalEmissor);

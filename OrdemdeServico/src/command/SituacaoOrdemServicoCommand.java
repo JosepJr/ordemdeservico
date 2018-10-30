@@ -16,7 +16,7 @@ import presenter.TelaPrincipalPresenter;
  *
  * @author Josep
  */
-public class SituacaoOrdemServicoCommand implements ICommand {
+public class SituacaoOrdemServicoCommand implements ICommandManterOS {
 
     private static SituacaoOrdemServicoCommand instance;
 
@@ -69,7 +69,7 @@ public class SituacaoOrdemServicoCommand implements ICommand {
 
                 presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
                     if (presenter.setJanelaConfirmacao("Deseja realmente cancelar?") == 0) {
-                        presenter.editar(1, os);
+                        presenter.editar(1, os, null);
                     }
                 });
 
@@ -78,7 +78,7 @@ public class SituacaoOrdemServicoCommand implements ICommand {
                     JOptionPane.showMessageDialog(null, "OS Atualizada com sucesso!");
                     
                     //Passar a nova OS atualizada
-                    presenter.editar(1, os);
+                    presenter.editar(1, os, null);
                 });
             });
         }

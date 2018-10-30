@@ -14,7 +14,7 @@ import presenter.ManterOrdemServicoPresenter;
  *
  * @author Josep
  */
-public class RegistroNMSNiveisServicoCommand implements ICommand{
+public class RegistroNMSNiveisServicoCommand implements ICommandManterOS{
 
 private static RegistroNMSNiveisServicoCommand instance;
 

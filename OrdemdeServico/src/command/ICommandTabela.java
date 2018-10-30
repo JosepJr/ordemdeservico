@@ -6,19 +6,17 @@
 package command;
 
 import model.OrdemServico;
-import presenter.BuscarOrdemServicoPresenter;
-import presenter.ManterOrdemServicoPresenter;
+import presenter.TabelaManterOSPresenter;
 
 /**
  *
  * @author Josep
  */
-public interface ICommand {
-  
-    public void executar(ManterOrdemServicoPresenter presenter, OrdemServico os);
+public interface ICommandTabela {
     
-    public void desfazer(BuscarOrdemServicoPresenter presenter);
+    public void executar(TabelaManterOSPresenter presenter, Object o);
     
-
+    public void desfazer();
+    
     
 }
