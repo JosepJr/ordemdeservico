@@ -96,10 +96,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         );
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/client_account_template.png"))); // NOI18N
-        jMenu1.setText("Cliente");
+        jMenu1.setText("Ordem de Serviço");
 
         jMenuItemBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/search.png"))); // NOI18N
-        jMenuItemBuscar.setText("Buscar/Editar");
+        jMenuItemBuscar.setText("Buscar / Editar");
         jMenu1.add(jMenuItemBuscar);
 
         jMenuBar1.add(jMenu1);
@@ -118,12 +118,12 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         buttonGroup1.add(jRadioButtonMenuItemXML);
         jRadioButtonMenuItemXML.setSelected(true);
-        jRadioButtonMenuItemXML.setText("Salvar os dados em XML");
+        jRadioButtonMenuItemXML.setText("Salvar LOG em XML");
         jRadioButtonMenuItemXML.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/xml.png"))); // NOI18N
         jMenu4.add(jRadioButtonMenuItemXML);
 
         buttonGroup1.add(jRadioButtonMenuItemJSON);
-        jRadioButtonMenuItemJSON.setText("Salvar os dados em JSON");
+        jRadioButtonMenuItemJSON.setText("Salvar LOG em JSON");
         jRadioButtonMenuItemJSON.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/json.png"))); // NOI18N
         jMenu4.add(jRadioButtonMenuItemJSON);
 
@@ -133,7 +133,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jMenuUsuario.setText("Usuário:");
 
         jMenuItemLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logout.png"))); // NOI18N
-        jMenuItemLogout.setText("Logout");
+        jMenuItemLogout.setText("Trocar de Usuário");
         jMenuUsuario.add(jMenuItemLogout);
 
         jMenuItemExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/exit.png"))); // NOI18N

@@ -5,7 +5,10 @@
  */
 package main;
 
+import dao.ConexaoSQLite;
+import javax.swing.JOptionPane;
 import presenter.LoginPresenter;
+import test.DadosTeste;
 
 /**
  *
@@ -14,7 +17,12 @@ import presenter.LoginPresenter;
 public class Main {
     
     public static void main(String[] args){
-        LoginPresenter.getInstance();
-    }
-    
+        try {
+            ConexaoSQLite.getInstance();
+            DadosTeste.getInstance();
+            LoginPresenter.getInstance();            
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }   
+    }   
 }

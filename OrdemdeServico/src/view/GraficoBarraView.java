@@ -37,7 +37,7 @@ public class GraficoBarraView extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setMaximizable(true);
-        setPreferredSize(new java.awt.Dimension(500, 400));
+        setPreferredSize(new java.awt.Dimension(670, 500));
 
         javax.swing.GroupLayout jPanelGraficoLayout = new javax.swing.GroupLayout(jPanelGrafico);
         jPanelGrafico.setLayout(jPanelGraficoLayout);

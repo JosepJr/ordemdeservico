@@ -19,15 +19,7 @@ public class ConexaoSQLite {
     private Connection connection = null;
     private static ConexaoSQLite instance;
     private Statement stmt = null;
-    private String url = "jdbc:sqlite:src/data/tbl_cliente.db";
-    
-    private String sqlcliente = "CREATE TABLE IF NOT EXISTS cliente(\n"
-                + "id integer PRIMARY KEY AUTOINCREMENT,\n"
-                + "nome text NOT NULL,\n" 
-                + "telefone text NOT NULL,\n" 
-                + "documento text NOT NULL,\n" 
-                + "tipo text NOT NULL\n" 
-                + ");";
+    private String url = "jdbc:sqlite:src/data/tbl_usuario.db";
     
     private String sqlUsuario ="CREATE TABLE IF NOT EXISTS usuario(\n"
                 + "id integer PRIMARY KEY AUTOINCREMENT,\n"
@@ -39,8 +31,7 @@ public class ConexaoSQLite {
         try{
             this.connection = DriverManager.getConnection(this.url);
             this.stmt = this.connection.createStatement();
-            this.stmt.execute(this.sqlcliente);
-            this.stmt.execute(this.sqlUsuario);
+            this.stmt.execute(this.sqlUsuario);                   
         }                
         catch (SQLException e) {
             throw new SQLException(e.getMessage());

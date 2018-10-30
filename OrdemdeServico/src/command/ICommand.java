@@ -5,9 +5,9 @@
  */
 package command;
 
-import model.Cliente;
-import presenter.BuscarClientePresenter;
-import presenter.ManterClientePresenter;
+import model.OrdemServico;
+import presenter.BuscarOrdemServicoPresenter;
+import presenter.ManterOrdemServicoPresenter;
 
 /**
  *
@@ -15,8 +15,10 @@ import presenter.ManterClientePresenter;
  */
 public interface ICommand {
   
-    public void executar(ManterClientePresenter presenter, Cliente cliente);
+    public void executar(ManterOrdemServicoPresenter presenter, OrdemServico os);
     
-    public void desfazer(BuscarClientePresenter presenter);
+    public void desfazer(BuscarOrdemServicoPresenter presenter);
+    
+
     
 }

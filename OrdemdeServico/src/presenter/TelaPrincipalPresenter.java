@@ -5,14 +5,12 @@
  */
 package presenter;
 
-import adapter.ILog;
-import factory.FactoryJSON;
-import factory.FactoryXML;
-import factory.IFactory;
+
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import model.Usuario;
 import view.TelaPrincipalView;
@@ -25,10 +23,8 @@ public class TelaPrincipalPresenter {
 
     private static TelaPrincipalPresenter instance;
     private TelaPrincipalView view;
-    private BuscarClientePresenter buscar;
+    private BuscarOrdemServicoPresenter buscar;
     private Usuario usuario;
-    private IFactory factory;
-    private ILog log;
 
     private TelaPrincipalPresenter() {
     }
@@ -52,9 +48,7 @@ public class TelaPrincipalPresenter {
         this.view.getjMenuUsuario().setText("Usuário: "+this.usuario.getUsuario());
         
         this.view.getjRadioButtonMenuItemXML().setSelected(true);
-        this.factory = new FactoryXML();
-        this.log = factory.criarLog();
-              
+
         this.view.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent evt) {
@@ -73,21 +67,19 @@ public class TelaPrincipalPresenter {
         });
         
         this.view.getjMenuItemBuscar().addActionListener((ActionEvent e) -> { 
-            this.view.getjDesktopPanePrincipal().add(BuscarClientePresenter.getInstance().getView()).setVisible(true);
+            try {
+                this.view.getjDesktopPanePrincipal().add(BuscarOrdemServicoPresenter.getInstance().getView()).setVisible(true);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
         });
         
         this.view.getjMenuItemGraficoLinha().addActionListener((ActionEvent e) -> { 
-            this.view.getjDesktopPanePrincipal().add(GraficoBarraPresenter.getInstance().getView()).setVisible(true);
+
         });
-        
-        this.view.getjRadioButtonMenuItemJSON().addActionListener((e) -> {
-            this.factory = new FactoryJSON();
-            this.log = factory.criarLog();
-        });
-        
+                
         this.view.getjRadioButtonMenuItemXML().addActionListener((e) -> {
-            this.factory = new FactoryXML();
-            this.log = factory.criarLog();
+
         });
         
     }    
@@ -106,7 +98,4 @@ public class TelaPrincipalPresenter {
         this.usuario = usuario;
     }
 
-    public ILog getLog() {
-        return this.log;
-    }
 }
