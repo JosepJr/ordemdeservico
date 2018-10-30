@@ -50,9 +50,9 @@ public class DadosTeste {
             h1.addDisciplina(dc1);
             h1.addDisciplina(dc2);
             //-------------------------------------HISTORIA USUARIO 2--------------------------------------------------                    
-            DisciplinaHistoriaUsuario dc3 = new DisciplinaHistoriaUsuario("Descriçã 4", "ddddddddddddddd", 158.00);
-            DisciplinaHistoriaUsuario dc4 = new DisciplinaHistoriaUsuario("Descriçã 5", "eeeeeeeeeeeeeee", 150.00);
-            DisciplinaHistoriaUsuario dc5 = new DisciplinaHistoriaUsuario("Descriçã 6", "fffffffffffffffff", 50.00);
+            DisciplinaHistoriaUsuario dc3 = new DisciplinaHistoriaUsuario("Descriçã 1", "ddddddddddddddd", 158.00);
+            DisciplinaHistoriaUsuario dc4 = new DisciplinaHistoriaUsuario("Descriçã 2", "eeeeeeeeeeeeeee", 150.00);
+            DisciplinaHistoriaUsuario dc5 = new DisciplinaHistoriaUsuario("Descriçã 3", "fffffffffffffffff", 50.00);
             HistoriaUsuario h2 = new HistoriaUsuario("Historia Usuario 2", "Semi Fechada", dc3);
             h2.addDisciplina(dc4);
             h2.addDisciplina(dc5);
@@ -60,10 +60,8 @@ public class DadosTeste {
             
             
             //------------------------------------------------SITUAÇÃO-------------------------------------------------
-            Situacao s1 = new Situacao("10/10/2010", "Jose", "Passar raiva");
-            
-            
-            
+            Situacao s1 = new Situacao("20/10/2010", "Jose", "Passar raiva");
+        
             //------------------------------------REGISTRO DE NÍVEIS MINIMOS DE SERVICO--------------------------------
             
             //------------------------------------CRITERIO GERAL DE NMS------------------------------------------------
@@ -89,11 +87,12 @@ public class DadosTeste {
             
             //----------------------------------ORDEM DE SERVICO COMPLETA-----------------------------------------------
             
-            OrdemServico os = new OrdemServico("30/10/2018", "José Paulo de Amorim Júnior",100, h1, s1, nms1);
-            os.addHistoriaUsuario(h2);
             
-            OrdemServico os2 = new OrdemServico("20/10/2010", "David Papa", 200, h2, s1, nms1);
+            OrdemServico os = new OrdemServico("31/10/2018", "José Paulo de Amorim Júnior",100, h1, s1, nms1);
             os.addHistoriaUsuario(h2);
+    
+            OrdemServico os2 = new OrdemServico("01/10/2050", "David Papa", 200, h1, s1, nms1);
+            os2.addHistoriaUsuario(h2);
 
             this.ordensServico.add(os);
             this.ordensServico.add(os2);

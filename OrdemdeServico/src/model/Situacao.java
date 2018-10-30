@@ -55,7 +55,7 @@ public class Situacao {
     }
     
     private boolean isData(String dataEmissao){
-        return dataEmissao.matches("([0][1-9]|[1][0-9]|[2][1-9]|[3][0-1])\\/([0][1-9]|[1][0-2])\\/([1][9][8-9][0-9]|[2][0][0-9][0-9])");
+        return dataEmissao.matches("([0][1-9]|[1][0-9]|[2][0-9]|[3][0-1])\\/([0][1-9]|[1][0-2])\\/([1][9][0-9][0-9]|[2][0][0-9][0-9])");
     }
 
     public String getNomeResponsavel() {
