@@ -14,7 +14,7 @@ import presenter.ManterOrdemServicoPresenter;
  *
  * @author Josep
  */
-public class RegistroNMSNiveisServicoState extends State{
+public class RegistroNMSNiveisServicoState extends StateManterOrdemServico{
     
     private final ICommand command;
      

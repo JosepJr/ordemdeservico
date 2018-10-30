@@ -9,6 +9,8 @@ import javax.swing.JOptionPane;
 import model.OrdemServico;
 import presenter.BuscarOrdemServicoPresenter;
 import presenter.ManterOrdemServicoPresenter;
+import presenter.TabelaManterOSPresenter;
+import presenter.TelaPrincipalPresenter;
 
 /**
  *
@@ -41,6 +43,7 @@ public class SituacaoOrdemServicoCommand implements ICommand {
             presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
                 //Fazer a criacao dos dados da OS
                 presenter.avancar(2, null);
+                
             });
 
         } else {
@@ -50,7 +53,9 @@ public class SituacaoOrdemServicoCommand implements ICommand {
                 }
             });
             presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
-                presenter.editar(2, os);
+                //presenter.editar(2, os);
+                TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add(TabelaManterOSPresenter.getInstance().getView());
+                TabelaManterOSPresenter.getInstance().visualizar(os);
             });
 
             presenter.getView().getjButtonEditar().addActionListener((e) -> {

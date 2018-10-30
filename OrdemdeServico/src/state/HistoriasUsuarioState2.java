@@ -16,7 +16,7 @@ import presenter.ManterOrdemServicoPresenter;
  *
  * @author Josep
  */
-public class HistoriasUsuarioState2 extends State{
+public class HistoriasUsuarioState2 extends StateManterOrdemServico{
     
     private final ICommand command;
     
@@ -40,9 +40,9 @@ public class HistoriasUsuarioState2 extends State{
     private void configurarViewState() {
         this.presenter.resetar();
         this.presenter.getView().setTitle("Histórias de Usuários (Inclusão / Edição)");
-        this.presenter.setTextLabels("Disciplina:", "Tarefa:", "UST:", "Situação da História de Usuário:","", "", "","");
-        this.presenter.setVisibleLabels(true, true, true, true, false, false, false, false);
-        this.presenter.setVisibileTextFields(true, true, true, true, false, false, false, false);
+        this.presenter.setTextLabels("Disciplina:", "Tarefa:", "UST:", "","", "", "","");
+        this.presenter.setVisibleLabels(true, true, true, false, false, false, false, false);
+        this.presenter.setVisibileTextFields(true, true, true, false, false, false, false, false);
         this.presenter.getView().setVisible(true);
         this.presenter.getView().moveToFront();
     }

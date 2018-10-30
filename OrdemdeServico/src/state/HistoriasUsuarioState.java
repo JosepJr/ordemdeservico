@@ -16,7 +16,7 @@ import presenter.ManterOrdemServicoPresenter;
  *
  * @author Josep
  */
-public class HistoriasUsuarioState extends State {
+public class HistoriasUsuarioState extends StateManterOrdemServico {
 
     private final ICommand command;
     
@@ -37,10 +37,10 @@ public class HistoriasUsuarioState extends State {
         this.configurarViewState();
         this.presenter.setLabelTitulo("História de Usuário: "+ os.getHistoriasUsuarios().get(0).getNome(), true);
         ArrayList<HistoriaUsuario> historias = os.getHistoriasUsuarios();
-        this.presenter.getView().getjButtonEditar().setVisible(true);
-        this.presenter.setVisibleLabels(true, true, true, true, true, true, true, true);
+        this.presenter.getView().getjButtonEditar().setVisible(true);        
+        this.presenter.setVisibleLabels(true, true, true, true, true, false, false, false);
+        this.presenter.setVisibileTextFields(true, true, true, true, true, false, false, false);        
         this.presenter.habilitarTextField(false, false, false, false, false, false, false, false);
-        this.presenter.setVisibileTextFields(true, true, true, true, true, true, true, true);
         this.presenter.setTextLabels("Nome da história do usuário:", "Disciplina:", "Tarefa:", "UST:", "Subtotal de USTs:", "Subtotal (R$):", "SubTotal de PF:", "Situação da História de Usuário:");
             this.presenter.preencherTextField(historias.get(0).getNome(),
                     historias.get(0).getDisciplinas().get(0).getDescricao(),

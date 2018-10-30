@@ -20,7 +20,7 @@ import state.HistoriasUsuarioState2;
 import state.RegistroNMSCriteriosGeraisState;
 import state.RegistroNMSNiveisServicoState;
 import state.SituacaoOrdemServicoState;
-import state.State;
+import state.StateManterOrdemServico;
 
 /**
  *
@@ -30,7 +30,7 @@ public class ManterOrdemServicoPresenter {
 
     private static ManterOrdemServicoPresenter instance;
     private final ManterOrdemServicoView view;
-    private State state;
+    private StateManterOrdemServico state;
 
     private ManterOrdemServicoPresenter() {
         this.view = new ManterOrdemServicoView();
@@ -60,7 +60,7 @@ public class ManterOrdemServicoPresenter {
         });
     }
 
-    private void setState(State state) {
+    private void setState(StateManterOrdemServico state) {
         this.state = state;
     }
 

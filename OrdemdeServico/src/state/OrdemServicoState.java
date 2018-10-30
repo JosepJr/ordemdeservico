@@ -14,7 +14,7 @@ import presenter.ManterOrdemServicoPresenter;
  *
  * @author Josep
  */
-public class OrdemServicoState extends State {
+public class OrdemServicoState extends StateManterOrdemServico {
 
     private final ICommand command;
 

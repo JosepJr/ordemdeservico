@@ -8,6 +8,7 @@ package main;
 import dao.ConexaoSQLite;
 import javax.swing.JOptionPane;
 import presenter.LoginPresenter;
+import test.DadosTeste;
 
 /**
  *
@@ -18,12 +19,10 @@ public class Main {
     public static void main(String[] args){
         try {
             ConexaoSQLite.getInstance();
-            LoginPresenter.getInstance();
-            
+            DadosTeste.getInstance();
+            LoginPresenter.getInstance();            
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-    
-    }
-    
+        }   
+    }   
 }

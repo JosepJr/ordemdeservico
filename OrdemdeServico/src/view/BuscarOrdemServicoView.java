@@ -19,9 +19,6 @@ import javax.swing.JTextField;
  */
 public class BuscarOrdemServicoView extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form TelaBuscarClienteMDI
-     */
     public BuscarOrdemServicoView() {
         initComponents();
     }
@@ -58,12 +55,12 @@ public class BuscarOrdemServicoView extends javax.swing.JInternalFrame {
         return jLabelQtdRegistros;
     }
 
-    public JTable getjTableClientes() {
-        return jTableClientes;
+    public JTable getjTableOrdemServico() {
+        return jTableOrdemServico;
     }
 
-    public void setjTableClientes(JTable jTableClientes) {
-        this.jTableClientes = jTableClientes;
+    public void setjTableOrdemServico(JTable jTableClientes) {
+        this.jTableOrdemServico = jTableClientes;
     }
 
     public JButton getjButtonDesfazer() {
@@ -85,7 +82,7 @@ public class BuscarOrdemServicoView extends javax.swing.JInternalFrame {
         jButtonVisualizar = new javax.swing.JButton();
         jButtonFechar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTableClientes = new javax.swing.JTable();
+        jTableOrdemServico = new javax.swing.JTable();
         jLabelObserverQTD = new javax.swing.JLabel();
         jLabelQtdRegistros = new javax.swing.JLabel();
         jButtonDesfazer = new javax.swing.JButton();
@@ -95,18 +92,25 @@ public class BuscarOrdemServicoView extends javax.swing.JInternalFrame {
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("Buscar Ordem de Serviço");
+        setPreferredSize(new java.awt.Dimension(670, 500));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Busca por");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 25, 61, -1));
 
         jButtonBuscar.setText("Buscar");
+        getContentPane().add(jButtonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(579, 21, -1, -1));
 
         jButtonNovo.setText("Novo");
+        getContentPane().add(jButtonNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 393, 100, -1));
 
         jButtonVisualizar.setText("Visualizar");
+        getContentPane().add(jButtonVisualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 393, 100, -1));
 
         jButtonFechar.setText("Fechar");
+        getContentPane().add(jButtonFechar, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 393, 100, -1));
 
-        jTableClientes.setModel(new javax.swing.table.DefaultTableModel(
+        jTableOrdemServico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -114,73 +118,25 @@ public class BuscarOrdemServicoView extends javax.swing.JInternalFrame {
 
             }
         ));
-        jTableClientes.setColumnSelectionAllowed(true);
-        jTableClientes.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(jTableClientes);
-        jTableClientes.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTableOrdemServico.setColumnSelectionAllowed(true);
+        jTableOrdemServico.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(jTableOrdemServico);
+        jTableOrdemServico.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 62, 634, 264));
 
         jLabelObserverQTD.setText("0");
+        getContentPane().add(jLabelObserverQTD, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 340, -1, -1));
 
         jLabelQtdRegistros.setText("Quantidade de Ordem de Serviço Cadastrados:");
+        getContentPane().add(jLabelQtdRegistros, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, -1, -1));
 
         jButtonDesfazer.setText("Desfazer");
+        getContentPane().add(jButtonDesfazer, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 393, 100, -1));
+        getContentPane().add(jTextFieldBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 22, 369, -1));
 
         jComboBoxTipoBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Data", "Nome do Fiscal", "Número" }));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBoxTipoBusca, 0, 113, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonBuscar))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabelQtdRegistros)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelObserverQTD))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButtonDesfazer, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jButtonVisualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21)
-                        .addComponent(jButtonFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButtonBuscar)
-                    .addComponent(jTextFieldBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxTipoBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelObserverQTD)
-                    .addComponent(jLabelQtdRegistros))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonVisualizar)
-                    .addComponent(jButtonFechar)
-                    .addComponent(jButtonNovo)
-                    .addComponent(jButtonDesfazer))
-                .addContainerGap())
-        );
+        getContentPane().add(jComboBoxTipoBusca, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 22, 123, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -197,7 +153,7 @@ public class BuscarOrdemServicoView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelObserverQTD;
     private javax.swing.JLabel jLabelQtdRegistros;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTableClientes;
+    private javax.swing.JTable jTableOrdemServico;
     private javax.swing.JTextField jTextFieldBuscar;
     // End of variables declaration//GEN-END:variables
 

@@ -23,13 +23,11 @@ public class NivelMinimoServico {
     
     
     public void addNiveisServicos(NivelServico nivelServico){
-        this.niveisServicos.add(nivelServico);
-        
+        this.niveisServicos.add(nivelServico);      
     }
     
     public void addCriteriosGerais(CriterioGeralNMS criterioGeralNMS){
-        this.criteriosGerais.add(criterioGeralNMS);
-        
+        this.criteriosGerais.add(criterioGeralNMS);        
     }
 
     public ArrayList<CriterioGeralNMS> getCriteriosGerais() {

@@ -13,11 +13,11 @@ import presenter.ManterOrdemServicoPresenter;
  *
  * @author Josep
  */
-public abstract class State {
+public abstract class StateManterOrdemServico {
 
     protected ManterOrdemServicoPresenter presenter;  
     
-    public State(ManterOrdemServicoPresenter presenter) {
+    public StateManterOrdemServico(ManterOrdemServicoPresenter presenter) {
         this.presenter = presenter;
     }
 

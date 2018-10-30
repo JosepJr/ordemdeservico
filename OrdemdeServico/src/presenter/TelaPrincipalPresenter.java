@@ -10,10 +10,9 @@ import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import model.Usuario;
-import presenter.BuscarOrdemServicoPresenter;
-import presenter.LoginPresenter;
 import view.TelaPrincipalView;
 
 /**
@@ -68,17 +67,17 @@ public class TelaPrincipalPresenter {
         });
         
         this.view.getjMenuItemBuscar().addActionListener((ActionEvent e) -> { 
-            this.view.getjDesktopPanePrincipal().add(BuscarOrdemServicoPresenter.getInstance().getView()).setVisible(true);
+            try {
+                this.view.getjDesktopPanePrincipal().add(BuscarOrdemServicoPresenter.getInstance().getView()).setVisible(true);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
         });
         
         this.view.getjMenuItemGraficoLinha().addActionListener((ActionEvent e) -> { 
 
         });
-        
-        this.view.getjRadioButtonMenuItemJSON().addActionListener((e) -> {
-
-        });
-        
+                
         this.view.getjRadioButtonMenuItemXML().addActionListener((e) -> {
 
         });
