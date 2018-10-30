@@ -67,17 +67,6 @@ public class TabelaManterOSView extends javax.swing.JInternalFrame {
         setPreferredSize(new java.awt.Dimension(670, 500));
         setRequestFocusEnabled(false);
 
-        jTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
         jScrollPane1.setViewportView(jTable);
 
         jLabelTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N

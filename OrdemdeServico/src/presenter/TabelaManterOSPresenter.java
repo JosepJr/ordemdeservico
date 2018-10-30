@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
+import javax.swing.table.DefaultTableModel;
 import model.OrdemServico;
 import state.StateTabelaManterOrdemServico;
 import state.TabelaManterHistoriaState;
@@ -25,6 +26,7 @@ public class TabelaManterOSPresenter {
     private static TabelaManterOSPresenter instance;
     private final TabelaManterOSView view;
     private StateTabelaManterOrdemServico state;
+    private DefaultTableModel tablemodel;
     
     private TabelaManterOSPresenter(){        
         this.view = new TabelaManterOSView();
@@ -40,6 +42,7 @@ public class TabelaManterOSPresenter {
     }   
      
     public void configurarView() {
+        this.resetActionListeners();
         this.setPosicao();          
         this.view.addInternalFrameListener(new InternalFrameAdapter() {
             @Override
@@ -58,7 +61,7 @@ public class TabelaManterOSPresenter {
         this.state.visualizar(os);
     }
     
-    private void fecharView() {
+    public void fecharView() {
         TabelaManterOSPresenter.instance = null;
         this.view.dispose();
     }
@@ -81,6 +84,19 @@ public class TabelaManterOSPresenter {
     public TabelaManterOSView getView() {
         return view;
     }
+
+    public StateTabelaManterOrdemServico getState() {
+        return state;
+    }
+
+    public DefaultTableModel getTablemodel() {
+        return tablemodel;
+    }
+
+    public void setTablemodel(DefaultTableModel tablemodel) {
+        this.tablemodel = tablemodel;
+    }
+    
     
     
     public int setJanelaConfirmacao(String mensagem) {

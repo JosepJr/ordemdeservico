@@ -5,8 +5,14 @@
  */
 package state;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.HistoriaUsuario;
 import model.OrdemServico;
+import presenter.ManterOrdemServicoPresenter;
 import presenter.TabelaManterOSPresenter;
+import presenter.TelaPrincipalPresenter;
+import test.DadosTeste;
 
 /**
  *
@@ -22,11 +28,65 @@ public class TabelaManterHistoriaState extends StateTabelaManterOrdemServico{
     
     @Override
     public void visualizar(OrdemServico os){
+        try {
+            this.preencherTabela(os);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        this.presenter.resetActionListeners();
         this.presenter.getView().setVisible(true);
+        this.presenter.getView().getjLabelTitulo().setText("Histórias de Usuário");
+        
+        this.presenter.getView().getjButtonVisualizar().addActionListener((e1) -> {
+            if (this.presenter.getView().getjTable().getSelectedColumn() == 0) {
+                try {
+                    for(HistoriaUsuario historia : os.getHistoriasUsuarios()){
+                       if(this.presenter.getView().getjTable().getValueAt(this.presenter.getView().getjTable().getSelectedRow(), 0).toString().equals(historia.getNome())){
+                                                    
+                       } 
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Favor selecionar somente o Nome da História de Usuário!");
+            }
+        });
+        
+        this.presenter.getView().getjButtonCancelar().addActionListener((el) -> {
+            this.presenter.fecharView();
+        });
     
     }
     
     
+    private DefaultTableModel montarTabela() {
+        this.presenter.setTablemodel(new DefaultTableModel(new Object[][]{}, new String[]{"Nome da História de Usuário", "Situação da História de Usuário"}) {
+            @Override
+            public boolean isCellEditable(int row, int col) {
+                return false;
+            }
+        });
+        return this.presenter.getTablemodel();
+    }
+
     
+    \\\\\\\\\\\\\\\\\
+    public void preencherTabela(OrdemServico os) throws Exception {
+
+        this.presenter.setTablemodel(this.montarTabela());
+
+        for (HistoriaUsuario historias : os.getHistoriasUsuarios()) {
+            try {
+                this.presenter.getTablemodel().addRow(new Object[]{
+                    historias.getNome(),
+                    historias.getSituacao()
+                });
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
+        }
+        this.presenter.getView().getjTable().setModel(this.presenter.getTablemodel());
+    }
     
 }

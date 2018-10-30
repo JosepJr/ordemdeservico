@@ -117,11 +117,10 @@ public class BuscarOrdemServicoPresenter{
             if (this.view.getjTableOrdemServico().getSelectedColumn() == 0) {
                 try {
                     for(OrdemServico ordens : DadosTeste.getInstance().getOrdensServico()){
-                       if(this.view.getjTableOrdemServico().getValueAt(this.view.getjTableOrdemServico().getSelectedRow(), 0).toString()
-                               .equals(Integer.toString(ordens.getNumero()))){
-                           OrdemServico os = ordens;
-                           ManterOrdemServicoPresenter.getInstance().editar(0, os);
-                       }                   
+                       if(this.view.getjTableOrdemServico().getValueAt(this.view.getjTableOrdemServico().getSelectedRow(), 0).toString().equals(Integer.toString(ordens.getNumero()))){
+                           TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add(ManterOrdemServicoPresenter.getInstance().getView());
+                           ManterOrdemServicoPresenter.getInstance().editar(0, ordens);
+                       } 
                     }
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
