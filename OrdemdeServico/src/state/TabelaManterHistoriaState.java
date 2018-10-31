@@ -34,10 +34,11 @@ public class TabelaManterHistoriaState extends StateTabelaManterOrdemServico {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        this.presenter.resetActionListeners();
-        this.presenter.getView().setVisible(true);
+        this.presenter.resetarConfiguracoes();
         this.presenter.getView().setTitle("Histórias de Usuário (Visualização / Edição)");
-        this.presenter.getView().getjLabelTitulo().setText("Histórias de Usuário");        
+        this.presenter.getView().getjLabelTitulo().setText("Histórias de Usuário");
+        this.presenter.getView().getjButtonEditar().setText("Excluir");
+        this.presenter.getView().setVisible(true);
         this.command.executar(this.presenter, os);
     }
 

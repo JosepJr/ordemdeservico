@@ -41,9 +41,8 @@ public class TabelaManterOSPresenter {
     }
 
     public void configurarView() {
-        this.resetActionListeners();
+        this.resetarConfiguracoes();
         this.setPosicao();
-        this.resetarBotoes();
         this.view.addInternalFrameListener(new InternalFrameAdapter() {
             @Override
             public void internalFrameClosing(InternalFrameEvent ife) {
@@ -54,8 +53,6 @@ public class TabelaManterOSPresenter {
                 }
             }
         });
-        this.visibilidadeCampos(false, false, false, false);
-        this.configurarBotoes(false, true, true, true);
     }
 
     public void visualizar(OrdemServico os) {
@@ -77,7 +74,6 @@ public class TabelaManterOSPresenter {
         for (ActionListener act : this.view.getjButtonCancelar().getActionListeners()) {
             this.view.getjButtonCancelar().removeActionListener(act);
         }
-
         for (ActionListener act : this.view.getjButtonVisualizar().getActionListeners()) {
             this.view.getjButtonVisualizar().removeActionListener(act);
         }
@@ -137,7 +133,7 @@ public class TabelaManterOSPresenter {
         this.view.getjTextField2().setEnabled(b2);
     }
 
-    public void configurarBotoes(boolean b1, boolean b2, boolean b3, boolean b4) {
+    public void configurarVisibilidadeBotoes(boolean b1, boolean b2, boolean b3, boolean b4) {
         this.view.getjButtonEditar().setVisible(b1);
         this.view.getjButtonVisualizar().setVisible(b2);
         this.view.getjButtonAvancar().setVisible(b3);
@@ -147,9 +143,14 @@ public class TabelaManterOSPresenter {
     public void resetarBotoes(){
         this.view.getjButtonAvancar().setEnabled(true);
         this.view.getjButtonVisualizar().setEnabled(true);
-        this.view.getjButtonEditar().setText("Editar");
-        this.view.getjButtonVisualizar().setText("Visualizar");
-    
+        this.view.getjButtonEditar().setVisible(true);
+        this.view.getjButtonEditar().setText("Editar");   
     }
-
+    
+    public void resetarConfiguracoes(){
+        this.resetarBotoes();
+        this.resetActionListeners();
+        this.visibilidadeCampos(false, false, false, false);
+        this.configurarVisibilidadeBotoes(true, true, true, true);
+    }
 }
