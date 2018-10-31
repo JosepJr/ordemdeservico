@@ -44,15 +44,15 @@ public class DadosTeste {
 
             //---------------------------------HISTORIA USUARIO 1-----------------------------------------------------
             DisciplinaHistoriaUsuario dc0 = new DisciplinaHistoriaUsuario("Descrição 1", "aaaaaaaaaaaaaa", 100.00);
-            DisciplinaHistoriaUsuario dc1 = new DisciplinaHistoriaUsuario("Descriçã 2", "bbbbbbbbbbbbbbb", 151.00);
-            DisciplinaHistoriaUsuario dc2 = new DisciplinaHistoriaUsuario("Descriçã 3", "cccccccccccccc", 154.00);
+            DisciplinaHistoriaUsuario dc1 = new DisciplinaHistoriaUsuario("Descrição 2", "bbbbbbbbbbbbbbb", 151.00);
+            DisciplinaHistoriaUsuario dc2 = new DisciplinaHistoriaUsuario("Descrição 3", "cccccccccccccc", 154.00);
             HistoriaUsuario h1 = new HistoriaUsuario("Historia Usuario 1", "Semi Aberta", dc0);
             h1.addDisciplina(dc1);
             h1.addDisciplina(dc2);
             //-------------------------------------HISTORIA USUARIO 2--------------------------------------------------                    
-            DisciplinaHistoriaUsuario dc3 = new DisciplinaHistoriaUsuario("Descriçã 1", "ddddddddddddddd", 158.00);
-            DisciplinaHistoriaUsuario dc4 = new DisciplinaHistoriaUsuario("Descriçã 2", "eeeeeeeeeeeeeee", 150.00);
-            DisciplinaHistoriaUsuario dc5 = new DisciplinaHistoriaUsuario("Descriçã 3", "fffffffffffffffff", 50.00);
+            DisciplinaHistoriaUsuario dc3 = new DisciplinaHistoriaUsuario("Descrição 1", "ddddddddddddddd", 158.00);
+            DisciplinaHistoriaUsuario dc4 = new DisciplinaHistoriaUsuario("Descrição 2", "eeeeeeeeeeeeeee", 150.00);
+            DisciplinaHistoriaUsuario dc5 = new DisciplinaHistoriaUsuario("Descrição 3", "fffffffffffffffff", 50.00);
             HistoriaUsuario h2 = new HistoriaUsuario("Historia Usuario 2", "Semi Fechada", dc3);
             h2.addDisciplina(dc4);
             h2.addDisciplina(dc5);

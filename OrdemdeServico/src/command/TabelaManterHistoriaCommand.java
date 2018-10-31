@@ -6,58 +6,61 @@
 package command;
 
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.DisciplinaHistoriaUsuario;
 import model.HistoriaUsuario;
+import model.OrdemServico;
 import presenter.TabelaManterOSPresenter;
 
 /**
  *
  * @author Josep
  */
-public class TabelaManterHistoriaCommand implements ICommandTabela{
+public class TabelaManterHistoriaCommand implements ICommandTabela {
 
     private static TabelaManterHistoriaCommand instance;
-    
-    
-    private TabelaManterHistoriaCommand(){
-    
-    
+
+    private TabelaManterHistoriaCommand() {
+
     }
-    
-    public static TabelaManterHistoriaCommand getInstance(){
-        if(instance == null){
+
+    public static TabelaManterHistoriaCommand getInstance() {
+        if (instance == null) {
             instance = new TabelaManterHistoriaCommand();
         }
         return instance;
     }
-    
-    
-    
-    
+
     @Override
     public void executar(TabelaManterOSPresenter presenter, Object o) {
-        HistoriaUsuario historia= (HistoriaUsuario) o;        
-        presenter.bloquearTextFields(true, true);
-        presenter.preencherCampos("Nome da História de Usuário:", historia.getNome(), "Situação da História de Usuário", historia.getSituacao());
-        presenter.visibilidadeCampos(true, true, true, true);
-        try {
-            this.preencherTabela(presenter, historia.getDisciplinas());
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
+        OrdemServico os = (OrdemServico) o;
+
+        presenter.getView().getjButtonVisualizar().addActionListener((e1) -> {
+            if (presenter.getView().getjTable().getSelectedColumn() == 0) {
+                for (HistoriaUsuario historia : os.getHistoriasUsuarios()) {
+                    if (presenter.getView().getjTable().getValueAt(presenter.getView().getjTable().getSelectedRow(), 0).equals(historia.getNome())) {
+                        this.historiaSelecionada(presenter, o ,  historia);
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Favor selecionar somente o Nome da História de Usuário!");
+
+            }
+        });
+
+        presenter.getView().getjButtonCancelar().addActionListener((el) -> {
+            presenter.fecharView();
+        });
+
     }
 
     @Override
     public void desfazer() {
     }
-    
 
     private DefaultTableModel montarTabela(TabelaManterOSPresenter presenter) {
-        presenter.setTablemodel(new DefaultTableModel(new Object[][]{}, new String[]{"Disciplina", "Tarefa","UST"}) {
+        presenter.setTablemodel(new DefaultTableModel(new Object[][]{}, new String[]{"Disciplina", "Tarefa", "UST"}) {
             @Override
             public boolean isCellEditable(int row, int col) {
                 return false;
@@ -76,10 +79,48 @@ public class TabelaManterHistoriaCommand implements ICommandTabela{
                     disciplinasHistoriaUsuario.getUST()
                 });
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, ex.getMessage());
+                throw new Exception(ex.getMessage());
             }
         }
         presenter.getView().getjTable().setModel(presenter.getTablemodel());
     }
-    
+
+    private void historiaSelecionada(TabelaManterOSPresenter presenter, Object o ,HistoriaUsuario historia) {
+        presenter.getView().setTitle("Disciplinas Historia de Usuario (Visualização / Edição)");
+        presenter.getView().getjLabelTitulo().setText("Disciplina História de Usuário " + historia.getNome());
+        presenter.bloquearTextFields(false, false);
+        presenter.preencherCampos("Nome da História de Usuário:", historia.getNome(), "Situação da História de Usuário:", historia.getSituacao());
+        presenter.visibilidadeCampos(true, true, true, true);
+        presenter.getView().getjButtonEditar().setVisible(true);
+        presenter.getView().getjButtonAvancar().setEnabled(false);
+        presenter.getView().getjButtonVisualizar().setEnabled(false);
+
+        presenter.getView().getjButtonEditar().addActionListener((el) -> {
+            presenter.bloquearTextFields(true, true);
+
+            presenter.getView().getjButtonEditar().setText("Salvar");
+
+            presenter.resetActionListeners();
+
+            presenter.getView().getjButtonCancelar().addActionListener((e2) -> {
+                presenter.fecharView();
+            });
+
+            presenter.getView().getjButtonEditar().addActionListener((e) -> {
+                //Salvar os novos dados pegue dos campos textfied.
+
+                JOptionPane.showMessageDialog(null, "História Usuário Editada com Sucesso!");
+                TabelaManterOSPresenter.getInstance().visualizar((OrdemServico)o);
+            });
+
+        });
+
+        try {
+            this.preencherTabela(presenter, historia.getDisciplinas());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+
+    }
+
 }

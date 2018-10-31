@@ -17,33 +17,33 @@ import state.StateTabelaManterOrdemServico;
 import state.TabelaManterHistoriaState;
 import view.TabelaManterOSView;
 
-
 /**
  *
  * @author Josep
  */
 public class TabelaManterOSPresenter {
+
     private static TabelaManterOSPresenter instance;
     private final TabelaManterOSView view;
     private StateTabelaManterOrdemServico state;
     private DefaultTableModel tablemodel;
-    
-    private TabelaManterOSPresenter(){        
+
+    private TabelaManterOSPresenter() {
         this.view = new TabelaManterOSView();
         this.configurarView();
     }
-    
-    
-    public static TabelaManterOSPresenter getInstance(){
-        if(instance == null){
+
+    public static TabelaManterOSPresenter getInstance() {
+        if (instance == null) {
             instance = new TabelaManterOSPresenter();
         }
         return instance;
-    }   
-     
+    }
+
     public void configurarView() {
         this.resetActionListeners();
-        this.setPosicao();          
+        this.setPosicao();
+        this.resetarBotoes();
         this.view.addInternalFrameListener(new InternalFrameAdapter() {
             @Override
             public void internalFrameClosing(InternalFrameEvent ife) {
@@ -55,13 +55,14 @@ public class TabelaManterOSPresenter {
             }
         });
         this.visibilidadeCampos(false, false, false, false);
-     }
-   
-    public void visualizar(OrdemServico os){
+        this.configurarBotoes(false, true, true, true);
+    }
+
+    public void visualizar(OrdemServico os) {
         this.state = new TabelaManterHistoriaState(this);
         this.state.visualizar(os);
     }
-    
+
     public void fecharView() {
         TabelaManterOSPresenter.instance = null;
         this.view.dispose();
@@ -71,15 +72,22 @@ public class TabelaManterOSPresenter {
         Dimension d = TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().getSize();
         this.view.setLocation((d.width - this.view.getSize().width) / 2, (d.height - this.view.getSize().height) / 2);
     }
-    
-    public void resetActionListeners(){
-    for (ActionListener act : this.view.getjButtonCancelar().getActionListeners()) {
+
+    public void resetActionListeners() {
+        for (ActionListener act : this.view.getjButtonCancelar().getActionListeners()) {
             this.view.getjButtonCancelar().removeActionListener(act);
         }
 
         for (ActionListener act : this.view.getjButtonVisualizar().getActionListeners()) {
             this.view.getjButtonVisualizar().removeActionListener(act);
         }
+        for (ActionListener act : this.view.getjButtonEditar().getActionListeners()) {
+            this.view.getjButtonEditar().removeActionListener(act);
+        }
+        for (ActionListener act : this.view.getjButtonAvancar().getActionListeners()) {
+            this.view.getjButtonAvancar().removeActionListener(act);
+        }
+
     }
 
     public TabelaManterOSView getView() {
@@ -97,7 +105,7 @@ public class TabelaManterOSPresenter {
     public void setTablemodel(DefaultTableModel tablemodel) {
         this.tablemodel = tablemodel;
     }
-   
+
     public int setJanelaConfirmacao(String mensagem) {
         UIManager.put("OptionPane.yesButtonText", "Sim");
         UIManager.put("OptionPane.noButtonText", "Não");
@@ -109,24 +117,39 @@ public class TabelaManterOSPresenter {
         }
         return -1;
     }
-    
-    public void visibilidadeCampos(boolean b1, boolean b2, boolean b3, boolean b4){
+
+    public void visibilidadeCampos(boolean b1, boolean b2, boolean b3, boolean b4) {
         this.view.getjLabel1().setVisible(b1);
         this.view.getjTextField1().setVisible(b2);
         this.view.getjLabel2().setVisible(b3);
-        this.view.getjTextField2().setVisible(b4);    
+        this.view.getjTextField2().setVisible(b4);
     }
-    
-    public void preencherCampos(String s1, String s2, String s3, String s4){
+
+    public void preencherCampos(String s1, String s2, String s3, String s4) {
         this.view.getjLabel1().setText(s1);
         this.view.getjTextField1().setText(s2);
         this.view.getjLabel2().setText(s3);
-        this.view.getjTextField2().setText(s4);    
+        this.view.getjTextField2().setText(s4);
+    }
+
+    public void bloquearTextFields(boolean b1, boolean b2) {
+        this.view.getjTextField1().setEnabled(b1);
+        this.view.getjTextField2().setEnabled(b2);
+    }
+
+    public void configurarBotoes(boolean b1, boolean b2, boolean b3, boolean b4) {
+        this.view.getjButtonEditar().setVisible(b1);
+        this.view.getjButtonVisualizar().setVisible(b2);
+        this.view.getjButtonAvancar().setVisible(b3);
+        this.view.getjButtonCancelar().setVisible(b4);
     }
     
-    public void bloquearTextFields(boolean b1, boolean b2){
-        this.view.getjTextField1().setEnabled(b1);
-        this.view.getjTextField2().setEnabled(b2);    
+    public void resetarBotoes(){
+        this.view.getjButtonAvancar().setEnabled(true);
+        this.view.getjButtonVisualizar().setEnabled(true);
+        this.view.getjButtonEditar().setText("Editar");
+        this.view.getjButtonVisualizar().setText("Visualizar");
+    
     }
-  
+
 }

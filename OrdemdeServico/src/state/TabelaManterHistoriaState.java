@@ -18,17 +18,17 @@ import presenter.TabelaManterOSPresenter;
  *
  * @author Josep
  */
-public class TabelaManterHistoriaState extends StateTabelaManterOrdemServico{
-    
+public class TabelaManterHistoriaState extends StateTabelaManterOrdemServico {
+
     private final ICommandTabela command;
-    
+
     public TabelaManterHistoriaState(TabelaManterOSPresenter presenter) {
         super(presenter);
         this.command = TabelaManterHistoriaCommand.getInstance();
     }
-    
+
     @Override
-    public void visualizar(OrdemServico os){
+    public void visualizar(OrdemServico os) {
         try {
             this.preencherTabela(os);
         } catch (Exception ex) {
@@ -36,32 +36,12 @@ public class TabelaManterHistoriaState extends StateTabelaManterOrdemServico{
         }
         this.presenter.resetActionListeners();
         this.presenter.getView().setVisible(true);
-        this.presenter.getView().getjLabelTitulo().setText("Histórias de Usuário");
-        
-        this.presenter.getView().getjButtonVisualizar().addActionListener((e1) -> {
-            if (this.presenter.getView().getjTable().getSelectedColumn() == 0) {
-                try {
-                    for(HistoriaUsuario historia : os.getHistoriasUsuarios()){
-                       if(this.presenter.getView().getjTable().getValueAt(this.presenter.getView().getjTable().getSelectedRow(), 0).toString().equals(historia.getNome())){
-                           this.command.executar(this.presenter, historia);
-                       } 
-                    }
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage());
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Favor selecionar somente o Nome da História de Usuário!");
-            }
-        });
-        
-        this.presenter.getView().getjButtonCancelar().addActionListener((el) -> {
-            this.presenter.fecharView();
-        });
-    
+        this.presenter.getView().setTitle("Histórias de Usuário (Visualização / Edição)");
+        this.presenter.getView().getjLabelTitulo().setText("Histórias de Usuário");        
+        this.command.executar(this.presenter, os);
     }
-    
-    
-     private DefaultTableModel montarTabela() {
+
+    private DefaultTableModel montarTabela() {
         this.presenter.setTablemodel(new DefaultTableModel(new Object[][]{}, new String[]{"Nome da História de Usuário", "Situacao da História de Usuário"}) {
             @Override
             public boolean isCellEditable(int row, int col) {
@@ -80,7 +60,7 @@ public class TabelaManterHistoriaState extends StateTabelaManterOrdemServico{
                     historias.getSituacao()
                 });
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, ex.getMessage());
+                throw new Exception(ex.getMessage());
             }
         }
         this.presenter.getView().getjTable().setModel(this.presenter.getTablemodel());
