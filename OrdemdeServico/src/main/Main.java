@@ -15,14 +15,15 @@ import test.DadosTeste;
  * @author Josep
  */
 public class Main {
-    
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         try {
             ConexaoSQLite.getInstance();
+            
             DadosTeste.getInstance();
-            LoginPresenter.getInstance();            
+            LoginPresenter.getInstance();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
-        }   
-    }   
+        }
+    }
 }
