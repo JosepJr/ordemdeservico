@@ -55,7 +55,7 @@ public class SituacaoOrdemServicoCommand implements ICommandManterOS {
             presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
                 //presenter.editar(2, os);
                 TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add(TabelaManterOSPresenter.getInstance().getView());
-                TabelaManterOSPresenter.getInstance().visualizar(os);
+                TabelaManterOSPresenter.getInstance().visualizar(null, os, 1);
             });
 
             presenter.getView().getjButtonEditar().addActionListener((e) -> {

@@ -14,7 +14,7 @@ import presenter.TabelaManterOSPresenter;
  */
 public interface ICommandTabela {
     
-    public void executar(TabelaManterOSPresenter presenter, Object o);
+    public void executar(TabelaManterOSPresenter presenter, Object o, OrdemServico os);
     
     public void desfazer();
     

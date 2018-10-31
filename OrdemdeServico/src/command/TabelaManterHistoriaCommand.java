@@ -34,18 +34,17 @@ public class TabelaManterHistoriaCommand implements ICommandTabela {
     }
 
     @Override
-    public void executar(TabelaManterOSPresenter presenter, Object o) {
-        OrdemServico os = (OrdemServico) o;
+    public void executar(TabelaManterOSPresenter presenter, Object o, OrdemServico os) {
         presenter.resetActionListeners();
         presenter.getView().getjButtonVisualizar().addActionListener((e1) -> {
             if (presenter.getView().getjTable().getSelectedColumn() == 0) {
                 for (HistoriaUsuario historia : os.getHistoriasUsuarios()) {
                     try {
                         if (presenter.getView().getjTable().getValueAt(presenter.getView().getjTable().getSelectedRow(), 0).equals(historia.getNome())) {
-                            this.historiaSelecionada(presenter, os, historia);
+                            presenter.visualizar(historia, os, 2);
                         }
                     } catch (Exception ex) {
-                        //Tratar essa exception
+                        //Tratar essa exception pois ela esta dando um erro que eu não sei qual é
                     }
                 }
             } else {
@@ -54,24 +53,24 @@ public class TabelaManterHistoriaCommand implements ICommandTabela {
         });
 
         presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
-            if (presenter.setJanelaConfirmacao("Deseja realmente cancelar a edição da Ordem de Serviço (OS)? \n A janela será fechada e o restante da edição não será realizada.") == 0) {
+            if (presenter.setJanelaConfirmacao("Deseja realmente cancelar a edição da Ordem de Serviço (OS)? \n A janela será fechada e o restante da edição não será realizada.\n Atualizações já feitas serão mantidas.") == 0) {
                 presenter.fecharView();
                 ManterOrdemServicoPresenter.getInstance().fecharView();
             }
         });
 
         presenter.getView().getjButtonEditar().addActionListener((e) -> {
-            if (presenter.getView().getjTable().getSelectedColumn() == 0) {          
+            if (presenter.getView().getjTable().getSelectedColumn() == 0) {
                 if (presenter.getView().getjTable().getRowCount() > 1) {
                     if (presenter.setJanelaConfirmacao("Deseja  mesmo Excluir essa História de Usuário com todas as suas Disciplinas?") == 0) {
-                        //Realizar a exclusão da OS
+                        //Realizar a exclusão da Historia completa
                         JOptionPane.showMessageDialog(null, "Hisória de Usuário Excluida com sucesso!");
-                        presenter.visualizar(os);
+                        presenter.visualizar(null, os, 1);
                     }
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(null, "Não é possível Realizar a exclusão desta História pois ela é unica!");
                 }
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Favor selecionar o nome de História de Usuário para a exclusão!");
             }
         });
@@ -106,43 +105,4 @@ public class TabelaManterHistoriaCommand implements ICommandTabela {
         }
         presenter.getView().getjTable().setModel(presenter.getTablemodel());
     }
-
-    private void historiaSelecionada(TabelaManterOSPresenter presenter, Object o, HistoriaUsuario historia) {
-        OrdemServico os = (OrdemServico) o;
-        presenter.resetarConfiguracoes();        
-        try {
-            this.preencherTabela(presenter, historia.getDisciplinas());
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-
-        presenter.getView().setTitle("Disciplinas Historia de Usuario (Visualização / Edição)");
-        presenter.getView().getjLabelTitulo().setText("Disciplina História de Usuário " + historia.getNome());
-        presenter.preencherCampos("Nome da História de Usuário:", historia.getNome(), "Situação da História de Usuário:", historia.getSituacao());
-        presenter.visibilidadeCampos(true, true, true, true);
-        presenter.bloquearTextFields(false, false);
-
-        presenter.getView().getjButtonEditar().addActionListener((el) -> {
-            presenter.bloquearTextFields(true, true);
-            presenter.resetActionListeners();
-            presenter.getView().getjButtonEditar().setText("Salvar");
-            presenter.getView().getjButtonVisualizar().setEnabled(false);
-            presenter.getView().getjButtonAvancar().setEnabled(false);
-
-            presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
-                if (presenter.setJanelaConfirmacao("Deseja realmente cancelar a edição da Ordem de Serviço (OS)? \n A janela será fechada e o restante da edição não será realizada.") == 0) {
-                    presenter.fecharView();
-                    ManterOrdemServicoPresenter.getInstance().fecharView();
-                }
-            });
-            presenter.getView().getjButtonEditar().addActionListener((e) -> {
-                //Salvar os novos dados pegue dos campos textfied.
-
-                JOptionPane.showMessageDialog(null, "História Usuário Editada com Sucesso!");
-                presenter.visualizar(os);
-
-            });
-        });
-    }
-
 }

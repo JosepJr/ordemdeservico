@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package state;
+package statemanter;
 
 import model.OrdemServico;
 import presenter.TabelaManterOSPresenter;
@@ -20,13 +20,8 @@ public abstract class StateTabelaManterOrdemServico {
         this.presenter = presenter;
     }
 
-    public void visualizar(OrdemServico os) {
+    public void visualizar(Object o, OrdemServico os) {
         throw new IllegalStateException();
     }
-    
-    public void excluir(){
-        throw new IllegalStateException();
-    }
-
     
 }

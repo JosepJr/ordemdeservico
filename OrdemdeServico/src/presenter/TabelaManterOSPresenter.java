@@ -12,9 +12,11 @@ import javax.swing.UIManager;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.table.DefaultTableModel;
+import model.HistoriaUsuario;
 import model.OrdemServico;
-import state.StateTabelaManterOrdemServico;
-import state.TabelaManterHistoriaState;
+import statemanter.ManterHistoriaState;
+import statemanter.StateTabelaManterOrdemServico;
+import statemanter.TabelaHistoriaState;
 import view.TabelaManterOSView;
 
 /**
@@ -48,6 +50,7 @@ public class TabelaManterOSPresenter {
             public void internalFrameClosing(InternalFrameEvent ife) {
                 try {
                     TabelaManterOSPresenter.getInstance().fecharView();
+                    TabelaManterOSPresenter.getInstance().fecharView();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }
@@ -55,9 +58,17 @@ public class TabelaManterOSPresenter {
         });
     }
 
-    public void visualizar(OrdemServico os) {
-        this.state = new TabelaManterHistoriaState(this);
-        this.state.visualizar(os);
+    public void visualizar(Object o, OrdemServico os ,int indice) {
+        if(indice == 1){
+            this.state = new TabelaHistoriaState(this);
+            this.state.visualizar(null, os);
+        }
+        if(indice == 2){
+            HistoriaUsuario historia = (HistoriaUsuario) o;
+            this.state = new ManterHistoriaState(this);
+            this.state.visualizar(historia, os);
+        }
+        
     }
 
     public void fecharView() {
@@ -144,11 +155,14 @@ public class TabelaManterOSPresenter {
         this.view.getjButtonAvancar().setEnabled(true);
         this.view.getjButtonVisualizar().setEnabled(true);
         this.view.getjButtonEditar().setVisible(true);
-        this.view.getjButtonEditar().setText("Editar");   
+        this.view.getjButtonEditar().setText("Editar");
+        this.view.getjButtonVisualizar().setText("Visualizar");
     }
     
     public void resetarConfiguracoes(){
         this.resetarBotoes();
+        this.getView().getjLabelTitulo().setText("-------");
+        this.getView().getjLabelSubTitulo().setText("----");
         this.resetActionListeners();
         this.visibilidadeCampos(false, false, false, false);
         this.configurarVisibilidadeBotoes(true, true, true, true);

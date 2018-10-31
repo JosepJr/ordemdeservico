@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package state;
+package statemanter;
 
 import command.ICommandTabela;
 import command.TabelaManterHistoriaCommand;
@@ -17,17 +17,17 @@ import presenter.TabelaManterOSPresenter;
  *
  * @author Josep
  */
-public class TabelaManterHistoriaState extends StateTabelaManterOrdemServico {
+public class TabelaHistoriaState extends StateTabelaManterOrdemServico {
 
     private final ICommandTabela command;
 
-    public TabelaManterHistoriaState(TabelaManterOSPresenter presenter) {
+    public TabelaHistoriaState(TabelaManterOSPresenter presenter) {
         super(presenter);
         this.command = TabelaManterHistoriaCommand.getInstance();
     }
 
     @Override
-    public void visualizar(OrdemServico os) {
+    public void visualizar(Object o, OrdemServico os) {
         try {
             this.preencherTabela(os);
         } catch (Exception ex) {
@@ -38,7 +38,7 @@ public class TabelaManterHistoriaState extends StateTabelaManterOrdemServico {
         this.presenter.getView().getjLabelTitulo().setText("Histórias de Usuário");
         this.presenter.getView().getjButtonEditar().setText("Excluir");
         this.presenter.getView().setVisible(true);
-        this.command.executar(this.presenter, os);
+        this.command.executar(this.presenter, null, os);
     }
 
     private DefaultTableModel montarTabela() {

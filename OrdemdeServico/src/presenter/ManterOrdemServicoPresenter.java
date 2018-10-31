@@ -5,7 +5,7 @@
  */
 package presenter;
 
-import state.OrdemServicoState;
+import stateincluir.OrdemServicoState;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import view.ManterOrdemServicoView;
@@ -15,12 +15,12 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 import model.OrdemServico;
-import state.HistoriasUsuarioState;
-import state.HistoriasUsuarioState2;
-import state.RegistroNMSCriteriosGeraisState;
-import state.RegistroNMSNiveisServicoState;
-import state.SituacaoOrdemServicoState;
-import state.StateManterOrdemServico;
+import stateincluir.HistoriasUsuarioState;
+import stateincluir.HistoriasUsuarioState2;
+import stateincluir.RegistroNMSCriteriosGeraisState;
+import stateincluir.RegistroNMSNiveisServicoState;
+import stateincluir.SituacaoOrdemServicoState;
+import stateincluir.StateManterOrdemServico;
 
 /**
  *
