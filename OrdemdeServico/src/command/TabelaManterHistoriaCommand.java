@@ -124,15 +124,17 @@ public class TabelaManterHistoriaCommand implements ICommandTabela {
 
         presenter.getView().getjButtonEditar().addActionListener((el) -> {
             presenter.bloquearTextFields(true, true);
+            presenter.resetActionListeners();
             presenter.getView().getjButtonEditar().setText("Salvar");
             presenter.getView().getjButtonVisualizar().setEnabled(false);
             presenter.getView().getjButtonAvancar().setEnabled(false);
 
-
-            presenter.getView().getjButtonCancelar().addActionListener((e2) -> {
-                //presenter.fecharView();
+            presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
+                if (presenter.setJanelaConfirmacao("Deseja realmente cancelar a edição da Ordem de Serviço (OS)? \n A janela será fechada e o restante da edição não será realizada.") == 0) {
+                    presenter.fecharView();
+                    ManterOrdemServicoPresenter.getInstance().fecharView();
+                }
             });
-
             presenter.getView().getjButtonEditar().addActionListener((e) -> {
                 //Salvar os novos dados pegue dos campos textfied.
 

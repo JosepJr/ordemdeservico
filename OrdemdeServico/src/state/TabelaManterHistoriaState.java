@@ -5,7 +5,6 @@
  */
 package state;
 
-import command.ICommandManterOS;
 import command.ICommandTabela;
 import command.TabelaManterHistoriaCommand;
 import javax.swing.JOptionPane;
