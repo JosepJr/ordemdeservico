@@ -30,7 +30,7 @@ public class SituacaoOrdemServicoState extends StateManterOrdemServico {
         this.configurarStateView();
         this.presenter.configurarVisibleSituacao(true, true, false);
         this.presenter.getView().getjComboBoxSituacao().setEnabled(false);
-        this.command.executar(this.presenter, null);
+        this.command.executar(this.presenter, null, null);
     }
 
     @Override
@@ -45,11 +45,11 @@ public class SituacaoOrdemServicoState extends StateManterOrdemServico {
         if (situacao.getNumeroRevisao() == 0) {
             this.presenter.configurarVisibleSituacao(true, true, false);
             this.presenter.getView().getjComboBoxSituacao().setSelectedItem(situacao.getDescricao());
-            this.command.executar(this.presenter, os);
+            this.command.executar(this.presenter, os, null);
         } else {
             this.presenter.configurarVisibleSituacao(true, true, true);
             this.presenter.getView().getjLabelNumeroRevisao().setText(Integer.toString(situacao.getNumeroRevisao()));
-            this.command.executar(this.presenter, os);
+            this.command.executar(this.presenter, os, null);
         }
 
     }

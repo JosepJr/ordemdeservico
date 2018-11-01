@@ -26,7 +26,7 @@ public class OrdemServicoState extends StateManterOrdemServico {
     @Override
     public void incluir(OrdemServico os) {
         this.configurarViewState(); 
-        this.command.executar(this.presenter, null);
+        this.command.executar(this.presenter, null, null);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class OrdemServicoState extends StateManterOrdemServico {
         this.presenter.getView().getjButtonEditar().setVisible(true);
         this.presenter.preencherTextField(Integer.toString(os.getNumero()), os.getDataEmissao(), os.getNomeFiscalEmissor(), "", "","","","");
         this.presenter.habilitarTextField(false, false, false, true, true, true, true, true);
-        this.command.executar(this.presenter, os);
+        this.command.executar(this.presenter, os, null);
     }
 
     private void configurarViewState() {

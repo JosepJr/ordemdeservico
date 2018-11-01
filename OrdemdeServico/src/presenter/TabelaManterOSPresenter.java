@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 import model.HistoriaUsuario;
 import model.OrdemServico;
 import statemanter.ManterHistoriaState;
+import statemanter.ManterRNMSState;
 import statemanter.StateTabelaManterOrdemServico;
 import statemanter.TabelaHistoriaState;
 import view.TabelaManterOSView;
@@ -67,6 +68,10 @@ public class TabelaManterOSPresenter {
             HistoriaUsuario historia = (HistoriaUsuario) o;
             this.state = new ManterHistoriaState(this);
             this.state.visualizar(historia, os);
+        }
+        if(indice == 3){
+            this.state = new ManterRNMSState(this);
+            this.state.visualizar(null, os);
         }
         
     }
@@ -161,8 +166,8 @@ public class TabelaManterOSPresenter {
     
     public void resetarConfiguracoes(){
         this.resetarBotoes();
-        this.getView().getjLabelTitulo().setText("-------");
-        this.getView().getjLabelSubTitulo().setText("----");
+        this.getView().getjLabelTitulo().setText("");
+        this.getView().getjLabelSubTitulo().setText("");
         this.resetActionListeners();
         this.visibilidadeCampos(false, false, false, false);
         this.configurarVisibilidadeBotoes(true, true, true, true);

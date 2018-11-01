@@ -32,7 +32,7 @@ public class SituacaoOrdemServicoCommand implements ICommandManterOS {
     }
 
     @Override
-    public void executar(ManterOrdemServicoPresenter presenter, OrdemServico os) {
+    public void executar(ManterOrdemServicoPresenter presenter, OrdemServico os, Object o) {
         if (os == null) {
             presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
                 if (presenter.setJanelaConfirmacao("Deseja realmente cancelar a edição da Ordem de Serviço (OS)? \n A janela será fechada e o restante da edição não será realizada.") == 0) {

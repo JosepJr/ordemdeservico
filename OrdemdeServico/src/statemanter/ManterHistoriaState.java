@@ -13,7 +13,6 @@ import javax.swing.table.DefaultTableModel;
 import model.DisciplinaHistoriaUsuario;
 import model.HistoriaUsuario;
 import model.OrdemServico;
-import presenter.ManterOrdemServicoPresenter;
 import presenter.TabelaManterOSPresenter;
 
 /**
@@ -46,8 +45,9 @@ public class ManterHistoriaState extends StateTabelaManterOrdemServico {
         this.presenter.preencherCampos("Nome da História de Usuário:", historia.getNome(), "Situação da História de Usuário:", historia.getSituacao());
         this.presenter.visibilidadeCampos(true, true, true, true);
         this.presenter.bloquearTextFields(false, false);
+        this.presenter.getView().setVisible(true);
 
-        this.command.executar(presenter, historia, os);
+        this.command.executar(this.presenter, historia, os);
     }
 
     private DefaultTableModel montarTabela(TabelaManterOSPresenter presenter) {

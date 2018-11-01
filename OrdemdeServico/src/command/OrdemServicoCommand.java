@@ -30,7 +30,7 @@ public class OrdemServicoCommand implements ICommandManterOS{
     }
     
     @Override
-    public void executar(ManterOrdemServicoPresenter presenter, OrdemServico os) {
+    public void executar(ManterOrdemServicoPresenter presenter, OrdemServico os, Object o) {
         //Incluir OS
         if(os == null){            
             //Inclusão da ordem de serviço

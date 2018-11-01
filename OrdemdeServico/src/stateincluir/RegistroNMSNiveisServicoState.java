@@ -26,7 +26,7 @@ public class RegistroNMSNiveisServicoState extends StateManterOrdemServico{
      @Override
     public void incluir(OrdemServico os) {
         this.configurarViewState();  
-        this.command.executar(this.presenter, null);
+        this.command.executar(this.presenter, null, null);
     }
 
     @Override

@@ -112,11 +112,11 @@ public class ManterOrdemServicoPresenter {
         }
         if (indice == 3) {
             this.setState(new HistoriasUsuarioState2(this));
-            this.state.editar(os, null);
+            this.state.editar(os, o);
         }        
         if (indice == 4) {
             this.setState(new RegistroNMSCriteriosGeraisState(this));
-            this.state.editar(os, null);
+            this.state.editar(os, o);
         }
         if(indice == 5){
             this.setState(new RegistroNMSNiveisServicoState(this));

@@ -11,60 +11,48 @@ import model.HistoriaUsuario;
 import model.OrdemServico;
 import presenter.ManterOrdemServicoPresenter;
 import command.ICommandManterOS;
+import model.DisciplinaHistoriaUsuario;
 
 /**
  *
  * @author Josep
  */
-public class HistoriasUsuarioState2 extends StateManterOrdemServico{
-    
+public class HistoriasUsuarioState2 extends StateManterOrdemServico {
+
     private final ICommandManterOS command;
-    
+
     public HistoriasUsuarioState2(ManterOrdemServicoPresenter presenter) {
         super(presenter);
-        this.command = HistoriasUsuario2Command.getInstance();     
+        this.command = HistoriasUsuario2Command.getInstance();
     }
-    
+
     @Override
     public void incluir(OrdemServico os) {
         this.configurarViewState();
-        this.presenter.setLabelTitulo("Nova disciplina de história de Usuário", true);       
-        this.command.executar(this.presenter, null);
+        this.presenter.setLabelTitulo("Nova disciplina de história de Usuário", true);
+        this.command.executar(this.presenter, null, null);
     }
 
     @Override
     public void editar(OrdemServico os, Object o) {
-       this.configurarViewState();
+        DisciplinaHistoriaUsuario disciplina = (DisciplinaHistoriaUsuario)o;
+        this.configurarViewState();
+        this.presenter.setLabelTitulo("Disciplina História de Usuário", true);
+        this.presenter.setVisibleLabels(true, true, true, false, false, false, false, false);
+        this.presenter.habilitarTextField(false, false, false, false, false, false, false, false);
+        this.presenter.setVisibileTextFields(true, true, true, false, false, false, false, false);
+        this.presenter.setTextLabels("Disciplina:", "Tarefa:", "UST:", "", "", "", "", "");
+        this.presenter.preencherTextField(disciplina.getDescricao(), disciplina.getTarefa(), Double.toString(disciplina.getUST()),"","","","","");
+        this.command.executar(this.presenter, os, disciplina);
     }
 
     private void configurarViewState() {
         this.presenter.resetar();
         this.presenter.getView().setTitle("Histórias de Usuários (Inclusão / Edição)");
-        this.presenter.setTextLabels("Disciplina:", "Tarefa:", "UST:", "","", "", "","");
+        this.presenter.setTextLabels("Disciplina:", "Tarefa:", "UST:", "", "", "", "", "");
         this.presenter.setVisibleLabels(true, true, true, false, false, false, false, false);
         this.presenter.setVisibileTextFields(true, true, true, false, false, false, false, false);
         this.presenter.getView().setVisible(true);
         this.presenter.getView().moveToFront();
     }
-
-    public void percorrerHistorias(OrdemServico os, int index){
-        int i = os.getHistoriasUsuarios().size();        
-        this.presenter.setLabelTitulo("História de Usuário: "+ os.getHistoriasUsuarios().get(index).getNome(), true);
-        ArrayList<HistoriaUsuario> historias = os.getHistoriasUsuarios();
-        this.presenter.getView().getjButtonEditar().setVisible(true);
-        this.presenter.setVisibleLabels(true, true, true, true, true, true, true, true);
-        this.presenter.habilitarTextField(false, false, false, false, false, false, false, false);
-        this.presenter.setVisibileTextFields(true, true, true, true, true, true, true, true);
-        this.presenter.setTextLabels("Nome da história do usuário:", "Disciplina:", "Tarefa:", "UST:", "Subtotal de USTs:", "Subtotal (R$):", "SubTotal de PF:", "Situação da História de Usuário:");
-            this.presenter.preencherTextField(historias.get(index).getNome(),
-                    historias.get(index).getDisciplinas().get(index).getDescricao(),
-                    historias.get(index).getDisciplinas().get(index).getTarefa(),
-                    Double.toString(historias.get(index).getDisciplinas().get(0).getUST()),
-                    Double.toString(historias.get(index).getSubTotalUST()),
-                    Double.toString(historias.get(index).getSubTotalReais()), Double.toString(historias.get(0).getSubTotalPF()), historias.get(0).getSituacao());       
-            this.command.executar(this.presenter, os);
-    
-    }
-
 }
-

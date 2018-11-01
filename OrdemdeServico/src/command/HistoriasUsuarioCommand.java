@@ -30,7 +30,7 @@ public class HistoriasUsuarioCommand implements ICommandManterOS {
     }
 
     @Override
-    public void executar(ManterOrdemServicoPresenter presenter, OrdemServico os) {        
+    public void executar(ManterOrdemServicoPresenter presenter, OrdemServico os, Object o) {        
         if (os == null) {
             presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
                if(presenter.setJanelaConfirmacao("Deseja realmente cancelar o processo? \n A janela será fechada e a inclusão da ordem de serviço cancelada.")==0){

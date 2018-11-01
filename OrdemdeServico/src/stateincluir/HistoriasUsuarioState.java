@@ -29,7 +29,7 @@ public class HistoriasUsuarioState extends StateManterOrdemServico {
     public void incluir(OrdemServico os) {
         this.configurarViewState();
         this.presenter.setLabelTitulo("História de Usuário", true);
-        this.command.executar(this.presenter, null);
+        this.command.executar(this.presenter, null, null);
     }
 
     @Override

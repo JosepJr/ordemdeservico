@@ -5,9 +5,11 @@
  */
 package command;
 
+import model.DisciplinaHistoriaUsuario;
 import model.OrdemServico;
 import presenter.BuscarOrdemServicoPresenter;
 import presenter.ManterOrdemServicoPresenter;
+import presenter.TabelaManterOSPresenter;
 
 /**
  *
@@ -29,7 +31,8 @@ public class HistoriasUsuario2Command implements ICommandManterOS{
     }
 
     @Override
-    public void executar(ManterOrdemServicoPresenter presenter, OrdemServico os) {
+    public void executar(ManterOrdemServicoPresenter presenter, OrdemServico os, Object o) {
+        presenter.resetActionListeners();
         if (os == null) {
             presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
                if(presenter.setJanelaConfirmacao("Deseja realmente cancelar o processo? \n A janela será fechada e a inclusão da ordem de serviço cancelada.")==0){
@@ -49,37 +52,13 @@ public class HistoriasUsuario2Command implements ICommandManterOS{
                 }                
             });
         } else {
-            /*presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
-                presenter.visualizar(3, os);
-            });
-
-            presenter.getView().getjButtonVoltar().addActionListener((e) -> {
-                presenter.visualizar(1, os);
-            });
-            presenter.getView().getjButtonEditar().addActionListener((e) -> {
-                presenter.getView().getjButtonEditar().setText("Salvar");
-                presenter.habilitarTextField(true, true, true, true, true, true, true, true, true, true);
-                presenter.getView().getjButtonAvancar().setEnabled(false);
-                presenter.getView().getjButtonVoltar().setEnabled(false);
-                presenter.removeResetActionListenersText();
-
-                presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
+            DisciplinaHistoriaUsuario disciplina = (DisciplinaHistoriaUsuario) o;
+            presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
+               if(presenter.setJanelaConfirmacao("Deseja realmente cancelar a edição desta disciplina?")==0){
                     presenter.fecharView();
-                });
-
-                presenter.getView().getjButtonEditar().addActionListener((e1) -> {
-
-                    //Atualizar A OS   
-                    //salvar no banco a OS
-                    JOptionPane.showMessageDialog(null, "OS Atualizada com sucesso!");
-
-                    presenter.getView().getjButtonAvancar().setEnabled(true);
-                    presenter.getView().getjButtonVoltar().setEnabled(true);
-                    presenter.getView().getjButtonEditar().setText("Editar");
-                    //Passar a nova OS atualizada
-                    presenter.visualizar(2, os);
-                });
-            });*/
+                } 
+            });
+            
         }
     }
 
