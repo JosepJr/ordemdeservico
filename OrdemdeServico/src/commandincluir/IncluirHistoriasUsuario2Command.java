@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package command;
+package commandincluir;
 
+import command.ICommandManterOS;
 import model.DisciplinaHistoriaUsuario;
 import model.OrdemServico;
 import presenter.BuscarOrdemServicoPresenter;
@@ -15,17 +16,17 @@ import presenter.TabelaManterOSPresenter;
  *
  * @author Josep
  */
-public class HistoriasUsuario2Command implements ICommandManterOS {
+public class IncluirHistoriasUsuario2Command implements ICommandManterOS {
 
-    private static HistoriasUsuario2Command instance;
+    private static IncluirHistoriasUsuario2Command instance;
 
-    private HistoriasUsuario2Command() {
+    private IncluirHistoriasUsuario2Command() {
 
     }
 
-    public static HistoriasUsuario2Command getInstance() {
+    public static IncluirHistoriasUsuario2Command getInstance() {
         if (instance == null) {
-            instance = new HistoriasUsuario2Command();
+            instance = new IncluirHistoriasUsuario2Command();
         }
         return instance;
     }

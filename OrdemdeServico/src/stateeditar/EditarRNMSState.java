@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package statevisualizar;
+package stateeditar;
 
+import state.StateTabelaManterOrdemServico;
 import command.ICommandTabela;
-import command.ManterRNMSCommand;
+import commandincluir.IncluirManterRNMSCommand;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -18,13 +19,13 @@ import presenter.TabelaManterOSPresenter;
  *
  * @author Josep
  */
-public class ManterRNMSState extends StateTabelaManterOrdemServico{
+public class EditarRNMSState extends StateTabelaManterOrdemServico{
     
     private ICommandTabela command;
     
-    public ManterRNMSState(TabelaManterOSPresenter presenter) {
+    public EditarRNMSState(TabelaManterOSPresenter presenter) {
         super(presenter);
-        this.command = ManterRNMSCommand.getInstance();
+        this.command = IncluirManterRNMSCommand.getInstance();
     }
     
     @Override

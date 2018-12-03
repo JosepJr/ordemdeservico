@@ -3,44 +3,36 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package statevisualizar;
+package stateincluir;
 
-import command.ICommandManterOS;
+import state.ManterOrdemServicoState;
 import javax.swing.JOptionPane;
 import model.OrdemServico;
 import presenter.ManterOrdemServicoPresenter;
-import state.ManterOrdemServicoState;
 
 /**
  *
  * @author Josep
  */
-public class VisualizarOrdemServicoState extends ManterOrdemServicoState{
-    
-    public VisualizarOrdemServicoState(ManterOrdemServicoPresenter presenter) {
+public class IncluirOrdemServicoState extends ManterOrdemServicoState {
+
+    public IncluirOrdemServicoState(ManterOrdemServicoPresenter presenter) {
         super(presenter);
     }
-       
-    @Override
-    public void visualizar(OrdemServico os, Object o) {
-        this.configurarViewState();
-        this.presenter.getView().getjButtonEditar().setVisible(true);
-        this.presenter.preencherTextField(Integer.toString(os.getNumero()), os.getDataEmissao(), os.getNomeFiscalEmissor(), "", "", "", "", "");
-        this.presenter.habilitarTextField(false, false, false, true, true, true, true, true);
 
-        //Atualização da ordem de serviço 
+    @Override
+    public void incluir(OrdemServico os) {
+        this.configurarViewState();
+        //Inclusão da ordem de serviço
         this.presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
-            if (this.presenter.setJanelaConfirmacao("Deseja realmente cancelar a edição da Ordem de Serviço (OS)? \n A janela será fechada e o restante da edição não será realizada.") == 0) {
+            if (this.presenter.setJanelaConfirmacao("Deseja realmente cancelar o processo? \n A janela será fechada e a inclusão da ordem de serviço cancelada.") == 0) {
                 this.presenter.fecharView();
             }
         });
 
         this.presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
-            this.presenter.visualizar(1, os, null);
-        });
-
-        this.presenter.getView().getjButtonEditar().addActionListener((e1) -> {
-            this.presenter.editar(0, os, null);       
+            //Criar uma OS com os dados captados da tela!                
+            this.presenter.incluir(1, os);
         });
     }
 
@@ -53,5 +45,7 @@ public class VisualizarOrdemServicoState extends ManterOrdemServicoState{
         this.presenter.setVisibileTextFields(true, true, true, false, false, false, false, false);
         this.presenter.getView().setVisible(true);
         this.presenter.getView().moveToFront();
-    }  
+    }
+    
+
 }

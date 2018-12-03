@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package command;
+package commandincluir;
 
+import command.ICommandManterOS;
 import javax.swing.JOptionPane;
 import model.CriterioGeralNMS;
 import model.OrdemServico;
@@ -16,17 +17,17 @@ import presenter.TabelaManterOSPresenter;
  *
  * @author Josep
  */
-public class RegistroNMSCriteriosGeraisCommand implements ICommandManterOS {
+public class IncluirRegistroNMSCriteriosGeraisCommand implements ICommandManterOS {
 
-    private static RegistroNMSCriteriosGeraisCommand instance;
+    private static IncluirRegistroNMSCriteriosGeraisCommand instance;
 
-    private RegistroNMSCriteriosGeraisCommand() {
+    private IncluirRegistroNMSCriteriosGeraisCommand() {
 
     }
 
-    public static RegistroNMSCriteriosGeraisCommand getInstance() {
+    public static IncluirRegistroNMSCriteriosGeraisCommand getInstance() {
         if (instance == null) {
-            instance = new RegistroNMSCriteriosGeraisCommand();
+            instance = new IncluirRegistroNMSCriteriosGeraisCommand();
         }
         return instance;
     }

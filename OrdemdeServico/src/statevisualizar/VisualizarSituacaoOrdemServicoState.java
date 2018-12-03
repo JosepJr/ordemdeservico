@@ -3,66 +3,59 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package stateincluir;
+package statevisualizar;
 
-import state.StateManterOrdemServico;
-import command.SituacaoOrdemServicoCommand;
 import java.util.ArrayList;
 import model.OrdemServico;
 import model.Situacao;
 import presenter.ManterOrdemServicoPresenter;
-import command.ICommandManterOS;
+import presenter.TabelaManterOSPresenter;
+import presenter.TelaPrincipalPresenter;
+import state.ManterOrdemServicoState;
 
 /**
  *
  * @author Josep
  */
-public class SituacaoOrdemServicoState extends StateManterOrdemServico {
+public class VisualizarSituacaoOrdemServicoState extends ManterOrdemServicoState {
 
-    private final ICommandManterOS command;
-
-    public SituacaoOrdemServicoState(ManterOrdemServicoPresenter presenter) {
+    public VisualizarSituacaoOrdemServicoState(ManterOrdemServicoPresenter presenter) {
         super(presenter);
-        this.command = SituacaoOrdemServicoCommand.getInstance();
     }
 
     @Override
-    public void incluir(OrdemServico os) {
+    public void visualizar(OrdemServico os, Object o) {
         this.configurarStateView();
-        this.presenter.configurarVisibleSituacao(true, true, false);
-        this.presenter.getView().getjComboBoxSituacao().setEnabled(false);
         
-        this.presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
-            if (this.presenter.setJanelaConfirmacao("Deseja realmente cancelar a edição da Ordem de Serviço (OS)? \n A janela será fechada e o restante da edição não será realizada.") == 0) {
-                this.presenter.fecharView();
-            }
-        });
-
-        this.presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
-            //Fazer a criacao dos dados da OS
-            this.presenter.incluir(2, os);
-        });
-
-    }
-
-    @Override
-    public void editar(OrdemServico os, Object o) {
-        this.configurarStateView();
         ArrayList<Situacao> situacoes = os.getSituacoes();
         Situacao situacao = situacoes.get(situacoes.size() - 1);
+        
         this.presenter.getView().getjButtonEditar().setVisible(true);
         this.presenter.getView().getjComboBoxSituacao().setEnabled(false);
         this.presenter.habilitarTextField(false, false, false, true, true, true, true, true);
-        this.presenter.preencherTextField(situacao.getData(), situacao.getNomeResponsavel(), situacao.getFuncaoEquipe(), "", "", "", "", "");
+        this.presenter.preencherTextField(situacao.getData(), situacao.getNomeResponsavel(), situacao.getFuncaoEquipe(), "", "", "", "", "");       
         if (situacao.getNumeroRevisao() == 0) {
             this.presenter.configurarVisibleSituacao(true, true, false);
             this.presenter.getView().getjComboBoxSituacao().setSelectedItem(situacao.getDescricao());
-            this.command.executar(this.presenter, os, null);
         } else {
             this.presenter.configurarVisibleSituacao(true, true, true);
             this.presenter.getView().getjLabelNumeroRevisao().setText(Integer.toString(situacao.getNumeroRevisao()));
-            this.command.executar(this.presenter, os, null);
         }
+        
+        this.presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
+            if (this.presenter.setJanelaConfirmacao("Deseja realmente cancelar o processo? \n A janela será fechada e o restante da edição da Ordem de Serviço(OS) não será realizada.") == 0) {
+                this.presenter.fecharView();
+            }
+        });
+        
+        this.presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
+            TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add(TabelaManterOSPresenter.getInstance().getView());
+            TabelaManterOSPresenter.getInstance().visualizar(null, os, 1);
+        });
+
+        this.presenter.getView().getjButtonEditar().addActionListener((e) -> {            
+            this.presenter.editar(1, os, situacao);         
+        });
 
     }
 
@@ -76,4 +69,5 @@ public class SituacaoOrdemServicoState extends StateManterOrdemServico {
         this.presenter.getView().moveToFront();
         this.presenter.getView().setVisible(true);
     }
+
 }

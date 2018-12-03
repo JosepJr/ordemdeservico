@@ -13,19 +13,19 @@ import presenter.ManterOrdemServicoPresenter;
  *
  * @author Josep
  */
-public abstract class StateManterOrdemServico {
+public abstract class ManterOrdemServicoState {
 
     protected ManterOrdemServicoPresenter presenter;  
     
-    public StateManterOrdemServico(ManterOrdemServicoPresenter presenter) {
+    public ManterOrdemServicoState(ManterOrdemServicoPresenter presenter) {
         this.presenter = presenter;
     }
 
-    public void visualizar(OrdemServico ordemServico, Object o){
+    public void visualizar(OrdemServico os, Object o){
         throw new IllegalStateException();
     }
     
-    public void editar(OrdemServico ordemServico, Object o) { 
+    public void editar(OrdemServico os, Object o) { 
         throw new IllegalStateException();
     }
 

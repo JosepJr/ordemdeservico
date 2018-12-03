@@ -5,7 +5,8 @@
  */
 package presenter;
 
-import stateincluir.OrdemServicoState;
+import commandeditar.EditarSituacaoOrdemServicoState;
+import stateincluir.IncluirOrdemServicoState;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import view.ManterOrdemServicoView;
@@ -15,12 +16,16 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 import model.OrdemServico;
-import state.StateManterOrdemServico;
-import stateincluir.HistoriasUsuarioState;
-import stateincluir.HistoriasUsuarioState2;
-import stateincluir.RegistroNMSCriteriosGeraisState;
-import stateincluir.RegistroNMSNiveisServicoState;
-import stateincluir.SituacaoOrdemServicoState;
+import state.ManterOrdemServicoState;
+import stateeditar.EditarOrdemServicoState;
+import stateincluir.IncluirHistoriasUsuarioState;
+import stateincluir.IncluirHistoriasUsuarioState2;
+import stateincluir.IncluirRegistroNMSCriteriosGeraisState;
+import stateincluir.IncluirRegistroNMSNiveisServicoState;
+import stateincluir.IncluirSituacaoOrdemServicoState;
+import statevisualizar.VisualizarHistoriaUsuarioState;
+import statevisualizar.VisualizarOrdemServicoState;
+import statevisualizar.VisualizarSituacaoOrdemServicoState;
 
 /**
  *
@@ -33,7 +38,7 @@ public class ManterOrdemServicoPresenter {
 
     private static ManterOrdemServicoPresenter instance;
     private final ManterOrdemServicoView view;
-    private StateManterOrdemServico state;
+    private ManterOrdemServicoState state;
 
     private ManterOrdemServicoPresenter() {
         this.view = new ManterOrdemServicoView();
@@ -63,68 +68,79 @@ public class ManterOrdemServicoPresenter {
         });
     }
 
-    private void setState(StateManterOrdemServico state) {
+    private void setState(ManterOrdemServicoState state) {
         this.state = state;
     }
 
     public void incluir(int indice, OrdemServico os) {
         if (indice == 0) {
-            this.setState(new OrdemServicoState(this));
+            this.setState(new IncluirOrdemServicoState(this));
             this.state.incluir(os);
         }
         if (indice == 1) {
-            this.setState(new SituacaoOrdemServicoState(this));
+            this.setState(new IncluirSituacaoOrdemServicoState(this));
             this.state.incluir(null);
         }
         if (indice == 2) {
-            this.setState(new HistoriasUsuarioState(this));
+            this.setState(new IncluirHistoriasUsuarioState(this));
             this.state.incluir(null);
         }
         if (indice == 3) {
-            this.setState(new HistoriasUsuarioState2(this));
+            this.setState(new IncluirHistoriasUsuarioState2(this));
             this.state.incluir(null);
         }
         if (indice == 4) {
-            this.setState(new RegistroNMSCriteriosGeraisState(this));
+            this.setState(new IncluirRegistroNMSCriteriosGeraisState(this));
             this.state.incluir(null);
         }
         if (indice == 5) {
-            this.setState(new RegistroNMSNiveisServicoState(this));
+            this.setState(new IncluirRegistroNMSNiveisServicoState(this));
             this.state.incluir(null);
+        }
+    }
+    
+    public void visualizar(int indice, OrdemServico os, Object o) {
+         if (indice == 0) {
+            this.setState(new VisualizarOrdemServicoState(this));
+            this.state.visualizar(os, null);
+        }
+        if(indice == 1){
+            this.setState(new VisualizarSituacaoOrdemServicoState(this));
+            this.state.visualizar(os, null);
+        }
+        if(indice == 2){
+            
         }
     }
 
     public void editar(int indice, OrdemServico os, Object o) {
         if (indice == 0) {
-            this.setState(new OrdemServicoState(this));
+            this.setState(new EditarOrdemServicoState(this));
             this.state.editar(os, null);
         }
         if (indice == 1) {
-            this.setState(new SituacaoOrdemServicoState(this));
+            this.setState(new EditarSituacaoOrdemServicoState(this));
             this.state.editar(os, null);
-        }
+        }/*
         if (indice == 2) {
-            this.setState(new HistoriasUsuarioState(this));
+            this.setState(new IncluirHistoriasUsuarioState(this));
             this.state.editar(os, o);
         }
         if (indice == 3) {
-            this.setState(new HistoriasUsuarioState2(this));
+            this.setState(new IncluirHistoriasUsuarioState2(this));
             this.state.editar(os, o);
         }
         if (indice == 4) {
-            this.setState(new RegistroNMSCriteriosGeraisState(this));
+            this.setState(new IncluirRegistroNMSCriteriosGeraisState(this));
             this.state.editar(os, o);
         }
         if (indice == 5) {
-            this.setState(new RegistroNMSNiveisServicoState(this));
+            this.setState(new IncluirRegistroNMSNiveisServicoState(this));
             this.state.editar(os, null);
-        }
+        }*/
     }
+
     
-    public void visualizar(int indice, OrdemServico os, Object o){
-    
-    
-    }
 
     public void fecharView() {
         ManterOrdemServicoPresenter.instance = null;

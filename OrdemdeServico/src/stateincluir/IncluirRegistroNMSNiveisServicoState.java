@@ -5,24 +5,24 @@
  */
 package stateincluir;
 
-import state.StateManterOrdemServico;
-import command.RegistroNMSNiveisServicoCommand;
+import state.ManterOrdemServicoState;
+import commandincluir.IncluirRegistroNMSNiveisServicoCommand;
 import model.OrdemServico;
 import presenter.ManterOrdemServicoPresenter;
 import command.ICommandManterOS;
-import command.SalvarOSCommand;
+import commandincluir.IncluirOrdemServicoCommand;
 
 /**
  *
  * @author Josep
  */
-public class RegistroNMSNiveisServicoState extends StateManterOrdemServico {
+public class IncluirRegistroNMSNiveisServicoState extends ManterOrdemServicoState {
 
     private final ICommandManterOS command;
 
-    public RegistroNMSNiveisServicoState(ManterOrdemServicoPresenter presenter) {
+    public IncluirRegistroNMSNiveisServicoState(ManterOrdemServicoPresenter presenter) {
         super(presenter);
-        this.command = RegistroNMSNiveisServicoCommand.getInstance();
+        this.command = IncluirRegistroNMSNiveisServicoCommand.getInstance();
     }
 
     @Override
@@ -39,7 +39,7 @@ public class RegistroNMSNiveisServicoState extends StateManterOrdemServico {
             if (this.presenter.setJanelaConfirmacao("Deseja inserir mais Niveis de Serviço nesse mesmo Registro Minimo de Serviço?") == 0) {
                 this.presenter.incluir(5, os);
             } else {
-                SalvarOSCommand.getInstance().executar(null, os, null);
+                IncluirOrdemServicoCommand.getInstance().executar(null, os, null);
                 this.presenter.fecharView();
             }
 

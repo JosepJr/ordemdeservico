@@ -119,7 +119,7 @@ public class BuscarOrdemServicoPresenter{
                     for(OrdemServico ordens : DadosTeste.getInstance().getOrdensServico()){
                        if(this.view.getjTableOrdemServico().getValueAt(this.view.getjTableOrdemServico().getSelectedRow(), 0).toString().equals(Integer.toString(ordens.getNumero()))){
                            TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add(ManterOrdemServicoPresenter.getInstance().getView());
-                           ManterOrdemServicoPresenter.getInstance().editar(0, ordens, null);
+                           ManterOrdemServicoPresenter.getInstance().visualizar(0, ordens, null);
                        } 
                     }
                 } catch (Exception ex) {

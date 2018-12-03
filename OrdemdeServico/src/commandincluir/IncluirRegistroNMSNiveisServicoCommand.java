@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package command;
+package commandincluir;
 
+import command.ICommandManterOS;
 import javax.swing.JOptionPane;
 import model.OrdemServico;
 import presenter.BuscarOrdemServicoPresenter;
@@ -14,17 +15,17 @@ import presenter.ManterOrdemServicoPresenter;
  *
  * @author Josep
  */
-public class RegistroNMSNiveisServicoCommand implements ICommandManterOS{
+public class IncluirRegistroNMSNiveisServicoCommand implements ICommandManterOS{
 
-private static RegistroNMSNiveisServicoCommand instance;
+private static IncluirRegistroNMSNiveisServicoCommand instance;
 
-    private RegistroNMSNiveisServicoCommand() {
+    private IncluirRegistroNMSNiveisServicoCommand() {
 
     }
 
-    public static RegistroNMSNiveisServicoCommand getInstance() {
+    public static IncluirRegistroNMSNiveisServicoCommand getInstance() {
         if (instance == null) {
-            instance = new RegistroNMSNiveisServicoCommand();
+            instance = new IncluirRegistroNMSNiveisServicoCommand();
         }
         return instance;
     }

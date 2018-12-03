@@ -14,10 +14,11 @@ import javax.swing.event.InternalFrameEvent;
 import javax.swing.table.DefaultTableModel;
 import model.HistoriaUsuario;
 import model.OrdemServico;
-import statevisualizar.ManterHistoriaState;
-import statevisualizar.ManterRNMSState;
-import statevisualizar.StateTabelaManterOrdemServico;
-import statevisualizar.TabelaHistoriaState;
+import stateeditar.EditarHistoriaSelecionadaState;
+import statevisualizar.VisualizarHistoriaUsuarioSelecionadaState;
+import stateeditar.EditarRNMSState;
+import state.StateTabelaManterOrdemServico;
+import statevisualizar.VisualizarHistoriasUsuarioState;
 import view.TabelaManterOSView;
 
 /**
@@ -61,19 +62,29 @@ public class TabelaManterOSPresenter {
 
     public void visualizar(Object o, OrdemServico os ,int indice) {
         if(indice == 1){
-            this.state = new TabelaHistoriaState(this);
+            this.state = new VisualizarHistoriasUsuarioState(this);
             this.state.visualizar(null, os);
         }
         if(indice == 2){
-            HistoriaUsuario historia = (HistoriaUsuario) o;
-            this.state = new ManterHistoriaState(this);
-            this.state.visualizar(historia, os);
+            this.state = new VisualizarHistoriaUsuarioSelecionadaState(this);
+            this.state.visualizar(o, os);
         }
         if(indice == 3){
-            this.state = new ManterRNMSState(this);
+            this.state = new EditarRNMSState(this);
             this.state.visualizar(null, os);
-        }
-        
+        }        
+    }
+    
+    public void editar(Object o, OrdemServico os, int indice){
+        if(indice == 0){
+            this.state = new EditarHistoriaSelecionadaState(this);
+            this.state.editar(o, os);
+        }        
+    }
+   
+    
+    public void incluir(){
+    
     }
 
     public void fecharView() {

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package command;
+package commandeditar;
 
+import command.ICommandManterOS;
 import javax.swing.JOptionPane;
 import model.OrdemServico;
 import presenter.BuscarOrdemServicoPresenter;
@@ -14,37 +15,32 @@ import presenter.ManterOrdemServicoPresenter;
  *
  * @author Josep
  */
-public class SalvarOSCommand implements ICommandManterOS{
+public class EditarOrdemServicoCommand implements ICommandManterOS{
 
-    private static SalvarOSCommand instance;
+    private static EditarOrdemServicoCommand instance;
     
     
-    private SalvarOSCommand(){
+    private EditarOrdemServicoCommand(){
     
     }
     
-    public static SalvarOSCommand getInstance(){
+    public static EditarOrdemServicoCommand getInstance(){
         if(instance == null){
-            instance = new SalvarOSCommand();
+            instance = new EditarOrdemServicoCommand();
         }
         return instance;
     }
     
     
+    
     @Override
     public void executar(ManterOrdemServicoPresenter presenter, OrdemServico os, Object o) {
-        
-        
-        
-        
-        
-        
-        JOptionPane.showMessageDialog(null, "Ordem de Serviço cadatrada com Sucesso!");
+        JOptionPane.showMessageDialog(null, "Ordem de Servico Atualizada com sucesso!");    
     }
 
     @Override
     public void desfazer(BuscarOrdemServicoPresenter presenter) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
     
 }

@@ -5,8 +5,8 @@
  */
 package stateincluir;
 
-import state.StateManterOrdemServico;
-import command.RegistroNMSCriteriosGeraisCommand;
+import state.ManterOrdemServicoState;
+import commandincluir.IncluirRegistroNMSCriteriosGeraisCommand;
 import model.CriterioGeralNMS;
 import model.OrdemServico;
 import presenter.ManterOrdemServicoPresenter;
@@ -16,13 +16,13 @@ import command.ICommandManterOS;
  *
  * @author Josep
  */
-public class RegistroNMSCriteriosGeraisState extends StateManterOrdemServico {
+public class IncluirRegistroNMSCriteriosGeraisState extends ManterOrdemServicoState {
 
     private final ICommandManterOS command;
 
-    public RegistroNMSCriteriosGeraisState(ManterOrdemServicoPresenter presenter) {
+    public IncluirRegistroNMSCriteriosGeraisState(ManterOrdemServicoPresenter presenter) {
         super(presenter);
-        this.command = RegistroNMSCriteriosGeraisCommand.getInstance();
+        this.command = IncluirRegistroNMSCriteriosGeraisCommand.getInstance();
     }
 
     @Override

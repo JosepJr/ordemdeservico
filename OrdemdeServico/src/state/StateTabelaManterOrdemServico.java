@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package statevisualizar;
+package state;
 
 import model.OrdemServico;
 import presenter.TabelaManterOSPresenter;
@@ -24,4 +24,8 @@ public abstract class StateTabelaManterOrdemServico {
         throw new IllegalStateException();
     }
     
+    public void editar(Object o, OrdemServico os){
+        throw new IllegalStateException();
+    }
+
 }

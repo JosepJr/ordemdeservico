@@ -5,8 +5,8 @@
  */
 package stateincluir;
 
-import state.StateManterOrdemServico;
-import command.HistoriasUsuario2Command;
+import state.ManterOrdemServicoState;
+import commandincluir.IncluirHistoriasUsuario2Command;
 import java.util.ArrayList;
 import model.HistoriaUsuario;
 import model.OrdemServico;
@@ -18,13 +18,13 @@ import model.DisciplinaHistoriaUsuario;
  *
  * @author Josep
  */
-public class HistoriasUsuarioState2 extends StateManterOrdemServico {
+public class IncluirHistoriasUsuarioState2 extends ManterOrdemServicoState {
 
     private final ICommandManterOS command;
 
-    public HistoriasUsuarioState2(ManterOrdemServicoPresenter presenter) {
+    public IncluirHistoriasUsuarioState2(ManterOrdemServicoPresenter presenter) {
         super(presenter);
-        this.command = HistoriasUsuario2Command.getInstance();
+        this.command = IncluirHistoriasUsuario2Command.getInstance();
     }
 
     @Override
