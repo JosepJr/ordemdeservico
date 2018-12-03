@@ -29,12 +29,16 @@ public class VisualizarDisciplinaHistoriaUsuarioState extends ManterOrdemServico
         this.presenter.habilitarTextField(false, false, false, false, false, false, false, false);
         this.presenter.setVisibileTextFields(true, true, true, false, false, false, false, false);
         this.presenter.setTextLabels("Disciplina:", "Tarefa:", "UST:", "", "", "", "", "");
+        this.presenter.getView().getjButtonAvancar().setText("Editar");
+        this.presenter.getView().getjButtonCancelar().setText("Voltar");
         this.presenter.preencherTextField(disciplina.getDescricao(), disciplina.getTarefa(), Double.toString(disciplina.getUST()), "", "", "", "", "");
 
         this.presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
-            if (this.presenter.setJanelaConfirmacao("Deseja realmente cancelar a edição desta disciplina?") == 0) {
                 this.presenter.fecharView();
-            }
+        });
+        
+        this.presenter.getView().getjButtonAvancar().addActionListener((e) -> {
+            this.presenter.editar(2, os, disciplina);
         });
 
     }

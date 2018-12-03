@@ -87,10 +87,10 @@ public class VisualizarHistoriaUsuarioSelecionadaState extends StateTabelaManter
                 for (DisciplinaHistoriaUsuario disciplina : historia.getDisciplinas()) {
                     try {
                         if (this.presenter.getView().getjTable().getValueAt(this.presenter.getView().getjTable().getSelectedRow(), 0).equals(disciplina.getDescricao())) {
-                            ManterOrdemServicoPresenter.getInstance().visualizar(3, os, disciplina);
+                            ManterOrdemServicoPresenter.getInstance().visualizar(2, os, disciplina);
                         } 
                     } catch (Exception ex) {
-                        //Tratar essa exception pois ela esta dando um erro que eu não sei qual é
+                            //Tratar essa exception pois ela esta dando um erro que eu não sei qual é
                     }
                 }
             } else {
