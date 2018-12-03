@@ -8,7 +8,6 @@ package stateeditar;
 import state.StateTabelaManterOrdemServico;
 import command.ICommandTabela;
 import commandincluir.IncluirManterHistoriaCommand;
-import javax.swing.JOptionPane;
 import model.HistoriaUsuario;
 import model.OrdemServico;
 import presenter.TabelaManterOSPresenter;
@@ -44,8 +43,8 @@ public class EditarHistoriaSelecionadaState extends StateTabelaManterOrdemServic
 
         this.presenter.getView().getjButtonEditar().addActionListener((e) -> {
             //Salvar os novos dados pegue dos campos textfied.
-            this.command.executar(presenter, historia, os);
-            this.presenter.visualizar(null, os, 1);
+            this.command.executar(this.presenter, historia, os);
+            this.presenter.visualizar(historia, os, 2);
 
         });
 

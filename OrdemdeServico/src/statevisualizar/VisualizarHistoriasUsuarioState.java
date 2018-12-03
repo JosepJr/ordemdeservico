@@ -6,7 +6,6 @@
 package statevisualizar;
 
 import state.StateTabelaManterOrdemServico;
-import command.ICommandTabela;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.HistoriaUsuario;

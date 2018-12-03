@@ -7,6 +7,7 @@ package statevisualizar;
 
 import state.StateTabelaManterOrdemServico;
 import command.ICommandTabela;
+import commandexcluir.ExcluirDisciplinaHistoriaUsuarioCommand;
 import commandincluir.IncluirManterHistoriaCommand;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -56,7 +57,7 @@ public class VisualizarHistoriaUsuarioSelecionadaState extends StateTabelaManter
 
         this.presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
             if (this.presenter.setJanelaConfirmacao("Deseja realmente cancelar a edição da História de Usuário?") == 0) {
-                this.presenter.fecharView();
+                this.presenter.visualizar(null, os, 1);
                 ManterOrdemServicoPresenter.getInstance().fecharView();
             }
         });
@@ -65,8 +66,12 @@ public class VisualizarHistoriaUsuarioSelecionadaState extends StateTabelaManter
             if (this.presenter.getView().getjTable().getSelectedColumn() == 0) {
                 if (this.presenter.getView().getjTable().getRowCount() > 1) {
                     if (this.presenter.setJanelaConfirmacao("Deseja mesmo Excluir essa disciplina?") == 0) {
-                        //Realizar a exclusão da Disciplina
-                        JOptionPane.showMessageDialog(null, "Disciplina excluida com sucesso!");
+                        
+
+                        //Realizar a exclusão da Disciplina, passar a disciplina selecionada para o command excluir
+                        
+                        
+                        ExcluirDisciplinaHistoriaUsuarioCommand.getInstance().executar(null, historia, os);
                         this.presenter.visualizar(historia, os, 2);
                     }
                 } else {
@@ -82,14 +87,14 @@ public class VisualizarHistoriaUsuarioSelecionadaState extends StateTabelaManter
                 for (DisciplinaHistoriaUsuario disciplina : historia.getDisciplinas()) {
                     try {
                         if (this.presenter.getView().getjTable().getValueAt(this.presenter.getView().getjTable().getSelectedRow(), 0).equals(disciplina.getDescricao())) {
-                            ManterOrdemServicoPresenter.getInstance().editar(3, os, disciplina);
-                        }
+                            ManterOrdemServicoPresenter.getInstance().visualizar(3, os, disciplina);
+                        } 
                     } catch (Exception ex) {
                         //Tratar essa exception pois ela esta dando um erro que eu não sei qual é
                     }
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Favor selecionar somente o Critério para a visualização!");
+                JOptionPane.showMessageDialog(null, "Favor selecionar somente a disciplina para a visualização!");
             }
         });
     }

@@ -17,13 +17,14 @@ import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 import model.OrdemServico;
 import state.ManterOrdemServicoState;
+import stateeditar.EditarDisciplinaHistoriaUsuarioState;
 import stateeditar.EditarOrdemServicoState;
 import stateincluir.IncluirHistoriasUsuarioState;
 import stateincluir.IncluirHistoriasUsuarioState2;
 import stateincluir.IncluirRegistroNMSCriteriosGeraisState;
 import stateincluir.IncluirRegistroNMSNiveisServicoState;
 import stateincluir.IncluirSituacaoOrdemServicoState;
-import statevisualizar.VisualizarHistoriaUsuarioState;
+import statevisualizar.VisualizarDisciplinaHistoriaUsuarioState;
 import statevisualizar.VisualizarOrdemServicoState;
 import statevisualizar.VisualizarSituacaoOrdemServicoState;
 
@@ -109,7 +110,8 @@ public class ManterOrdemServicoPresenter {
             this.state.visualizar(os, null);
         }
         if(indice == 2){
-            
+            this.setState(new VisualizarDisciplinaHistoriaUsuarioState(this));
+            this.state.visualizar(os, o);
         }
     }
 
@@ -121,11 +123,11 @@ public class ManterOrdemServicoPresenter {
         if (indice == 1) {
             this.setState(new EditarSituacaoOrdemServicoState(this));
             this.state.editar(os, null);
-        }/*
-        if (indice == 2) {
-            this.setState(new IncluirHistoriasUsuarioState(this));
-            this.state.editar(os, o);
         }
+        if (indice == 2) {
+            this.setState(new EditarDisciplinaHistoriaUsuarioState(this));
+            this.state.editar(os, o);
+        }/*
         if (indice == 3) {
             this.setState(new IncluirHistoriasUsuarioState2(this));
             this.state.editar(os, o);

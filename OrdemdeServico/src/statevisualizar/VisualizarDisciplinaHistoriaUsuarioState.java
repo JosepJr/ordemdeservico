@@ -1,0 +1,52 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package statevisualizar;
+
+import model.DisciplinaHistoriaUsuario;
+import model.OrdemServico;
+import presenter.ManterOrdemServicoPresenter;
+import state.ManterOrdemServicoState;
+
+/**
+ *
+ * @author Josep
+ */
+public class VisualizarDisciplinaHistoriaUsuarioState extends ManterOrdemServicoState {
+
+    public VisualizarDisciplinaHistoriaUsuarioState(ManterOrdemServicoPresenter presenter) {
+        super(presenter);
+    }
+
+    @Override
+    public void visualizar(OrdemServico os, Object o) {
+        DisciplinaHistoriaUsuario disciplina = (DisciplinaHistoriaUsuario) o;
+        this.configurarViewState();
+        this.presenter.setLabelTitulo("Disciplina História de Usuário", true);
+        this.presenter.setVisibleLabels(true, true, true, false, false, false, false, false);
+        this.presenter.habilitarTextField(false, false, false, false, false, false, false, false);
+        this.presenter.setVisibileTextFields(true, true, true, false, false, false, false, false);
+        this.presenter.setTextLabels("Disciplina:", "Tarefa:", "UST:", "", "", "", "", "");
+        this.presenter.preencherTextField(disciplina.getDescricao(), disciplina.getTarefa(), Double.toString(disciplina.getUST()), "", "", "", "", "");
+
+        this.presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
+            if (this.presenter.setJanelaConfirmacao("Deseja realmente cancelar a edição desta disciplina?") == 0) {
+                this.presenter.fecharView();
+            }
+        });
+
+    }
+    
+    private void configurarViewState() {
+        this.presenter.resetarTudo();
+        this.presenter.getView().setTitle("Histórias de Usuários (Inclusão / Edição)");
+        this.presenter.setTextLabels("Disciplina:", "Tarefa:", "UST:", "", "", "", "", "");
+        this.presenter.setVisibleLabels(true, true, true, false, false, false, false, false);
+        this.presenter.setVisibileTextFields(true, true, true, false, false, false, false, false);
+        this.presenter.getView().setVisible(true);
+        this.presenter.getView().moveToFront();
+    }
+
+}
