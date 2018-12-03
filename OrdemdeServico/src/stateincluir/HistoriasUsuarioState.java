@@ -5,8 +5,8 @@
  */
 package stateincluir;
 
+import state.StateManterOrdemServico;
 import command.HistoriasUsuarioCommand;
-import java.util.ArrayList;
 import model.HistoriaUsuario;
 import model.OrdemServico;
 import presenter.ManterOrdemServicoPresenter;
@@ -19,7 +19,7 @@ import command.ICommandManterOS;
 public class HistoriasUsuarioState extends StateManterOrdemServico {
 
     private final ICommandManterOS command;
-    
+
     public HistoriasUsuarioState(ManterOrdemServicoPresenter presenter) {
         super(presenter);
         this.command = HistoriasUsuarioCommand.getInstance();
@@ -29,32 +29,50 @@ public class HistoriasUsuarioState extends StateManterOrdemServico {
     public void incluir(OrdemServico os) {
         this.configurarViewState();
         this.presenter.setLabelTitulo("História de Usuário", true);
-        this.command.executar(this.presenter, null, null);
+
+        this.presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
+            if (this.presenter.setJanelaConfirmacao("Deseja realmente cancelar o processo? \n A janela será fechada e a inclusão da ordem de serviço cancelada.") == 0) {
+                this.presenter.fecharView();
+            }
+        });
+        
+        this.presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
+            //Salvar os dados da OS
+            if (this.presenter.setJanelaConfirmacao("Deseja inserir mais disciplinas nessa mesma história?") == 0) {
+                this.presenter.incluir(3, os);
+            } else {
+                if (this.presenter.setJanelaConfirmacao("Deseja inserir mais Histórias de Usuário nesta Ordem de serviço?") == 0) {
+                    this.presenter.incluir(2, os);
+                } else {
+                    this.presenter.incluir(4, os);
+                }
+            }
+        });
     }
 
     @Override
     public void editar(OrdemServico os, Object o) {
         HistoriaUsuario historia = (HistoriaUsuario) o;
-        
+
         this.configurarViewState();
-        this.presenter.setLabelTitulo("História de Usuário: "+ os.getHistoriasUsuarios().get(0).getNome(), true);  
-        this.presenter.getView().getjButtonEditar().setVisible(true);        
+        this.presenter.setLabelTitulo("História de Usuário: " + os.getHistoriasUsuarios().get(0).getNome(), true);
+        this.presenter.getView().getjButtonEditar().setVisible(true);
         this.presenter.setVisibleLabels(true, true, true, true, true, false, false, false);
-        this.presenter.setVisibileTextFields(true, true, true, true, true, false, false, false);        
+        this.presenter.setVisibileTextFields(true, true, true, true, true, false, false, false);
         this.presenter.habilitarTextField(false, false, false, false, false, false, false, false);
         this.presenter.setTextLabels("Nome da história do usuário:", "Disciplina:", "Tarefa:", "UST:", "Subtotal de USTs:", "Subtotal (R$):", "SubTotal de PF:", "Situação da História de Usuário:");
-            /*this.presenter.preencherTextField(historia.getNome(),
+        /*this.presenter.preencherTextField(historia.getNome(),
                     historia.getDisciplinas().get(0).getDescricao(),
                     historias.get(0).getDisciplinas().get(0).getTarefa(),
                     Double.toString(historias.get(0).getDisciplinas().get(0).getUST()),
                     Double.toString(historias.get(0).getSubTotalUST()),
                     Double.toString(historias.get(0).getSubTotalReais()), Double.toString(historias.get(0).getSubTotalPF()), historias.get(0).getSituacao());       
-            this.command.executar(this.presenter, os);  */  
+            this.command.executar(this.presenter, os);  */
     }
 
     private void configurarViewState() {
-        this.presenter.resetar();
-        this.presenter.setTextLabels("Nome da história do Usuário:", "Disciplina:", "Tarefa:", "UST:", "Situação da História de Usuário:", "","","");
+        this.presenter.resetarTudo();
+        this.presenter.setTextLabels("Nome da história do Usuário:", "Disciplina:", "Tarefa:", "UST:", "Situação da História de Usuário:", "", "", "");
         this.presenter.setVisibleLabels(true, true, true, true, true, false, false, false);
         this.presenter.setVisibileTextFields(true, true, true, true, true, false, false, false);
         this.presenter.getView().setTitle("Histórias de Usuários (Inclusão / Edição)");

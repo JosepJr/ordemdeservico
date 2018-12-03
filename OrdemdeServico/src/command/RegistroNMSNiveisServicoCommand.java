@@ -31,26 +31,6 @@ private static RegistroNMSNiveisServicoCommand instance;
 
     @Override
     public void executar(ManterOrdemServicoPresenter presenter, OrdemServico os, Object o) {
-        if (os == null) {
-            presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
-                if (presenter.setJanelaConfirmacao("Deseja realmente cancelar o processo? \n A janela será fechada e a inclusão da ordem de serviço cancelada.") == 0) {
-                    presenter.fecharView();
-                }
-            });
-
-            presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
-                //Salvar os dados da OS
-                if (presenter.setJanelaConfirmacao("Deseja inserir mais Niveis de Serviço nesse mesmo Registro Minimo de Serviço?") == 0) {
-                    presenter.avancar(5, null);
-                }else{
-                    JOptionPane.showMessageDialog(null, "Ordem de Serviço cadatrada com Sucesso!");
-                    presenter.fecharView();
-                }
-                
-                
-            });
-
-        } else {
             /*presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
 
             });
@@ -84,7 +64,6 @@ private static RegistroNMSNiveisServicoCommand instance;
                 });
             });
             */
-        }
     }
 
     @Override

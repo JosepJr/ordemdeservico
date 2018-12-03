@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package stateincluir;
+package state;
 
 
 import model.OrdemServico;
@@ -21,10 +21,10 @@ public abstract class StateManterOrdemServico {
         this.presenter = presenter;
     }
 
-    public void excluir() {
+    public void visualizar(OrdemServico ordemServico, Object o){
         throw new IllegalStateException();
     }
-
+    
     public void editar(OrdemServico ordemServico, Object o) { 
         throw new IllegalStateException();
     }
@@ -32,7 +32,5 @@ public abstract class StateManterOrdemServico {
     public void incluir(OrdemServico os) {
         throw new IllegalStateException();
     }
-
-  
 
 }

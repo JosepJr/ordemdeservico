@@ -15,7 +15,7 @@ import presenter.TabelaManterOSPresenter;
  *
  * @author Josep
  */
-public class HistoriasUsuario2Command implements ICommandManterOS{
+public class HistoriasUsuario2Command implements ICommandManterOS {
 
     private static HistoriasUsuario2Command instance;
 
@@ -33,33 +33,13 @@ public class HistoriasUsuario2Command implements ICommandManterOS{
     @Override
     public void executar(ManterOrdemServicoPresenter presenter, OrdemServico os, Object o) {
         presenter.resetActionListeners();
-        if (os == null) {
-            presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
-               if(presenter.setJanelaConfirmacao("Deseja realmente cancelar o processo? \n A janela será fechada e a inclusão da ordem de serviço cancelada.")==0){
-                    presenter.fecharView();
-                } 
-            });
-            presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
-                //Salvar os dados da OS
-                if(presenter.setJanelaConfirmacao("Deseja inserir mais disciplinas nessa mesma história?")==0){
-                    presenter.avancar(3, null);
-                }else{
-                    if(presenter.setJanelaConfirmacao("Deseja inserir mais Histórias de Usuário nesta Ordem de serviço?")==0){
-                        presenter.avancar(2, null);
-                    }else{
-                        presenter.avancar(4, null);
-                    }
-                }                
-            });
-        } else {
-            DisciplinaHistoriaUsuario disciplina = (DisciplinaHistoriaUsuario) o;
-            presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
-               if(presenter.setJanelaConfirmacao("Deseja realmente cancelar a edição desta disciplina?")==0){
-                    presenter.fecharView();
-                } 
-            });
-            
-        }
+        DisciplinaHistoriaUsuario disciplina = (DisciplinaHistoriaUsuario) o;
+        presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
+            if (presenter.setJanelaConfirmacao("Deseja realmente cancelar a edição desta disciplina?") == 0) {
+                presenter.fecharView();
+            }
+        });
+
     }
 
     @Override

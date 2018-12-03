@@ -15,16 +15,19 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 import model.OrdemServico;
+import state.StateManterOrdemServico;
 import stateincluir.HistoriasUsuarioState;
 import stateincluir.HistoriasUsuarioState2;
 import stateincluir.RegistroNMSCriteriosGeraisState;
 import stateincluir.RegistroNMSNiveisServicoState;
 import stateincluir.SituacaoOrdemServicoState;
-import stateincluir.StateManterOrdemServico;
 
 /**
  *
+ *
+ *
  * @author Josep
+ *
  */
 public class ManterOrdemServicoPresenter {
 
@@ -46,7 +49,7 @@ public class ManterOrdemServicoPresenter {
 
     private void configurarView() {
         this.setPosicao();
-        this.resetar();
+        this.resetarTudo();
         this.view.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.view.addInternalFrameListener(new InternalFrameAdapter() {
             @Override
@@ -64,37 +67,31 @@ public class ManterOrdemServicoPresenter {
         this.state = state;
     }
 
-    public void avancar(int indice, OrdemServico os) {
-        if (os == null) {
-            if (indice == 1) {
-                this.setState(new SituacaoOrdemServicoState(this));
-                this.state.incluir(null);
-            }
-            if (indice == 2) {
-                this.setState(new HistoriasUsuarioState(this));
-                this.state.incluir(null);
-            }
-            if (indice == 3) {
-                this.setState(new HistoriasUsuarioState2(this));
-                this.state.incluir(null);
-            }
-            if (indice == 4) {
-                this.setState(new RegistroNMSCriteriosGeraisState(this));
-                this.state.incluir(null);
-            }
-            if (indice == 5) {
-                this.setState(new RegistroNMSNiveisServicoState(this));
-                this.state.incluir(null);
-            }
+    public void incluir(int indice, OrdemServico os) {
+        if (indice == 0) {
+            this.setState(new OrdemServicoState(this));
+            this.state.incluir(os);
         }
-    }
-
-    public void incluir(OrdemServico os) {
-        this.setState(new OrdemServicoState(this));
-        this.state.incluir(os);
-    }
-
-    public void excluir() {
+        if (indice == 1) {
+            this.setState(new SituacaoOrdemServicoState(this));
+            this.state.incluir(null);
+        }
+        if (indice == 2) {
+            this.setState(new HistoriasUsuarioState(this));
+            this.state.incluir(null);
+        }
+        if (indice == 3) {
+            this.setState(new HistoriasUsuarioState2(this));
+            this.state.incluir(null);
+        }
+        if (indice == 4) {
+            this.setState(new RegistroNMSCriteriosGeraisState(this));
+            this.state.incluir(null);
+        }
+        if (indice == 5) {
+            this.setState(new RegistroNMSNiveisServicoState(this));
+            this.state.incluir(null);
+        }
     }
 
     public void editar(int indice, OrdemServico os, Object o) {
@@ -113,15 +110,20 @@ public class ManterOrdemServicoPresenter {
         if (indice == 3) {
             this.setState(new HistoriasUsuarioState2(this));
             this.state.editar(os, o);
-        }        
+        }
         if (indice == 4) {
             this.setState(new RegistroNMSCriteriosGeraisState(this));
             this.state.editar(os, o);
         }
-        if(indice == 5){
+        if (indice == 5) {
             this.setState(new RegistroNMSNiveisServicoState(this));
             this.state.editar(os, null);
         }
+    }
+    
+    public void visualizar(int indice, OrdemServico os, Object o){
+    
+    
     }
 
     public void fecharView() {
@@ -138,37 +140,34 @@ public class ManterOrdemServicoPresenter {
         this.view.setLocation((d.width - this.view.getSize().width) / 2, (d.height - this.view.getSize().height) / 2);
     }
 
-    public void resetActionListeners(){
-    for (ActionListener act : this.view.getjButtonCancelar().getActionListeners()) {
+    public void resetActionListeners() {
+        for (ActionListener act : this.view.getjButtonCancelar().getActionListeners()) {
             this.view.getjButtonCancelar().removeActionListener(act);
         }
-
         for (ActionListener act : this.view.getjButtonAvancar().getActionListeners()) {
             this.view.getjButtonAvancar().removeActionListener(act);
         }
-
         for (ActionListener act : this.view.getjButtonEditar().getActionListeners()) {
             this.view.getjButtonEditar().removeActionListener(act);
         }
     }
-    
-    private void resertTextBotoes(){
+
+    private void resertTextBotoes() {
         this.view.getjButtonAvancar().setText("Avançar");
         this.view.getjButtonCancelar().setText("Cancelar");
-        this.view.getjButtonEditar().setText("Editar");    
-    }    
-  
-    
-    public void resetar() {
-       this.resetActionListeners();
-       this.resertTextBotoes();
-       this.habilitarTextField(true, true, true, true, true, true, true, true);
-       this.configurarLabelValores(false, false, false, false, false, false, false, false, false, false);
-       this.configurarVisibleSituacao(false, false, false);
-       this.getView().getjButtonEditar().setVisible(false);
-       this.getView().getjComboBoxSituacao().setEnabled(true);
-       this.getView().getjButtonAvancar().setEnabled(true);
-       this.preencherTextField("", "", "", "", "", "","","");
+        this.view.getjButtonEditar().setText("Editar");
+    }
+
+    public void resetarTudo() {
+        this.resetActionListeners();
+        this.resertTextBotoes();
+        this.habilitarTextField(true, true, true, true, true, true, true, true);
+        this.configurarLabelValores(false, false, false, false, false, false, false, false, false, false);
+        this.configurarVisibleSituacao(false, false, false);
+        this.getView().getjButtonEditar().setVisible(false);
+        this.getView().getjComboBoxSituacao().setEnabled(true);
+        this.getView().getjButtonAvancar().setEnabled(true);
+        this.preencherTextField("", "", "", "", "", "", "", "");
     }
 
     public void setTextLabels(String l1, String l2, String l3, String l4, String l5, String l6, String l7, String l8) {
@@ -215,7 +214,6 @@ public class ManterOrdemServicoPresenter {
         this.view.getjLabelValorPercentualTotalReducoes().setVisible(b8);
         this.view.getjLabelTotalOrdemServidoReducoes().setVisible(b9);
         this.view.getjLabelValorTotalOrdemServicoReducoes().setVisible(b10);
-
     }
 
     public void habilitarTextField(boolean b1, boolean b2, boolean b3, boolean b4, boolean b5, boolean b6, boolean b7, boolean b8) {
@@ -224,7 +222,7 @@ public class ManterOrdemServicoPresenter {
         this.view.getJTextField3().setEnabled(b3);
         this.view.getJTextField4().setEnabled(b4);
         this.view.getJTextField5().setEnabled(b5);
-        this.view.getJTextField6().setEnabled(b6);        
+        this.view.getJTextField6().setEnabled(b6);
         this.view.getJTextField7().setEnabled(b7);
         this.view.getJTextField8().setEnabled(b8);
     }
@@ -238,7 +236,6 @@ public class ManterOrdemServicoPresenter {
         this.view.getJTextField6().setText(s6);
         this.view.getJTextField7().setText(s7);
         this.view.getJTextField8().setText(s8);
-        
     }
 
     public void configurarVisibleSituacao(boolean b1, boolean b2, boolean b3) {

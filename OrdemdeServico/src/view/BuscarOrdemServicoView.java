@@ -6,7 +6,6 @@
 package view;
 
 
-import java.awt.event.WindowAdapter;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -99,16 +98,16 @@ public class BuscarOrdemServicoView extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 25, 61, -1));
 
         jButtonBuscar.setText("Buscar");
-        getContentPane().add(jButtonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(579, 21, -1, -1));
+        getContentPane().add(jButtonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, -1, -1));
 
         jButtonNovo.setText("Novo");
-        getContentPane().add(jButtonNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 393, 100, -1));
+        getContentPane().add(jButtonNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, 100, -1));
 
         jButtonVisualizar.setText("Visualizar");
-        getContentPane().add(jButtonVisualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 393, 100, -1));
+        getContentPane().add(jButtonVisualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 390, 100, -1));
 
         jButtonFechar.setText("Fechar");
-        getContentPane().add(jButtonFechar, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 393, 100, -1));
+        getContentPane().add(jButtonFechar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 390, 100, -1));
 
         jTableOrdemServico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -132,8 +131,8 @@ public class BuscarOrdemServicoView extends javax.swing.JInternalFrame {
         getContentPane().add(jLabelQtdRegistros, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, -1, -1));
 
         jButtonDesfazer.setText("Desfazer");
-        getContentPane().add(jButtonDesfazer, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 393, 100, -1));
-        getContentPane().add(jTextFieldBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 22, 369, -1));
+        getContentPane().add(jButtonDesfazer, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 100, -1));
+        getContentPane().add(jTextFieldBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 22, 350, -1));
 
         jComboBoxTipoBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Data", "Nome do Fiscal", "Número" }));
         getContentPane().add(jComboBoxTipoBusca, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 22, 123, -1));
@@ -157,7 +156,5 @@ public class BuscarOrdemServicoView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextFieldBuscar;
     // End of variables declaration//GEN-END:variables
 
-    public void addWindowListener(WindowAdapter windowAdapter) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
 }

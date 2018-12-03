@@ -14,10 +14,10 @@ import javax.swing.event.InternalFrameEvent;
 import javax.swing.table.DefaultTableModel;
 import model.HistoriaUsuario;
 import model.OrdemServico;
-import statemanter.ManterHistoriaState;
-import statemanter.ManterRNMSState;
-import statemanter.StateTabelaManterOrdemServico;
-import statemanter.TabelaHistoriaState;
+import statevisualizar.ManterHistoriaState;
+import statevisualizar.ManterRNMSState;
+import statevisualizar.StateTabelaManterOrdemServico;
+import statevisualizar.TabelaHistoriaState;
 import view.TabelaManterOSView;
 
 /**

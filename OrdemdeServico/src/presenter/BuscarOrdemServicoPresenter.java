@@ -132,7 +132,7 @@ public class BuscarOrdemServicoPresenter{
         
         this.view.getjButtonNovo().addActionListener((e1) -> {
             TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add(ManterOrdemServicoPresenter.getInstance().getView());
-            ManterOrdemServicoPresenter.getInstance().incluir(null);
+            ManterOrdemServicoPresenter.getInstance().incluir(0,null);
         });
 
         this.view.getjButtonDesfazer().addActionListener((e) -> {
