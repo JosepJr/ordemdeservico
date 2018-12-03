@@ -18,7 +18,7 @@ import state.ManterOrdemServicoState;
  */
 public class EditarDisciplinaHistoriaUsuarioState extends ManterOrdemServicoState {
 
-    private ICommandManterOS command;
+    private final ICommandManterOS command;
 
     public EditarDisciplinaHistoriaUsuarioState(ManterOrdemServicoPresenter presenter) {
         super(presenter);
