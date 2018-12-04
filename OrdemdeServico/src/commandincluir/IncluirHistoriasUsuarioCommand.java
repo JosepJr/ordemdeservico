@@ -41,9 +41,9 @@ public class IncluirHistoriasUsuarioCommand implements ICommandManterOS {
 
         presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
             if (os.getHistoriasUsuarios().get(0).getDisciplinas().size() == 1) {
-                presenter.editar(4, os, null);
+                presenter.editar(4, os, null, null);
             } else {
-                presenter.editar(3, os, null);
+                presenter.editar(3, os, null, null);
             }
 
         });
@@ -59,7 +59,7 @@ public class IncluirHistoriasUsuarioCommand implements ICommandManterOS {
             presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
                 //Voltando na tela da primeira história                  
                 if (presenter.setJanelaConfirmacao("Deseja realmente cancelar esta edição?") == 0) {
-                    presenter.editar(2, os, null);
+                    presenter.editar(2, os, null, null);
                 }
             });
 
@@ -68,7 +68,7 @@ public class IncluirHistoriasUsuarioCommand implements ICommandManterOS {
                 //salvar no banco a OS
                 JOptionPane.showMessageDialog(null, "OS Atualizada com sucesso!");
                 //Passar a nova OS atualizada
-                presenter.editar(2, os, null);
+                presenter.editar(2, os, null, null);
             });
         });
 

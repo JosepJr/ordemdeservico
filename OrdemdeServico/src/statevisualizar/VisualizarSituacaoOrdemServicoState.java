@@ -24,7 +24,7 @@ public class VisualizarSituacaoOrdemServicoState extends ManterOrdemServicoState
     }
 
     @Override
-    public void visualizar(OrdemServico os, Object o) {
+    public void visualizar(OrdemServico os, Object ob1, Object ob2) {
         this.configurarStateView();
         
         ArrayList<Situacao> situacoes = os.getSituacoes();
@@ -49,12 +49,13 @@ public class VisualizarSituacaoOrdemServicoState extends ManterOrdemServicoState
         });
         
         this.presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
+            this.presenter.fecharView();
             TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add(TabelaManterOSPresenter.getInstance().getView());
             TabelaManterOSPresenter.getInstance().visualizar(null, os, 1);
         });
 
         this.presenter.getView().getjButtonEditar().addActionListener((e) -> {            
-            this.presenter.editar(1, os, situacao);         
+            this.presenter.editar(1, os, situacao, null);         
         });
 
     }

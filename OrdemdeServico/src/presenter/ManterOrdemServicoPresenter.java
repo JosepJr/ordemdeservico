@@ -100,33 +100,33 @@ public class ManterOrdemServicoPresenter {
         }
     }
     
-    public void visualizar(int indice, OrdemServico os, Object o) {
+    public void visualizar(int indice, OrdemServico os, Object ob1, Object ob2) {
          if (indice == 0) {
             this.setState(new VisualizarOrdemServicoState(this));
-            this.state.visualizar(os, null);
+            this.state.visualizar(os, null, null);
         }
         if(indice == 1){
             this.setState(new VisualizarSituacaoOrdemServicoState(this));
-            this.state.visualizar(os, null);
+            this.state.visualizar(os, null, null);
         }
         if(indice == 2){
             this.setState(new VisualizarDisciplinaHistoriaUsuarioState(this));
-            this.state.visualizar(os, o);
+            this.state.visualizar(os, ob1, ob2);
         }
     }
 
-    public void editar(int indice, OrdemServico os, Object o) {
+    public void editar(int indice, OrdemServico os, Object ob1, Object ob2) {
         if (indice == 0) {
             this.setState(new EditarOrdemServicoState(this));
-            this.state.editar(os, null);
+            this.state.editar(os, null, null);
         }
         if (indice == 1) {
             this.setState(new EditarSituacaoOrdemServicoState(this));
-            this.state.editar(os, null);
+            this.state.editar(os, null, null);
         }
         if (indice == 2) {
             this.setState(new EditarDisciplinaHistoriaUsuarioState(this));
-            this.state.editar(os, o);
+            this.state.editar(os, ob1, ob2);
         }/*
         if (indice == 3) {
             this.setState(new IncluirHistoriasUsuarioState2(this));

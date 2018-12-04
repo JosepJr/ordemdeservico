@@ -21,11 +21,11 @@ public abstract class ManterOrdemServicoState {
         this.presenter = presenter;
     }
 
-    public void visualizar(OrdemServico os, Object o){
+    public void visualizar(OrdemServico os, Object ob1, Object ob2){
         throw new IllegalStateException();
     }
     
-    public void editar(OrdemServico os, Object o) { 
+    public void editar(OrdemServico os, Object ob1, Object ob2) { 
         throw new IllegalStateException();
     }
 

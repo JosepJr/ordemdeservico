@@ -26,8 +26,8 @@ public class EditarSituacaoOrdemServicoState extends ManterOrdemServicoState {
     }
 
     @Override
-    public void editar(OrdemServico os, Object o) {
-        Situacao situacao = (Situacao) o;
+    public void editar(OrdemServico os, Object ob1, Object ob2) {
+        Situacao situacao = (Situacao) ob1;
         
         this.presenter.resetActionListeners();
         this.presenter.getView().getjButtonEditar().setText("Salvar");
@@ -38,14 +38,14 @@ public class EditarSituacaoOrdemServicoState extends ManterOrdemServicoState {
         //Editar a OS
         this.presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
             if (this.presenter.setJanelaConfirmacao("Deseja realmente cancelar?") == 0) {
-                this.presenter.visualizar(1, os, null);
+                this.presenter.visualizar(1, os, null, null);
             }
         });
 
         this.presenter.getView().getjButtonEditar().addActionListener((e1) -> {
             this.command.executar(this.presenter, os, situacao);
             //Passar a nova OS atualizada
-            this.presenter.visualizar(1, os, null);
+            this.presenter.visualizar(1, os, null, null);
         });
 
     }

@@ -51,7 +51,7 @@ public class IncluirRegistroNMSCriteriosGeraisCommand implements ICommandManterO
 
             presenter.getView().getjButtonCancelar().addActionListener((e4) -> {
                 if (presenter.setJanelaConfirmacao("Deseja realmente cancelar esta edição?") == 0) {
-                    presenter.editar(4, os, criterio);
+                    presenter.editar(4, os, criterio, null);
                 }
             });
 
@@ -59,7 +59,7 @@ public class IncluirRegistroNMSCriteriosGeraisCommand implements ICommandManterO
                 //Atualizar A OS  
                 //salvar no banco
                 JOptionPane.showMessageDialog(null, "OS Atualizada com sucesso!");
-                presenter.editar(4, os, criterio);
+                presenter.editar(4, os, criterio, null);
             });
 
         });

@@ -15,7 +15,6 @@ import javax.swing.table.DefaultTableModel;
 import model.DisciplinaHistoriaUsuario;
 import model.HistoriaUsuario;
 import model.OrdemServico;
-import presenter.BuscarOrdemServicoPresenter;
 import presenter.ManterOrdemServicoPresenter;
 import presenter.TabelaManterOSPresenter;
 import presenter.TelaPrincipalPresenter;
@@ -37,7 +36,7 @@ public class VisualizarHistoriaUsuarioSelecionadaState extends StateTabelaManter
     public void visualizar(Object o, OrdemServico os) {
         HistoriaUsuario historia = (HistoriaUsuario) o;
         this.presenter.resetarConfiguracoes();
-        this.presenter.getView().getjButtonVisualizar().setText("Excluir");
+        this.presenter.getView().getjButtonAvancar().setText("Excluir");
         try {
             this.preencherTabela(this.presenter, historia.getDisciplinas());
         } catch (Exception ex) {
@@ -50,29 +49,42 @@ public class VisualizarHistoriaUsuarioSelecionadaState extends StateTabelaManter
         this.presenter.preencherCampos("Nome da História de Usuário:", historia.getNome(), "Situação da História de Usuário:", historia.getSituacao());
         this.presenter.visibilidadeCampos(true, true, true, true);
         this.presenter.bloquearTextFields(false, false);
-        this.presenter.getView().setVisible(true);          
-        
+        this.presenter.getView().setVisible(true);
 
         this.presenter.getView().getjButtonEditar().addActionListener((el) -> {
-                this.presenter.editar(historia, os, 0);
+            this.presenter.editar(historia, os, 0);
         });
 
         this.presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
             if (this.presenter.setJanelaConfirmacao("Deseja realmente cancelar a edição da História de Usuário?") == 0) {
+                this.presenter.getView().getjButtonAvancar().setText("Avancar");
                 this.presenter.visualizar(null, os, 1);
-                ManterOrdemServicoPresenter.getInstance().fecharView();
             }
         });
 
         this.presenter.getView().getjButtonVisualizar().addActionListener((e) -> {
             if (this.presenter.getView().getjTable().getSelectedColumn() == 0) {
+                for (DisciplinaHistoriaUsuario disciplina : historia.getDisciplinas()) {
+                    try {
+                        if (this.presenter.getView().getjTable().getValueAt(this.presenter.getView().getjTable().getSelectedRow(), 0).equals(disciplina.getDescricao())) {
+                            TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add(ManterOrdemServicoPresenter.getInstance().getView());
+                            ManterOrdemServicoPresenter.getInstance().visualizar(2, os, disciplina, historia);
+                        }
+                    } catch (Exception ex) {
+                        //Tratar essa exception pois ela esta dando um erro que eu não sei qual é
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Favor selecionar a disciplina para a visualização!");
+            }           
+        });
+
+        this.presenter.getView().getjButtonAvancar().addActionListener((e) -> {                 
+            if (this.presenter.getView().getjTable().getSelectedColumn() == 0) {
                 if (this.presenter.getView().getjTable().getRowCount() > 1) {
                     if (this.presenter.setJanelaConfirmacao("Deseja mesmo Excluir essa disciplina?") == 0) {
-                        
 
                         //Realizar a exclusão da Disciplina, passar a disciplina selecionada para o command excluir
-                        
-                        
                         ExcluirDisciplinaHistoriaUsuarioCommand.getInstance().executar(null, historia, os);
                         this.presenter.visualizar(historia, os, 2);
                     }
@@ -81,22 +93,6 @@ public class VisualizarHistoriaUsuarioSelecionadaState extends StateTabelaManter
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Favor selecionar uma diciplina para a exclusão!");
-            }
-        });
-
-        this.presenter.getView().getjButtonAvancar().addActionListener((e) -> {
-            if (this.presenter.getView().getjTable().getSelectedColumn() == 0) {
-                for (DisciplinaHistoriaUsuario disciplina : historia.getDisciplinas()) {
-                    try {
-                        if (this.presenter.getView().getjTable().getValueAt(this.presenter.getView().getjTable().getSelectedRow(), 0).equals(disciplina.getDescricao())) {
-                            ManterOrdemServicoPresenter.getInstance().visualizar(2, os, disciplina);
-                        } 
-                    } catch (Exception ex) {
-                            //Tratar essa exception pois ela esta dando um erro que eu não sei qual é
-                    }
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Favor selecionar somente a disciplina para a visualização!");
             }
         });
     }

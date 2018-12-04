@@ -44,7 +44,7 @@ public class IncluirManterRNMSCommand implements ICommandTabela{
                 for (CriterioGeralNMS criterio : criterios) {
                     try {
                         if (presenter.getView().getjTable().getValueAt(presenter.getView().getjTable().getSelectedRow(), 0).equals(criterio.getCriterio())) {
-                            ManterOrdemServicoPresenter.getInstance().editar(4, os, criterio);
+                            ManterOrdemServicoPresenter.getInstance().editar(4, os, criterio, null);
                         }
                     } catch (Exception ex) {
                         //Tratar essa exception pois ela esta dando um erro que eu não sei qual é

@@ -5,8 +5,6 @@
  */
 package statevisualizar;
 
-import command.ICommandManterOS;
-import javax.swing.JOptionPane;
 import model.OrdemServico;
 import presenter.ManterOrdemServicoPresenter;
 import state.ManterOrdemServicoState;
@@ -22,7 +20,7 @@ public class VisualizarOrdemServicoState extends ManterOrdemServicoState{
     }
        
     @Override
-    public void visualizar(OrdemServico os, Object o) {
+    public void visualizar(OrdemServico os, Object ob1, Object ob2) {
         this.configurarViewState();
         this.presenter.getView().getjButtonEditar().setVisible(true);
         this.presenter.preencherTextField(Integer.toString(os.getNumero()), os.getDataEmissao(), os.getNomeFiscalEmissor(), "", "", "", "", "");
@@ -36,11 +34,11 @@ public class VisualizarOrdemServicoState extends ManterOrdemServicoState{
         });
 
         this.presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
-            this.presenter.visualizar(1, os, null);
+            this.presenter.visualizar(1, os, null, null);
         });
 
         this.presenter.getView().getjButtonEditar().addActionListener((e1) -> {
-            this.presenter.editar(0, os, null);       
+            this.presenter.editar(0, os, null, null);       
         });
     }
 

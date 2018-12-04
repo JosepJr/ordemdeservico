@@ -6,9 +6,11 @@
 package statevisualizar;
 
 import model.DisciplinaHistoriaUsuario;
+import model.HistoriaUsuario;
 import model.OrdemServico;
 import presenter.ManterOrdemServicoPresenter;
 import presenter.TabelaManterOSPresenter;
+import presenter.TelaPrincipalPresenter;
 import state.ManterOrdemServicoState;
 
 /**
@@ -22,18 +24,22 @@ public class VisualizarDisciplinaHistoriaUsuarioState extends ManterOrdemServico
     }
 
     @Override
-    public void visualizar(OrdemServico os, Object o) {
-        DisciplinaHistoriaUsuario disciplina = (DisciplinaHistoriaUsuario) o;
+    public void visualizar(OrdemServico os, Object ob1, Object ob2) {
+        DisciplinaHistoriaUsuario disciplina = (DisciplinaHistoriaUsuario) ob1;
+        HistoriaUsuario historia = (HistoriaUsuario) ob2;
         this.configurarViewState();
-
+        
         this.presenter.preencherTextField(disciplina.getDescricao(), disciplina.getTarefa(), Double.toString(disciplina.getUST()), "", "", "", "", "");
 
         this.presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
             this.presenter.fecharView();
+            TabelaManterOSPresenter.getInstance().fecharView();
+            TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add( TabelaManterOSPresenter.getInstance().getView());
+            TabelaManterOSPresenter.getInstance().visualizar(historia, os, 2);            
         });
 
         this.presenter.getView().getjButtonAvancar().addActionListener((e) -> {
-            this.presenter.editar(2, os, disciplina);
+            this.presenter.editar(2, os, disciplina, historia);
         });
 
     }

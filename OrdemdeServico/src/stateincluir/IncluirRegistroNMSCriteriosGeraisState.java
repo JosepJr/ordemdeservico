@@ -45,8 +45,8 @@ public class IncluirRegistroNMSCriteriosGeraisState extends ManterOrdemServicoSt
     }
 
     @Override
-    public void editar(OrdemServico os, Object o) {
-        CriterioGeralNMS criterio = (CriterioGeralNMS) o;
+    public void editar(OrdemServico os, Object ob1, Object ob2) {
+        CriterioGeralNMS criterio = (CriterioGeralNMS) ob1;
         this.configurarViewState();
         this.presenter.getView().getjButtonEditar().setVisible(false);
         this.presenter.getView().getjButtonAvancar().setText("Editar");

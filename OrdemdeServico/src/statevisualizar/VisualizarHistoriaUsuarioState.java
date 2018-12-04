@@ -21,8 +21,8 @@ public class VisualizarHistoriaUsuarioState extends ManterOrdemServicoState{
     }
     
     @Override
-    public void visualizar(OrdemServico os, Object o){
-        HistoriaUsuario historia = (HistoriaUsuario) o;
+    public void visualizar(OrdemServico os, Object ob1, Object ob2){
+        HistoriaUsuario historia = (HistoriaUsuario) ob1;
         
         this.configurarViewState();
         this.presenter.setLabelTitulo("História de Usuário: " + os.getHistoriasUsuarios().get(0).getNome(), true);

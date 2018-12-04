@@ -25,7 +25,7 @@ public class EditarOrdemServicoState extends ManterOrdemServicoState {
     }
 
     @Override
-    public void editar(OrdemServico os, Object o) {
+    public void editar(OrdemServico os, Object ob1, Object ob2) {
         this.presenter.resetActionListeners();
         this.presenter.getView().getjButtonEditar().setText("Salvar");
         this.presenter.habilitarTextField(true, true, true, true, true, true, true, true);
@@ -33,13 +33,13 @@ public class EditarOrdemServicoState extends ManterOrdemServicoState {
 
         this.presenter.getView().getjButtonCancelar().addActionListener((e2) -> {
             if (this.presenter.setJanelaConfirmacao("Deseja realmente cancelar esta edição?") == 0) {
-                this.presenter.visualizar(0, os, null);
+                this.presenter.visualizar(0, os, null, null);
             }
         });
 
         this.presenter.getView().getjButtonEditar().addActionListener((e2) -> {
-            this.command.executar(this.presenter, os, o);
-            this.presenter.visualizar(0, os, null);
+            this.command.executar(this.presenter, os, ob1);
+            this.presenter.visualizar(0, os, null, null);
         });
 
     }

@@ -47,7 +47,7 @@ public class IncluirRegistroNMSNiveisServicoState extends ManterOrdemServicoStat
     }
 
     @Override
-    public void editar(OrdemServico os, Object o) {
+    public void editar(OrdemServico os, Object ob1, Object ob2) {
 
     }
 

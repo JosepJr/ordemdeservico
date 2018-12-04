@@ -76,7 +76,9 @@ public class VisualizarHistoriasUsuarioState extends StateTabelaManterOrdemServi
         });
     
         this.presenter.getView().getjButtonAvancar().addActionListener((e) -> {
-            this.presenter.visualizar(null, os, 3);
+            if(this.presenter.setJanelaConfirmacao("Deseja seguir para Registro de Níveis Minimos de Serviço?") == 0){
+                this.presenter.visualizar(null, os, 3);
+            }            
         });
     }
 

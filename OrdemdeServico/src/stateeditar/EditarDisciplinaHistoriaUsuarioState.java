@@ -8,6 +8,7 @@ package stateeditar;
 import command.ICommandManterOS;
 import commandeditar.EditarDisciplinaHistoriaUsuarioCommand;
 import model.DisciplinaHistoriaUsuario;
+import model.HistoriaUsuario;
 import model.OrdemServico;
 import presenter.ManterOrdemServicoPresenter;
 import state.ManterOrdemServicoState;
@@ -26,20 +27,22 @@ public class EditarDisciplinaHistoriaUsuarioState extends ManterOrdemServicoStat
     }
 
     @Override
-    public void editar(OrdemServico os, Object o) {
-        DisciplinaHistoriaUsuario disciplina = (DisciplinaHistoriaUsuario) o;
+    public void editar(OrdemServico os, Object ob1, Object ob2) {
+        DisciplinaHistoriaUsuario disciplina = (DisciplinaHistoriaUsuario) ob1;
+        HistoriaUsuario historia = (HistoriaUsuario) ob2;
         this.presenter.resetActionListeners();
         this.presenter.getView().getjButtonAvancar().setText("Salvar");
+        this.presenter.getView().getjButtonCancelar().setText("Cancelar");
         this.presenter.habilitarTextField(true, true, true, false, false, false, false, false);
         
         this.presenter.getView().getjButtonAvancar().addActionListener((e) -> {
             this.command.executar(this.presenter, os, disciplina);
-            this.presenter.visualizar(2, os, disciplina);
+            this.presenter.visualizar(2, os, disciplina, historia);
         });
         
         this.presenter.getView().getjButtonCancelar().addActionListener((e) -> {
             if(this.presenter.setJanelaConfirmacao("Deseja realmente cancelar a edição desta disciplina?") == 0){
-                this.presenter.visualizar(2, os, disciplina);
+                this.presenter.visualizar(2, os, disciplina, historia);
             }            
         });
                 
