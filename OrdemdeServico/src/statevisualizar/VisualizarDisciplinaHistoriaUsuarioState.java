@@ -53,7 +53,7 @@ public class VisualizarDisciplinaHistoriaUsuarioState extends ManterOrdemServico
         this.presenter.setLabelTitulo("Disciplina História de Usuário", true);
         this.presenter.habilitarTextField(false, false, false, false, false, false, false, false);
         this.presenter.getView().getjButtonAvancar().setText("Editar");
-        this.presenter.getView().getjButtonCancelar().setText("Voltar");
+        this.presenter.getView().getjButtonCancelar().setText("Sair");
         this.presenter.getView().setVisible(true);
         this.presenter.getView().moveToFront();
         

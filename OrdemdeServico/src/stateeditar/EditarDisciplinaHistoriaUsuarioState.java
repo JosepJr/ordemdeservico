@@ -41,7 +41,7 @@ public class EditarDisciplinaHistoriaUsuarioState extends ManterOrdemServicoStat
         });
         
         this.presenter.getView().getjButtonCancelar().addActionListener((e) -> {
-            if(this.presenter.setJanelaConfirmacao("Deseja realmente cancelar a edição desta disciplina?") == 0){
+            if(this.presenter.setJanelaConfirmacao("Deseja realmente cancelar a edição desta disciplina história de usuário?") == 0){
                 this.presenter.visualizar(2, os, disciplina, historia);
             }            
         });

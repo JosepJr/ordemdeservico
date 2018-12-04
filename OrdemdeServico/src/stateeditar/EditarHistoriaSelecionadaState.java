@@ -36,7 +36,7 @@ public class EditarHistoriaSelecionadaState extends StateTabelaManterOrdemServic
         this.presenter.getView().getjButtonAvancar().setEnabled(false);
 
         this.presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
-            if (this.presenter.setJanelaConfirmacao("Deseja realmente cancelar a edição desta História de Usuário?") == 0) {
+            if (this.presenter.setJanelaConfirmacao("Deseja realmente cancelar a edição desta História de Usuário?\n Atualizações já feitas serão mantidas.") == 0) {
                 this.presenter.visualizar(historia, os, 2);
             }
         });

@@ -37,6 +37,7 @@ public class VisualizarHistoriaUsuarioSelecionadaState extends StateTabelaManter
         HistoriaUsuario historia = (HistoriaUsuario) o;
         this.presenter.resetarConfiguracoes();
         this.presenter.getView().getjButtonAvancar().setText("Excluir");
+        this.presenter.getView().getjButtonCancelar().setText("Sair");
         try {
             this.preencherTabela(this.presenter, historia.getDisciplinas());
         } catch (Exception ex) {
@@ -56,7 +57,7 @@ public class VisualizarHistoriaUsuarioSelecionadaState extends StateTabelaManter
         });
 
         this.presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
-            if (this.presenter.setJanelaConfirmacao("Deseja realmente cancelar a edição da História de Usuário?") == 0) {
+            if (this.presenter.setJanelaConfirmacao("Deseja realmente sair da edição desta história de usuário?\n Atualizações já feitas serão mantidas.") == 0) {
                 this.presenter.getView().getjButtonAvancar().setText("Avancar");
                 this.presenter.visualizar(null, os, 1);
             }
