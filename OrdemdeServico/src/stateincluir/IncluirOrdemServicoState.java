@@ -6,7 +6,6 @@
 package stateincluir;
 
 import state.ManterOrdemServicoState;
-import javax.swing.JOptionPane;
 import model.OrdemServico;
 import presenter.ManterOrdemServicoPresenter;
 
