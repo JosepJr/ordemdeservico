@@ -34,7 +34,7 @@ public class VisualizarDisciplinaHistoriaUsuarioState extends ManterOrdemServico
         this.presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
             this.presenter.fecharView();
             TabelaManterOSPresenter.getInstance().fecharView();
-            TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add( TabelaManterOSPresenter.getInstance().getView());
+            TelaPrincipalPresenter.getInstance().getView().getjDesktopPanePrincipal().add( TabelaManterOSPresenter.getInstance().getView());
             TabelaManterOSPresenter.getInstance().visualizar(historia, os, 2);            
         });
 

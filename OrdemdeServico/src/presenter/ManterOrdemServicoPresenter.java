@@ -18,6 +18,7 @@ import model.OrdemServico;
 import state.ManterOrdemServicoState;
 import stateeditar.EditarDisciplinaHistoriaUsuarioState;
 import stateeditar.EditarOrdemServicoState;
+import stateeditar.EditarRNMSSelecionadoState;
 import stateeditar.EditarSituacaoOrdemServicoState;
 import stateincluir.IncluirHistoriasUsuarioState;
 import stateincluir.IncluirHistoriasUsuarioState2;
@@ -26,6 +27,7 @@ import stateincluir.IncluirRegistroNMSNiveisServicoState;
 import stateincluir.IncluirSituacaoOrdemServicoState;
 import statevisualizar.VisualizarDisciplinaHistoriaUsuarioState;
 import statevisualizar.VisualizarOrdemServicoState;
+import statevisualizar.VisualizarRNMSSelecionadoState;
 import statevisualizar.VisualizarSituacaoOrdemServicoState;
 
 /**
@@ -113,6 +115,10 @@ public class ManterOrdemServicoPresenter {
             this.setState(new VisualizarDisciplinaHistoriaUsuarioState(this));
             this.state.visualizar(os, ob1, ob2);
         }
+        if(indice == 3){
+            this.setState(new VisualizarRNMSSelecionadoState(this));
+            this.state.visualizar(os, ob1, null);
+        }
     }
 
     public void editar(int indice, OrdemServico os, Object ob1, Object ob2) {
@@ -127,15 +133,11 @@ public class ManterOrdemServicoPresenter {
         if (indice == 2) {
             this.setState(new EditarDisciplinaHistoriaUsuarioState(this));
             this.state.editar(os, ob1, ob2);
-        }/*
+        }
         if (indice == 3) {
-            this.setState(new IncluirHistoriasUsuarioState2(this));
-            this.state.editar(os, o);
-        }
-        if (indice == 4) {
-            this.setState(new IncluirRegistroNMSCriteriosGeraisState(this));
-            this.state.editar(os, o);
-        }
+            this.setState(new EditarRNMSSelecionadoState(this));
+            this.state.editar(os, ob1, null);
+        }/*
         if (indice == 5) {
             this.setState(new IncluirRegistroNMSNiveisServicoState(this));
             this.state.editar(os, null);
@@ -154,7 +156,7 @@ public class ManterOrdemServicoPresenter {
     }
 
     private void setPosicao() {
-        Dimension d = TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().getSize();
+        Dimension d = TelaPrincipalPresenter.getInstance().getView().getjDesktopPanePrincipal().getSize();
         this.view.setLocation((d.width - this.view.getSize().width) / 2, (d.height - this.view.getSize().height) / 2);
     }
 

@@ -48,7 +48,7 @@ public class VisualizarSituacaoOrdemServicoState extends ManterOrdemServicoState
 
         this.presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
             this.presenter.fecharView();
-            TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add(TabelaManterOSPresenter.getInstance().getView());
+            TelaPrincipalPresenter.getInstance().getView().getjDesktopPanePrincipal().add(TabelaManterOSPresenter.getInstance().getView());
             TabelaManterOSPresenter.getInstance().visualizar(null, os, 1);
         });
 

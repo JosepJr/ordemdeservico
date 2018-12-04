@@ -125,7 +125,7 @@ public class BuscarOrdemServicoPresenter{
                 try {
                     for(OrdemServico ordens : DadosTeste.getInstance().getOrdensServico()){
                        if(this.view.getjTableOrdemServico().getValueAt(this.view.getjTableOrdemServico().getSelectedRow(), 0).toString().equals(Integer.toString(ordens.getNumero()))){
-                           TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add(ManterOrdemServicoPresenter.getInstance().getView());
+                           TelaPrincipalPresenter.getInstance().getView().getjDesktopPanePrincipal().add(ManterOrdemServicoPresenter.getInstance().getView());
                            ManterOrdemServicoPresenter.getInstance().visualizar(0, ordens, null, null);
                        } 
                     }
@@ -138,7 +138,7 @@ public class BuscarOrdemServicoPresenter{
         });
         
         this.view.getjButtonNovo().addActionListener((e1) -> {
-            TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add(ManterOrdemServicoPresenter.getInstance().getView());
+            TelaPrincipalPresenter.getInstance().getView().getjDesktopPanePrincipal().add(ManterOrdemServicoPresenter.getInstance().getView());
             ManterOrdemServicoPresenter.getInstance().incluir(0,null);
         });
 
@@ -149,7 +149,7 @@ public class BuscarOrdemServicoPresenter{
                        if(this.view.getjTableOrdemServico().getValueAt(this.view.getjTableOrdemServico().getSelectedRow(), 0).toString().equals(Integer.toString(ordens.getNumero()))){
                            this.command.executar(null, ordens, null);
                            this.fecharView();
-                           TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add(BuscarOrdemServicoPresenter.getInstance().getView()).setVisible(true);
+                           TelaPrincipalPresenter.getInstance().getView().getjDesktopPanePrincipal().add(BuscarOrdemServicoPresenter.getInstance().getView()).setVisible(true);
                        } 
                     }
                 } catch (Exception ex) {
@@ -173,7 +173,7 @@ public class BuscarOrdemServicoPresenter{
     }
 
     private void setPosicao() {
-        Dimension d = TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().getSize();
+        Dimension d = TelaPrincipalPresenter.getInstance().getView().getjDesktopPanePrincipal().getSize();
         this.view.setLocation((d.width - this.view.getSize().width) / 2, (d.height - this.view.getSize().height) / 2);
     }
 

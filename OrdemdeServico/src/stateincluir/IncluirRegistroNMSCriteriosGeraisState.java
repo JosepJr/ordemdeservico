@@ -6,7 +6,7 @@
 package stateincluir;
 
 import state.ManterOrdemServicoState;
-import commandincluir.IncluirRegistroNMSCriteriosGeraisCommand;
+import commandeditar.EditarRNMSSelecionadoCommand;
 import model.CriterioGeralNMS;
 import model.OrdemServico;
 import presenter.ManterOrdemServicoPresenter;
@@ -22,7 +22,7 @@ public class IncluirRegistroNMSCriteriosGeraisState extends ManterOrdemServicoSt
 
     public IncluirRegistroNMSCriteriosGeraisState(ManterOrdemServicoPresenter presenter) {
         super(presenter);
-        this.command = IncluirRegistroNMSCriteriosGeraisCommand.getInstance();
+        this.command = EditarRNMSSelecionadoCommand.getInstance();
     }
 
     @Override

@@ -60,31 +60,34 @@ public class TabelaManterOSPresenter {
         });
     }
 
-    public void visualizar(Object o, OrdemServico os ,int indice) {
-        if(indice == 1){
+    public void visualizar(Object o, OrdemServico os, int indice) {
+        if (indice == 1) {
             this.state = new VisualizarHistoriasUsuarioState(this);
             this.state.visualizar(null, os);
         }
-        if(indice == 2){
+        if (indice == 2) {
             this.state = new VisualizarHistoriaUsuarioSelecionadaState(this);
             this.state.visualizar(o, os);
         }
-        if(indice == 3){
+        if (indice == 3) {
             this.state = new VisualizarRNMSState(this);
             this.state.visualizar(null, os);
-        }        
+        }
+        if (indice == 4) {
+            this.state = new VisualizarRNMSState(this);
+            this.state.visualizar(null, os);
+        }
     }
-    
-    public void editar(Object o, OrdemServico os, int indice){
-        if(indice == 0){
+
+    public void editar(Object o, OrdemServico os, int indice) {
+        if (indice == 0) {
             this.state = new EditarHistoriaSelecionadaState(this);
             this.state.editar(o, os);
-        }        
+        }
     }
-   
-    
-    public void incluir(){
-    
+
+    public void incluir() {
+
     }
 
     public void fecharView() {
@@ -93,7 +96,7 @@ public class TabelaManterOSPresenter {
     }
 
     private void setPosicao() {
-        Dimension d = TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().getSize();
+        Dimension d = TelaPrincipalPresenter.getInstance().getView().getjDesktopPanePrincipal().getSize();
         this.view.setLocation((d.width - this.view.getSize().width) / 2, (d.height - this.view.getSize().height) / 2);
     }
 
@@ -166,16 +169,16 @@ public class TabelaManterOSPresenter {
         this.view.getjButtonAvancar().setVisible(b3);
         this.view.getjButtonCancelar().setVisible(b4);
     }
-    
-    public void resetarBotoes(){
+
+    public void resetarBotoes() {
         this.view.getjButtonAvancar().setEnabled(true);
         this.view.getjButtonVisualizar().setEnabled(true);
         this.view.getjButtonEditar().setVisible(true);
         this.view.getjButtonEditar().setText("Editar");
         this.view.getjButtonVisualizar().setText("Visualizar");
     }
-    
-    public void resetarConfiguracoes(){
+
+    public void resetarConfiguracoes() {
         this.resetarBotoes();
         this.getView().getjLabelTitulo().setText("");
         this.getView().getjLabelSubTitulo().setText("");

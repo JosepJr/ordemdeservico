@@ -36,7 +36,7 @@ public class TelaPrincipalPresenter {
         return instance;
     }
 
-    public TelaPrincipalView getTelaPrincipalView() {
+    public TelaPrincipalView getView() {
         return this.view;
     }
 
