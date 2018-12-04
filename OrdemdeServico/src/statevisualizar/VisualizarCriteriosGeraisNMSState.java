@@ -96,7 +96,9 @@ public class VisualizarCriteriosGeraisNMSState extends ManterOrdemServicoTabelaS
         });
 
         this.presenter.getView().getjButtonAvancar().addActionListener((e) -> {
-            this.presenter.visualizar(null, os, 4);
+            if (this.presenter.setJanelaConfirmacao("Deseja seguir para Niveis de Serviço?") == 0) {
+                this.presenter.visualizar(null, os, 4);
+            }
         });
 
     }

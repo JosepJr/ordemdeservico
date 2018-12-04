@@ -32,7 +32,7 @@ private static EditarNivelServicoSelecionadoCommand instance;
 
     @Override
     public void executar(ManterOrdemServicoPresenter presenter, OrdemServico os, Object o) {
-            JOptionPane.showMessageDialog(null, "Registro Nivel Minimo selecionado atualizado com sucesso!");
+            JOptionPane.showMessageDialog(null, "Registro Nivel de Servico selecionado atualizado com sucesso!");
     }
 
     @Override

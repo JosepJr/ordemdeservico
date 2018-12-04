@@ -45,9 +45,6 @@ public class EditarDisciplinaHistoriaUsuarioState extends ManterOrdemServicoStat
                 this.presenter.visualizar(2, os, disciplina, historia);
             }            
         });
-                
-        
-        
 
     }
 

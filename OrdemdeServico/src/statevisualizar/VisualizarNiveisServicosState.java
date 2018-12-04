@@ -5,10 +5,11 @@
  */
 package statevisualizar;
 
+import command.ICommandTabela;
+import commandexcluir.ExcluirNivelServicoCommand;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.CriterioGeralNMS;
 import model.NivelServico;
 import model.OrdemServico;
 import presenter.ManterOrdemServicoPresenter;
@@ -22,15 +23,18 @@ import state.ManterOrdemServicoTabelaState;
  */
 public class VisualizarNiveisServicosState extends ManterOrdemServicoTabelaState {
 
+    private ICommandTabela command;
+
     public VisualizarNiveisServicosState(TabelaManterOSPresenter presenter) {
         super(presenter);
+        this.command = ExcluirNivelServicoCommand.getInstance();
     }
 
     @Override
     public void visualizar(Object ob1, OrdemServico os) {
         this.presenter.resetarConfiguracoes();
         this.presenter.getView().setTitle("Registro de Níveis Mínimos de Serviço (Visualização / Edição)");
-        this.presenter.getView().getjLabelTitulo().setText("Niceis de Serviço");
+        this.presenter.getView().getjLabelTitulo().setText("      Niveis de Serviço");
         this.presenter.getView().getjLabelTitulo().setVisible(true);
         this.presenter.getView().getjButtonEditar().setText("Excluir");
         this.presenter.getView().setVisible(true);
@@ -41,15 +45,16 @@ public class VisualizarNiveisServicosState extends ManterOrdemServicoTabelaState
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
 
-        ArrayList<CriterioGeralNMS> criterios = os.getNivelMinimoServico().getCriteriosGerais();
+        ArrayList<NivelServico> nivelServicos = os.getNivelMinimoServico().getNiveisServicos();
 
         this.presenter.getView().getjButtonVisualizar().addActionListener((e1) -> {
-            /*if (this.presenter.getView().getjTable().getSelectedColumn() == 0) {
-                for (CriterioGeralNMS criterio : criterios) {
+            if (this.presenter.getView().getjTable().getSelectedColumn() == 0) {
+                for (NivelServico nivelservico : nivelServicos) {
                     try {
-                        if (this.presenter.getView().getjTable().getValueAt(this.presenter.getView().getjTable().getSelectedRow(), 0).equals(criterio.getCriterio())) {
+                        if (this.presenter.getView().getjTable().getValueAt(this.presenter.getView().getjTable().getSelectedRow(), 0).equals(nivelservico.getIndicador())) {
+                            //Realizar a edição do nivel de servico realizado
                             TelaPrincipalPresenter.getInstance().getView().getjDesktopPanePrincipal().add(ManterOrdemServicoPresenter.getInstance().getView());
-                            ManterOrdemServicoPresenter.getInstance().visualizar(3, os, criterio, null);
+                            ManterOrdemServicoPresenter.getInstance().visualizar(4, os, nivelservico, null);
                         }
                     } catch (Exception ex) {
                         //Tratar essa exception pois ela esta dando um erro que eu não sei qual é
@@ -57,7 +62,7 @@ public class VisualizarNiveisServicosState extends ManterOrdemServicoTabelaState
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Favor selecionar somente o Critério para a visualização!");
-            }*/
+            }
         });
 
         this.presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
@@ -68,15 +73,15 @@ public class VisualizarNiveisServicosState extends ManterOrdemServicoTabelaState
         });
 
         this.presenter.getView().getjButtonEditar().addActionListener((e) -> {
-            /*if (this.presenter.getView().getjTable().getSelectedColumn() == 0) {
+            if (this.presenter.getView().getjTable().getSelectedColumn() == 0) {
                 if (this.presenter.getView().getjTable().getRowCount() > 1) {
-                    if (this.presenter.setJanelaConfirmacao("Deseja  mesmo Excluir este critério? ") == 0) {
-                        for (CriterioGeralNMS criterio : criterios) {
+                    if (this.presenter.setJanelaConfirmacao("Deseja mesmo Excluir este Nivel de Serviço?") == 0) {
+                        for (NivelServico nivelservico : nivelServicos) {
                             try {
-                                if (this.presenter.getView().getjTable().getValueAt(this.presenter.getView().getjTable().getSelectedRow(), 0).equals(criterio.getCriterio())) {
+                                if (this.presenter.getView().getjTable().getValueAt(this.presenter.getView().getjTable().getSelectedRow(), 0).equals(nivelservico.getIndicador())) {
                                     //Realizar a exclusão do critério selecionado
-                                    this.command.executar(this.presenter, criterio, os);
-                                    TabelaManterOSPresenter.getInstance().visualizar(null, os, 3);
+                                    this.command.executar(this.presenter, nivelservico, os);
+                                    TabelaManterOSPresenter.getInstance().visualizar(null, os, 4);
                                 }
                             } catch (Exception ex) {
                                 //Tratar essa exception pois ela esta dando um erro que eu não sei qual é
@@ -84,15 +89,16 @@ public class VisualizarNiveisServicosState extends ManterOrdemServicoTabelaState
                         }
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Não é possível Realizar a exclusão deste critério pois ele é unico!");
+                    JOptionPane.showMessageDialog(null, "Não é possível Realizar a exclusão deste Nivel de Serviço pois ele é unico!");
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Favor selecionar um critério para a exclusão!");
-            }*/
+                JOptionPane.showMessageDialog(null, "Favor selecionar um indicador para a exclusão!");
+            }
         });
 
         this.presenter.getView().getjButtonAvancar().addActionListener((e) -> {
-            //this.presenter.visualizar(null, os, 4);
+            JOptionPane.showMessageDialog(null, "Edição da Ordem de Servico concluida!\nNão há mais edições a serem feitas.");
+            this.presenter.fecharView();
         });
 
     }
@@ -124,40 +130,3 @@ public class VisualizarNiveisServicosState extends ManterOrdemServicoTabelaState
         presenter.getView().getjTable().setModel(presenter.getTablemodel());
     }
 }
-/*
-
-presenter.getView().getjButtonAvancar().addActionListener((e1) -> {
-
-            });
-
-            presenter.getView().getjButtonVoltar().addActionListener((e) -> {
-                presenter.visualizar(2, os);
-            });
-            presenter.getView().getjButtonEditar().addActionListener((e) -> {
-                presenter.getView().getjButtonEditar().setText("Salvar");
-                presenter.habilitarTextField(true, true, true, true, true, true, true, true, true, true);
-                presenter.getView().getjButtonAvancar().setEnabled(false);
-                presenter.getView().getjButtonVoltar().setEnabled(false);
-                presenter.resetarBotoesTextFielLabels();
-                presenter.configurarLabelValores(false, false, false, false, false, false, false, false, false, false);
-
-                presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
-                    presenter.fecharView();
-                });
-
-                presenter.getView().getjButtonEditar().addActionListener((e1) -> {
-                    //Atualizar A OS   
-
-                    //salvar no banco
-                    JOptionPane.showMessageDialog(null, "OS Atualizada com sucesso!");
-
-                    presenter.getView().getjButtonAvancar().setEnabled(true);
-                    presenter.getView().getjButtonVoltar().setEnabled(true);
-                    presenter.getView().getjButtonEditar().setText("Editar");
-                    //Passar a nova OS atualizada
-                    presenter.visualizar(3, os);
-                });
-            });
-            
-
-*/
