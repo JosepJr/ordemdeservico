@@ -6,8 +6,8 @@
 package statevisualizar;
 
 import command.ICommandTabela;
-import commandexcluir.ExcluirRNMSStateCommand;
-import state.StateTabelaManterOrdemServico;
+import commandexcluir.ExcluirCriterioGeralNMSCommand;
+import state.ManterOrdemServicoTabelaState;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -21,13 +21,13 @@ import presenter.TelaPrincipalPresenter;
  *
  * @author Josep
  */
-public class VisualizarRNMSState extends StateTabelaManterOrdemServico {
+public class VisualizarCriteriosGeraisNMSState extends ManterOrdemServicoTabelaState {
 
     private ICommandTabela command;
 
-    public VisualizarRNMSState(TabelaManterOSPresenter presenter) {
+    public VisualizarCriteriosGeraisNMSState(TabelaManterOSPresenter presenter) {
         super(presenter);
-        this.command = ExcluirRNMSStateCommand.getInstance();
+        this.command = ExcluirCriterioGeralNMSCommand.getInstance();
     }
 
     @Override
@@ -96,7 +96,7 @@ public class VisualizarRNMSState extends StateTabelaManterOrdemServico {
         });
 
         this.presenter.getView().getjButtonAvancar().addActionListener((e) -> {
-            JOptionPane.showMessageDialog(null, "Configurar esse botão avancar");
+            this.presenter.visualizar(null, os, 4);
         });
 
     }

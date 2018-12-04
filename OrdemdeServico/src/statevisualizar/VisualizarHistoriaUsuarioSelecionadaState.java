@@ -5,7 +5,7 @@
  */
 package statevisualizar;
 
-import state.StateTabelaManterOrdemServico;
+import state.ManterOrdemServicoTabelaState;
 import commandexcluir.ExcluirDisciplinaHistoriaUsuarioCommand;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -21,7 +21,7 @@ import presenter.TelaPrincipalPresenter;
  *
  * @author Josep
  */
-public class VisualizarHistoriaUsuarioSelecionadaState extends StateTabelaManterOrdemServico {
+public class VisualizarHistoriaUsuarioSelecionadaState extends ManterOrdemServicoTabelaState {
 
     public VisualizarHistoriaUsuarioSelecionadaState(TabelaManterOSPresenter presenter) {
         super(presenter);

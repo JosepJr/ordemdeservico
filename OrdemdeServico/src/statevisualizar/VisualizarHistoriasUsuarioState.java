@@ -5,7 +5,7 @@
  */
 package statevisualizar;
 
-import state.StateTabelaManterOrdemServico;
+import state.ManterOrdemServicoTabelaState;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.HistoriaUsuario;
@@ -17,7 +17,7 @@ import presenter.TabelaManterOSPresenter;
  *
  * @author Josep
  */
-public class VisualizarHistoriasUsuarioState extends StateTabelaManterOrdemServico {
+public class VisualizarHistoriasUsuarioState extends ManterOrdemServicoTabelaState {
 
     public VisualizarHistoriasUsuarioState(TabelaManterOSPresenter presenter) {
         super(presenter);

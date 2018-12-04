@@ -6,7 +6,7 @@
 package stateeditar;
 
 import command.ICommandManterOS;
-import commandeditar.EditarRNMSSelecionadoCommand;
+import commandeditar.EditarCriterioGeralNMSSelecionadoCommand;
 import model.CriterioGeralNMS;
 import model.OrdemServico;
 import presenter.ManterOrdemServicoPresenter;
@@ -16,13 +16,13 @@ import state.ManterOrdemServicoState;
  *
  * @author Josep
  */
-public class EditarRNMSSelecionadoState extends ManterOrdemServicoState {
+public class EditarCriterioGeralNMSSelecionadoState extends ManterOrdemServicoState {
 
     private ICommandManterOS command;
 
-    public EditarRNMSSelecionadoState(ManterOrdemServicoPresenter presenter) {
+    public EditarCriterioGeralNMSSelecionadoState(ManterOrdemServicoPresenter presenter) {
         super(presenter);
-        this.command = EditarRNMSSelecionadoCommand.getInstance();
+        this.command = EditarCriterioGeralNMSSelecionadoCommand.getInstance();
     }
 
     @Override

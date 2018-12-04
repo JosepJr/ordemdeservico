@@ -18,7 +18,7 @@ import model.OrdemServico;
 import state.ManterOrdemServicoState;
 import stateeditar.EditarDisciplinaHistoriaUsuarioState;
 import stateeditar.EditarOrdemServicoState;
-import stateeditar.EditarRNMSSelecionadoState;
+import stateeditar.EditarCriterioGeralNMSSelecionadoState;
 import stateeditar.EditarSituacaoOrdemServicoState;
 import stateincluir.IncluirHistoriasUsuarioState;
 import stateincluir.IncluirHistoriasUsuarioState2;
@@ -27,7 +27,7 @@ import stateincluir.IncluirRegistroNMSNiveisServicoState;
 import stateincluir.IncluirSituacaoOrdemServicoState;
 import statevisualizar.VisualizarDisciplinaHistoriaUsuarioState;
 import statevisualizar.VisualizarOrdemServicoState;
-import statevisualizar.VisualizarRNMSSelecionadoState;
+import statevisualizar.VisualizarCriterioGeralNMSSelecionadoState;
 import statevisualizar.VisualizarSituacaoOrdemServicoState;
 
 /**
@@ -116,7 +116,7 @@ public class ManterOrdemServicoPresenter {
             this.state.visualizar(os, ob1, ob2);
         }
         if(indice == 3){
-            this.setState(new VisualizarRNMSSelecionadoState(this));
+            this.setState(new VisualizarCriterioGeralNMSSelecionadoState(this));
             this.state.visualizar(os, ob1, null);
         }
     }
@@ -135,7 +135,7 @@ public class ManterOrdemServicoPresenter {
             this.state.editar(os, ob1, ob2);
         }
         if (indice == 3) {
-            this.setState(new EditarRNMSSelecionadoState(this));
+            this.setState(new EditarCriterioGeralNMSSelecionadoState(this));
             this.state.editar(os, ob1, null);
         }/*
         if (indice == 5) {

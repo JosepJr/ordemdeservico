@@ -6,7 +6,7 @@
 package stateincluir;
 
 import state.ManterOrdemServicoState;
-import commandincluir.IncluirRegistroNMSNiveisServicoCommand;
+import commandeditar.EditarNivelServicoSelecionadoCommand;
 import model.OrdemServico;
 import presenter.ManterOrdemServicoPresenter;
 import command.ICommandManterOS;
@@ -20,7 +20,7 @@ public class IncluirRegistroNMSNiveisServicoState extends ManterOrdemServicoStat
 
     public IncluirRegistroNMSNiveisServicoState(ManterOrdemServicoPresenter presenter) {
         super(presenter);
-        this.command = IncluirRegistroNMSNiveisServicoCommand.getInstance();
+        this.command = EditarNivelServicoSelecionadoCommand.getInstance();
     }
 
     @Override

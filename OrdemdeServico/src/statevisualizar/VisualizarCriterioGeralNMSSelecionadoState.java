@@ -16,9 +16,9 @@ import state.ManterOrdemServicoState;
  *
  * @author Josep
  */
-public class VisualizarRNMSSelecionadoState extends ManterOrdemServicoState {
+public class VisualizarCriterioGeralNMSSelecionadoState extends ManterOrdemServicoState {
 
-    public VisualizarRNMSSelecionadoState(ManterOrdemServicoPresenter presenter) {
+    public VisualizarCriterioGeralNMSSelecionadoState(ManterOrdemServicoPresenter presenter) {
         super(presenter);
     }
 

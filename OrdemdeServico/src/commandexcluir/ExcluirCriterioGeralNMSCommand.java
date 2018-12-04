@@ -14,17 +14,17 @@ import presenter.TabelaManterOSPresenter;
  *
  * @author Josep
  */
-public class ExcluirRNMSStateCommand implements ICommandTabela{
+public class ExcluirCriterioGeralNMSCommand implements ICommandTabela{
 
-    private static ExcluirRNMSStateCommand instance;
+    private static ExcluirCriterioGeralNMSCommand instance;
     
     
-    private ExcluirRNMSStateCommand(){}
+    private ExcluirCriterioGeralNMSCommand(){}
     
     
-    public static ExcluirRNMSStateCommand getInstance(){
+    public static ExcluirCriterioGeralNMSCommand getInstance(){
         if(instance == null){
-            instance = new ExcluirRNMSStateCommand();
+            instance = new ExcluirCriterioGeralNMSCommand();
         }
         return instance;
     

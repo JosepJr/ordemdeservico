@@ -12,13 +12,13 @@ import javax.swing.UIManager;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.table.DefaultTableModel;
-import model.HistoriaUsuario;
 import model.OrdemServico;
 import stateeditar.EditarHistoriaSelecionadaState;
 import statevisualizar.VisualizarHistoriaUsuarioSelecionadaState;
-import statevisualizar.VisualizarRNMSState;
-import state.StateTabelaManterOrdemServico;
+import statevisualizar.VisualizarCriteriosGeraisNMSState;
+import state.ManterOrdemServicoTabelaState;
 import statevisualizar.VisualizarHistoriasUsuarioState;
+import statevisualizar.VisualizarNiveisServicosState;
 import view.TabelaManterOSView;
 
 /**
@@ -29,7 +29,7 @@ public class TabelaManterOSPresenter {
 
     private static TabelaManterOSPresenter instance;
     private final TabelaManterOSView view;
-    private StateTabelaManterOrdemServico state;
+    private ManterOrdemServicoTabelaState state;
     private DefaultTableModel tablemodel;
 
     private TabelaManterOSPresenter() {
@@ -70,11 +70,11 @@ public class TabelaManterOSPresenter {
             this.state.visualizar(o, os);
         }
         if (indice == 3) {
-            this.state = new VisualizarRNMSState(this);
+            this.state = new VisualizarCriteriosGeraisNMSState(this);
             this.state.visualizar(null, os);
         }
         if (indice == 4) {
-            this.state = new VisualizarRNMSState(this);
+            this.state = new VisualizarNiveisServicosState(this);
             this.state.visualizar(null, os);
         }
     }
@@ -120,7 +120,7 @@ public class TabelaManterOSPresenter {
         return view;
     }
 
-    public StateTabelaManterOrdemServico getState() {
+    public ManterOrdemServicoTabelaState getState() {
         return state;
     }
 

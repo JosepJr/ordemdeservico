@@ -5,7 +5,7 @@
  */
 package stateeditar;
 
-import state.StateTabelaManterOrdemServico;
+import state.ManterOrdemServicoTabelaState;
 import command.ICommandTabela;
 import commandeditar.EditarHistoriaUsuarioSelecionadaCommand;
 import model.HistoriaUsuario;
@@ -16,7 +16,7 @@ import presenter.TabelaManterOSPresenter;
  *
  * @author Josep
  */
-public class EditarHistoriaSelecionadaState extends StateTabelaManterOrdemServico {
+public class EditarHistoriaSelecionadaState extends ManterOrdemServicoTabelaState {
 
     private ICommandTabela command;
 

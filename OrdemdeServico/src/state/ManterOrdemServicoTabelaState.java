@@ -12,11 +12,11 @@ import presenter.TabelaManterOSPresenter;
  *
  * @author Josep
  */
-public abstract class StateTabelaManterOrdemServico {
+public abstract class ManterOrdemServicoTabelaState {
     
      protected TabelaManterOSPresenter presenter;  
     
-    public StateTabelaManterOrdemServico(TabelaManterOSPresenter presenter) {
+    public ManterOrdemServicoTabelaState(TabelaManterOSPresenter presenter) {
         this.presenter = presenter;
     }
 

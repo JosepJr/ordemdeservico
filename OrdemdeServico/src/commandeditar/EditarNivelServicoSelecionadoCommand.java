@@ -11,29 +11,28 @@ import model.OrdemServico;
 import presenter.BuscarOrdemServicoPresenter;
 import presenter.ManterOrdemServicoPresenter;
 
-
 /**
  *
  * @author Josep
  */
-public class EditarRNMSSelecionadoCommand implements ICommandManterOS {
+public class EditarNivelServicoSelecionadoCommand implements ICommandManterOS{
 
-    private static EditarRNMSSelecionadoCommand instance;
+private static EditarNivelServicoSelecionadoCommand instance;
 
-    private EditarRNMSSelecionadoCommand() {
+    private EditarNivelServicoSelecionadoCommand() {
 
     }
 
-    public static EditarRNMSSelecionadoCommand getInstance() {
+    public static EditarNivelServicoSelecionadoCommand getInstance() {
         if (instance == null) {
-            instance = new EditarRNMSSelecionadoCommand();
+            instance = new EditarNivelServicoSelecionadoCommand();
         }
         return instance;
     }
 
     @Override
     public void executar(ManterOrdemServicoPresenter presenter, OrdemServico os, Object o) {
-        JOptionPane.showMessageDialog(null, "Registro Nivel Minimo atualizado com sucesso!");
+            JOptionPane.showMessageDialog(null, "Registro Nivel Minimo selecionado atualizado com sucesso!");
     }
 
     @Override
