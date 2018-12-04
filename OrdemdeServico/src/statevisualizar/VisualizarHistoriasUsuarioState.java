@@ -34,6 +34,7 @@ public class VisualizarHistoriasUsuarioState extends StateTabelaManterOrdemServi
         this.presenter.getView().setTitle("Histórias de Usuário (Visualização / Edição)");
         this.presenter.getView().getjLabelTitulo().setText("Histórias de Usuário");
         this.presenter.getView().getjButtonEditar().setText("Excluir");
+        this.presenter.getView().getjButtonCancelar().setText("Sair");
         this.presenter.getView().setVisible(true);
         
         this.presenter.getView().getjButtonVisualizar().addActionListener((e1) -> {
@@ -53,7 +54,7 @@ public class VisualizarHistoriasUsuarioState extends StateTabelaManterOrdemServi
         });
 
         this.presenter.getView().getjButtonCancelar().addActionListener((e1) -> {
-            if (this.presenter.setJanelaConfirmacao("Deseja realmente cancelar a edição da Ordem de Serviço (OS)? \n A janela será fechada e o restante da edição não será realizada.\n Atualizações já feitas serão mantidas.") == 0) {
+            if (this.presenter.setJanelaConfirmacao("Deseja realmente sair? \n A janela será fechada e o restante da edição da Ordem de Serviço(OS) não será realizada.\n Atualizações já feitas serão mantidas.") == 0) {
                 this.presenter.fecharView();
                 ManterOrdemServicoPresenter.getInstance().fecharView();
             }

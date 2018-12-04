@@ -16,7 +16,7 @@ import model.HistoriaUsuario;
 import model.OrdemServico;
 import stateeditar.EditarHistoriaSelecionadaState;
 import statevisualizar.VisualizarHistoriaUsuarioSelecionadaState;
-import stateeditar.EditarRNMSState;
+import statevisualizar.VisualizarRNMSState;
 import state.StateTabelaManterOrdemServico;
 import statevisualizar.VisualizarHistoriasUsuarioState;
 import view.TabelaManterOSView;
@@ -70,7 +70,7 @@ public class TabelaManterOSPresenter {
             this.state.visualizar(o, os);
         }
         if(indice == 3){
-            this.state = new EditarRNMSState(this);
+            this.state = new VisualizarRNMSState(this);
             this.state.visualizar(null, os);
         }        
     }
