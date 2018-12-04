@@ -6,8 +6,6 @@
 package stateincluir;
 
 import state.ManterOrdemServicoState;
-import commandincluir.IncluirHistoriasUsuarioCommand;
-import model.HistoriaUsuario;
 import model.OrdemServico;
 import presenter.ManterOrdemServicoPresenter;
 import command.ICommandManterOS;
@@ -18,11 +16,8 @@ import command.ICommandManterOS;
  */
 public class IncluirHistoriasUsuarioState extends ManterOrdemServicoState {
 
-    private final ICommandManterOS command;
-
     public IncluirHistoriasUsuarioState(ManterOrdemServicoPresenter presenter) {
         super(presenter);
-        this.command = IncluirHistoriasUsuarioCommand.getInstance();
     }
 
     @Override

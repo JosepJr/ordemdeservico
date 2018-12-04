@@ -5,6 +5,8 @@
  */
 package presenter;
 
+import command.ICommandManterOS;
+import commandexcluir.ExcluirOrdemServicoCommand;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
@@ -24,10 +26,13 @@ public class BuscarOrdemServicoPresenter{
     private static BuscarOrdemServicoPresenter instance;
     private final BuscarOrdemServicoView view;
     private DefaultTableModel tablemodel;
+    private ICommandManterOS command;
 
     private BuscarOrdemServicoPresenter() throws Exception {
         this.view = new BuscarOrdemServicoView();
+        this.command = ExcluirOrdemServicoCommand.getInstance();
         this.configurarView();
+        
     }
 
     public static BuscarOrdemServicoPresenter getInstance() throws Exception {
@@ -40,7 +45,7 @@ public class BuscarOrdemServicoPresenter{
     private void configurarView() throws Exception {
 
         this.setPosicao();
-        this.view.getjButtonDesfazer().setVisible(false);
+        this.view.getjButtonExcluir().setVisible(true);
         this.preencherTabela();
         this.view.getjLabelObserverQTD().setText(Integer.toString(this.view.getjTableOrdemServico().getRowCount()));
       
@@ -56,6 +61,8 @@ public class BuscarOrdemServicoPresenter{
                 }
             }
         });
+        
+        this.view.setVisible(true);
 
         if (this.view.getjTableOrdemServico().getRowCount() == 0) {
             this.view.getjButtonVisualizar().setEnabled(false);
@@ -126,7 +133,7 @@ public class BuscarOrdemServicoPresenter{
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Favor selecionar somente o Número!");
+                JOptionPane.showMessageDialog(null, "Favor selecionar somente o Número da Ordem de Serviço!");
             }
         });
         
@@ -135,11 +142,25 @@ public class BuscarOrdemServicoPresenter{
             ManterOrdemServicoPresenter.getInstance().incluir(0,null);
         });
 
-        this.view.getjButtonDesfazer().addActionListener((e) -> {
-            
+        this.view.getjButtonExcluir().addActionListener((e) -> {                   
+            if (this.view.getjTableOrdemServico().getSelectedColumn() == 0) {
+                try {
+                    for(OrdemServico ordens : DadosTeste.getInstance().getOrdensServico()){
+                       if(this.view.getjTableOrdemServico().getValueAt(this.view.getjTableOrdemServico().getSelectedRow(), 0).toString().equals(Integer.toString(ordens.getNumero()))){
+                           this.command.executar(null, ordens, null);
+                           this.fecharView();
+                           TelaPrincipalPresenter.getInstance().getTelaPrincipalView().getjDesktopPanePrincipal().add(BuscarOrdemServicoPresenter.getInstance().getView()).setVisible(true);
+                       } 
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Favor selecionar somente o Número da Ordem de Serviço!");
+            }
         });
 
-        this.view.setVisible(true);
+        
     }
 
     public BuscarOrdemServicoView getView() {

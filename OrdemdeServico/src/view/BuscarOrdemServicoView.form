@@ -127,9 +127,9 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonDesfazer">
+    <Component class="javax.swing.JButton" name="jButtonExcluir">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Desfazer"/>
+        <Property name="text" type="java.lang.String" value="Excluir"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

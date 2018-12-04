@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package commandincluir;
+package commandeditar;
 
 import command.ICommandManterOS;
 import javax.swing.JOptionPane;
@@ -15,34 +15,28 @@ import presenter.ManterOrdemServicoPresenter;
  *
  * @author Josep
  */
-public class IncluirOrdemServicoCommand implements ICommandManterOS{
+public class EditarSituacaoOrdemServicoCommand implements ICommandManterOS{
 
-    private static IncluirOrdemServicoCommand instance;
+    private static EditarSituacaoOrdemServicoCommand instance;
     
-    
-    private IncluirOrdemServicoCommand(){
+    private EditarSituacaoOrdemServicoCommand(){
     
     }
     
-    public static IncluirOrdemServicoCommand getInstance(){
+    public static EditarSituacaoOrdemServicoCommand getInstance(){
         if(instance == null){
-            instance = new IncluirOrdemServicoCommand();
+            instance = new EditarSituacaoOrdemServicoCommand();        
         }
         return instance;
     }
     
-    
     @Override
     public void executar(ManterOrdemServicoPresenter presenter, OrdemServico os, Object o) {
-        
-        
-        
-        JOptionPane.showMessageDialog(null, "Ordem de Serviço cadatrada com Sucesso!");
+        JOptionPane.showMessageDialog(null, "Situação da Ordem de Serviço atualizada com sucesso!");
     }
 
     @Override
     public void desfazer(BuscarOrdemServicoPresenter presenter) {
-
     }
     
 }

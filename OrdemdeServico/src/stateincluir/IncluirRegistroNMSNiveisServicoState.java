@@ -10,8 +10,6 @@ import commandincluir.IncluirRegistroNMSNiveisServicoCommand;
 import model.OrdemServico;
 import presenter.ManterOrdemServicoPresenter;
 import command.ICommandManterOS;
-import commandincluir.IncluirOrdemServicoCommand;
-
 /**
  *
  * @author Josep
@@ -39,7 +37,6 @@ public class IncluirRegistroNMSNiveisServicoState extends ManterOrdemServicoStat
             if (this.presenter.setJanelaConfirmacao("Deseja inserir mais Niveis de Serviço nesse mesmo Registro Minimo de Serviço?") == 0) {
                 this.presenter.incluir(5, os);
             } else {
-                IncluirOrdemServicoCommand.getInstance().executar(null, os, null);
                 this.presenter.fecharView();
             }
 

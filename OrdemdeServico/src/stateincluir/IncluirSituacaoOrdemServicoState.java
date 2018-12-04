@@ -6,10 +6,7 @@
 package stateincluir;
 
 import state.ManterOrdemServicoState;
-import commandincluir.IncluirSituacaoOrdemServicoCommand;
-import java.util.ArrayList;
 import model.OrdemServico;
-import model.Situacao;
 import presenter.ManterOrdemServicoPresenter;
 import command.ICommandManterOS;
 
@@ -19,11 +16,8 @@ import command.ICommandManterOS;
  */
 public class IncluirSituacaoOrdemServicoState extends ManterOrdemServicoState {
 
-    private final ICommandManterOS command;
-
     public IncluirSituacaoOrdemServicoState(ManterOrdemServicoPresenter presenter) {
         super(presenter);
-        this.command = IncluirSituacaoOrdemServicoCommand.getInstance();
     }
 
     @Override

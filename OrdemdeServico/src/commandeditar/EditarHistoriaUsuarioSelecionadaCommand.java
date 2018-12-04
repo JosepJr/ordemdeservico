@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package commandincluir;
+package commandeditar;
 
 import command.ICommandTabela;
 import javax.swing.JOptionPane;
@@ -14,28 +14,29 @@ import presenter.TabelaManterOSPresenter;
  *
  * @author Josep
  */
-public class IncluirManterHistoriaCommand implements ICommandTabela {
+public class EditarHistoriaUsuarioSelecionadaCommand implements ICommandTabela{
 
-    private static IncluirManterHistoriaCommand instance;
-
-    private IncluirManterHistoriaCommand() {
-
+    private static EditarHistoriaUsuarioSelecionadaCommand instance;
+    
+    private EditarHistoriaUsuarioSelecionadaCommand(){
+    
     }
-
-    public static IncluirManterHistoriaCommand getInstance() {
-        if (instance == null) {
-            instance = new IncluirManterHistoriaCommand();
+    
+    public static EditarHistoriaUsuarioSelecionadaCommand getInstance(){
+        if(instance == null){
+            instance = new EditarHistoriaUsuarioSelecionadaCommand();
         }
         return instance;
     }
-
+            
     @Override
     public void executar(TabelaManterOSPresenter presenter, Object o, OrdemServico os) {
-        JOptionPane.showMessageDialog(null, "História Usuário Editada com Sucesso!");        
+        JOptionPane.showMessageDialog(null, "Historia de usuário selecionada atualizada com sucesso!");
+        
     }
 
     @Override
     public void desfazer() {
     }
-
+    
 }

@@ -5,7 +5,6 @@
  */
 package presenter;
 
-import commandeditar.EditarSituacaoOrdemServicoState;
 import stateincluir.IncluirOrdemServicoState;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
@@ -19,6 +18,7 @@ import model.OrdemServico;
 import state.ManterOrdemServicoState;
 import stateeditar.EditarDisciplinaHistoriaUsuarioState;
 import stateeditar.EditarOrdemServicoState;
+import stateeditar.EditarSituacaoOrdemServicoState;
 import stateincluir.IncluirHistoriasUsuarioState;
 import stateincluir.IncluirHistoriasUsuarioState2;
 import stateincluir.IncluirRegistroNMSCriteriosGeraisState;

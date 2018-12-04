@@ -6,9 +6,7 @@
 package statevisualizar;
 
 import state.StateTabelaManterOrdemServico;
-import command.ICommandTabela;
 import commandexcluir.ExcluirDisciplinaHistoriaUsuarioCommand;
-import commandincluir.IncluirManterHistoriaCommand;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -25,11 +23,8 @@ import presenter.TelaPrincipalPresenter;
  */
 public class VisualizarHistoriaUsuarioSelecionadaState extends StateTabelaManterOrdemServico {
 
-    private ICommandTabela command;
-
     public VisualizarHistoriaUsuarioSelecionadaState(TabelaManterOSPresenter presenter) {
         super(presenter);
-        this.command = IncluirManterHistoriaCommand.getInstance();
     }
 
     @Override

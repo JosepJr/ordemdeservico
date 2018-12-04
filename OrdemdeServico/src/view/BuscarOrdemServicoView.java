@@ -62,8 +62,8 @@ public class BuscarOrdemServicoView extends javax.swing.JInternalFrame {
         this.jTableOrdemServico = jTableClientes;
     }
 
-    public JButton getjButtonDesfazer() {
-        return jButtonDesfazer;
+    public JButton getjButtonExcluir() {
+        return jButtonExcluir;
     }
     
     /**
@@ -84,7 +84,7 @@ public class BuscarOrdemServicoView extends javax.swing.JInternalFrame {
         jTableOrdemServico = new javax.swing.JTable();
         jLabelObserverQTD = new javax.swing.JLabel();
         jLabelQtdRegistros = new javax.swing.JLabel();
-        jButtonDesfazer = new javax.swing.JButton();
+        jButtonExcluir = new javax.swing.JButton();
         jTextFieldBuscar = new javax.swing.JTextField();
         jComboBoxTipoBusca = new javax.swing.JComboBox<>();
 
@@ -130,8 +130,8 @@ public class BuscarOrdemServicoView extends javax.swing.JInternalFrame {
         jLabelQtdRegistros.setText("Quantidade de Ordem de Serviço Cadastrados:");
         getContentPane().add(jLabelQtdRegistros, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, -1, -1));
 
-        jButtonDesfazer.setText("Desfazer");
-        getContentPane().add(jButtonDesfazer, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 100, -1));
+        jButtonExcluir.setText("Excluir");
+        getContentPane().add(jButtonExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 100, -1));
         getContentPane().add(jTextFieldBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 22, 350, -1));
 
         jComboBoxTipoBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Data", "Nome do Fiscal", "Número" }));
@@ -143,7 +143,7 @@ public class BuscarOrdemServicoView extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBuscar;
-    private javax.swing.JButton jButtonDesfazer;
+    private javax.swing.JButton jButtonExcluir;
     private javax.swing.JButton jButtonFechar;
     private javax.swing.JButton jButtonNovo;
     private javax.swing.JButton jButtonVisualizar;

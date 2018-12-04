@@ -7,7 +7,7 @@ package stateeditar;
 
 import state.StateTabelaManterOrdemServico;
 import command.ICommandTabela;
-import commandincluir.IncluirManterHistoriaCommand;
+import commandeditar.EditarHistoriaUsuarioSelecionadaCommand;
 import model.HistoriaUsuario;
 import model.OrdemServico;
 import presenter.TabelaManterOSPresenter;
@@ -22,7 +22,7 @@ public class EditarHistoriaSelecionadaState extends StateTabelaManterOrdemServic
 
     public EditarHistoriaSelecionadaState(TabelaManterOSPresenter presenter) {
         super(presenter);
-        this.command = IncluirManterHistoriaCommand.getInstance();
+        this.command = EditarHistoriaUsuarioSelecionadaCommand.getInstance();
     }
 
     @Override
@@ -45,7 +45,6 @@ public class EditarHistoriaSelecionadaState extends StateTabelaManterOrdemServic
             //Salvar os novos dados pegue dos campos textfied.
             this.command.executar(this.presenter, historia, os);
             this.presenter.visualizar(historia, os, 2);
-
         });
 
     }
